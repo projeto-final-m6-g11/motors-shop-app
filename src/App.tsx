@@ -8,9 +8,9 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-      <GlobalStyle>
+    
         <Routes />
-      </GlobalStyle/>
+      <GlobalStyle/>
     </div>
   );
 }
