@@ -26,6 +26,12 @@ export const StyledFooterDiv = styled.div`
         font-size: 14px;
     }
 
+    div {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
     @media (max-width: 395px) {
         height: 45vh;
         flex-direction: column;

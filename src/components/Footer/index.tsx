@@ -1,7 +1,7 @@
 import { FooterButton, StyledFooterDiv } from "./StyledFooterDiv"
 import LogoFooter from '../../assets/logoFooter.png'
 import { MdKeyboardArrowUp } from 'react-icons/md'
-import { useState } from "react";
+import { AiOutlineCopyrightCircle } from 'react-icons/ai'
 
 const Footer = () => {
     const scrollTop = () => {
@@ -11,7 +11,9 @@ const Footer = () => {
     return (
         <StyledFooterDiv>
             <img src={LogoFooter} alt="logo motors shop" />
-            <span>2022 - Todos os direitos reservados</span>
+            <div>
+                <AiOutlineCopyrightCircle className="copy" /><span> 2022 - Todos os direitos reservados</span>
+            </div>
             <FooterButton onClick={() => {
                 scrollTop()
             }}>
