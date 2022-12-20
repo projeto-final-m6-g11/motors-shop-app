@@ -1,4 +1,4 @@
-import Button from "../button";
+import Button from "../Button";
 import ModalHeader from "../modalHeader";
 import { FaBars } from "react-icons/fa";
 import { GrClose } from "react-icons/gr";
