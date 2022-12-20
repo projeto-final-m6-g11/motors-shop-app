@@ -4,11 +4,12 @@ export const Modal = styled.div`
   position: absolute;
   display: flex;
   flex-wrap: wrap;
+  z-index: 2;
   background-color: var(--whiteFixed);
   top: 68px;
   width: 100%;
   max-width: 400px;
-  right: 0;
+  right: 3px;
   border-radius: 5px;
   box-shadow: 1px 10px 26px -3px var(--grey0);
   nav {

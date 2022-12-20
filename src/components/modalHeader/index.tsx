@@ -1,4 +1,4 @@
-import Button from "../button";
+import Button from "./../Button";
 import { useHistory } from "react-router-dom";
 import { Modal } from "./styles";
 
