@@ -5,8 +5,11 @@ export const StyledFooterDiv = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    justify-self: flex-end;
-
+    
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    
     width: 100vw;
     height: 10vh;
 
