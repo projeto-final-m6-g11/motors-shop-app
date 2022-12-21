@@ -5,8 +5,8 @@ const Main = styled.main`
   flex-direction: column;
   align-items: center;
   background-color: #fbf8f2;
-  height: 100%;
-  flex-grow: 1;
+  width: 100%;
+  min-height: 100vh;
 `;
 
 export default Main;

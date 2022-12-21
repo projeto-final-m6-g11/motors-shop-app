@@ -6,15 +6,12 @@ import UserInfoDisplay from "../../components/UserInfoDisplay";
 
 const Home = () => {
   return (
-    <div className="page">
-    <Header type="owner" />
     <Main>
+      <Header type="owner" />
       <CardFixo type="default" />
-      <UserInfoDisplay />
+      <UserInfoDisplay profile={true} />
+      <Footer />
     </Main>
-    <Footer />
-    </div>
-    
   );
 };
 

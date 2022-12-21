@@ -78,11 +78,4 @@ export const GlobalStyle = createGlobalStyle`
         justify-content : center;
     }
 
-    .page {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        min-height: 100vh;
-    }
-
 `
