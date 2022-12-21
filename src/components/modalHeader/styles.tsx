@@ -18,12 +18,13 @@ export const Modal = styled.div`
     width: 100%;
     div {
       width: 100%;
-      height: 236px;
+      height: 10rem;
       display: flex;
       flex-direction: column;
       justify-content: space-evenly;
     }
     button {
+      color: var(--grey2);
       width: 90%;
       text-align: left;
       margin: 5px auto;
@@ -33,7 +34,25 @@ export const Modal = styled.div`
     }
     .divisionNavModal {
       border-top: 2px solid var(--grey4);
-      height: 184px;
+      height: 13rem;
+
+      p {
+        color: var(--grey2);
+        font-size: 18px;
+        width: 90%;
+        text-align: left;
+        margin: 5px auto;
+      }
+
+      button {
+        color: var(--grey2);
+        width: 90%;
+        text-align: left;
+        margin: 5px auto;
+        border: none;
+        font-size: large;
+        background-color: var(--whiteFixed);
+      }
 
       .button2 {
         text-align: center;

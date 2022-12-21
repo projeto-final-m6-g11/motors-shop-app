@@ -1,10 +1,10 @@
-import Header from "../../components/header";
+import Header from "../../components/Header";
 import Main from "./styles";
 
 const Home = () => {
   return (
     <Main>
-      <Header />
+      <Header type="owner" />
     </Main>
   );
 };
