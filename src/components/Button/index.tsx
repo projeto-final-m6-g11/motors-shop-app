@@ -1,7 +1,3 @@
-interface IButtonProps {
-  children: string;
-}
-
 const Button = ({ children, ...rest }: any) => {
 
   return (
