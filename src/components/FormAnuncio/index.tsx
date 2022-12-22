@@ -1,7 +1,12 @@
+import { useState } from "react";
 import { FormPattern } from "../FormPadrão/stydes"
 import { TitleForm, ButtonAddImg, FooterForm, ButtonFooter, InputPattern, CampMultInput, DivLabelInput, HeaderForm, ButtonClosed, LabelForm, InputButton, LabelButtonForm, CampButtons, TitleP } from "./stydes";
- 
-const FormAnuncio = () => {
+
+interface IProps {
+    handleOpen: Function
+}
+
+const FormAnuncio = ({ handleOpen }: IProps) => {
 
   return (
             
@@ -9,7 +14,7 @@ const FormAnuncio = () => {
 
                 <HeaderForm>
                 
-                    <TitleForm>Criar anuncio</TitleForm> <ButtonClosed>X</ButtonClosed>
+                    <TitleForm>Criar anuncio</TitleForm> <ButtonClosed onClick={(e) => {handleOpen(e)}}>X</ButtonClosed>
                     
                 </HeaderForm>   
 
