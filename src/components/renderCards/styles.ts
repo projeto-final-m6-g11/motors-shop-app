@@ -2,16 +2,19 @@ import styled from "styled-components";
 
 export const Ulstyled = styled.ul`
   display: flex;
-  width: 90%;
+  justify-content: flex-start;
+  align-items: flex-start;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 2rem;
+  width: 90vw;
   gap: 1.25rem;
-  overflow-y: hidden;
-  overflow-x: hidden;
-  padding-left: 2.5rem;
-  padding-right: 2.5rem;
 `;
 
 export const Vitrine = styled.div`
-  width: 100%;
+  width: 90vw;
+  display: flex;
+  flex-direction: column;
   h1 {
     font-weight: 600;
     font-size: 1.5rem;

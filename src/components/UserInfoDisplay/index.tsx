@@ -1,11 +1,20 @@
+import { useState } from "react"
 import Button from "../Button"
 import { UserInfoDiv } from "./styledUserInfoDiv"
+import { ModalFundo } from "../ModalFundo/styled"
+import FormAnuncio from "../FormAnuncio"
 
 interface UIDisplay {
     profile: boolean
 }
 
 const UserInfoDisplay = ({ profile }: UIDisplay) => {
+    const [open, setOpen] = useState<boolean>(false)
+
+    const handleOpen = () => {
+        setOpen(!open)
+    }
+
     return (
         profile ? 
         <UserInfoDiv>
@@ -14,7 +23,11 @@ const UserInfoDisplay = ({ profile }: UIDisplay) => {
                 <span>User</span><span className="advertiser">Anunciante</span>
             </div>
             <p>eu sou um usuário da aplicação motors shop!</p>
-            <Button>Criar anúncio</Button>
+            <Button onClick={() => {handleOpen()}}>Criar anúncio</Button>
+            {open ? 
+            <ModalFundo>
+                <FormAnuncio handleOpen={handleOpen}/>
+            </ModalFundo> : ""}
         </UserInfoDiv>
         :
         <UserInfoDiv>
