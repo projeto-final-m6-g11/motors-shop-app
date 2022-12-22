@@ -7,13 +7,9 @@ export const StyledFooterDiv = styled.footer`
   justify-content: space-between;
   width: 100vw;
   height: 10vh;
-  height: 375px;
   padding: 50px;
   background-color: var(--grey0);
   color: var(--whiteFixed);
-  bottom: 0;
-  left: 0;
-  position: fixed;
 
 
   img {

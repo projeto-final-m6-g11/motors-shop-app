@@ -15,6 +15,7 @@ export const Vitrine = styled.div`
   width: 90vw;
   display: flex;
   flex-direction: column;
+  margin-top: 300px;
   h1 {
     font-weight: 600;
     font-size: 1.5rem;
