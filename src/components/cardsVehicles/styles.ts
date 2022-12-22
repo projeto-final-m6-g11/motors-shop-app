@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
 export const CardStyled = styled.li`
-  width: 12.5rem;
-  height: 15.625rem;
+  width: 312px;
+  height: 350px;
   display: flex;
   flex-direction: column;
   position: relative;
-  gap: 10px;
+  gap: 0.625rem;
   figure {
     width: 100%;
     height: 50%;
@@ -17,8 +17,10 @@ export const CardStyled = styled.li`
     margin-bottom: 0.625rem;
   }
   figure img {
-    height: 100%;
+    /* height: 100%; */
+    width: 100%;
     background: none;
+    object-fit: cover;
   }
   article h1 {
     font-size: 1rem;
@@ -56,6 +58,7 @@ export const CardStyled = styled.li`
     line-height: 1.5rem;
     line-height: 142%;
     font-weight: 500;
+    border-radius: 0.3125rem;
   }
   .km__year__car {
     display: flex;
@@ -68,8 +71,8 @@ export const CardStyled = styled.li`
     align-items: center;
     background-color: var(--brand1);
     color: var(--whiteFixed);
-    left: 0.75rem;
-    top: 0.75rem;
+    left: 0.625rem;
+    top: 0.625rem;
     padding: 0.1875rem 0.375rem;
     font-size: 0.875rem;
     /* inset: 10, 10, 10, 10; */
@@ -81,8 +84,8 @@ export const CardStyled = styled.li`
     align-items: center;
     background-color: var(--grey4);
     color: var(--whiteFixed);
-    left: 0.75rem;
-    top: 0.75rem;
+    left: 0.625rem;
+    top: 0.625rem;
     padding: 0.1875rem 0.375rem;
     font-size: 0.875rem;
     /* inset: 10, 10, 10, 10; */
