@@ -7,6 +7,7 @@ export const StyledFooterDiv = styled.footer`
   justify-content: space-between;
   width: 100vw;
   height: 10vh;
+  padding: 50px;
   background-color: var(--grey0);
   color: var(--whiteFixed);
   bottom: 0;
@@ -79,7 +80,7 @@ export const StyledFooterDiv = styled.footer`
         flex-direction: column;
         justify-content: space-between;
     }
-`;
+}`
 
 export const FooterButton = styled.button`
   display: flex;
