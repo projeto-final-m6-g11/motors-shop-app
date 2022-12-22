@@ -8,6 +8,7 @@ export const Box = styled.header`
   padding: 0 3rem 0 3rem;
   height: 60px;
   background-color: var(--grey6);
+  border-bottom: 2px solid var(--grey5);
 
   section {
     display: flex;
