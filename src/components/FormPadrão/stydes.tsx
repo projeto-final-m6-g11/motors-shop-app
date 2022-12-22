@@ -5,8 +5,19 @@ export const FormPattern = styled.form`
    align-items          : flex-start;
    justify-content      : center;
    flex-direction       : column;
-   max-width            : 520px;
+   max-width            : 350px;
    border-radius        : 8px;
    padding              : 20px;
+   margin-top           : 50px;
+   max-height           : 100vh;
+   overflow-x           : scroll;
+
+   
+   
+   @media (min-width: 810px) {
+      max-width            : 520px;
+      overflow-x           : hidden;
+   }
+  
 
 `

@@ -6,7 +6,7 @@ export const StyledFooterDiv = styled.footer`
   align-items: center;
   justify-content: space-between;
   width: 100vw;
-  padding: 3rem;
+  height: 10vh;
   background-color: var(--grey0);
   color: var(--whiteFixed);
   bottom: 0;
@@ -24,9 +24,18 @@ export const StyledFooterDiv = styled.footer`
   }
 
   div {
-    display: flex;
-    align-items: center;
     gap: 5px;
+  }
+
+  img {
+      width: 150px;
+      height: 26px;
+  }
+
+  span {
+      font-family: 'Lexend', sans-serif;
+      font-weight: 200;
+      font-size: 14px;
   }
 
   @media (max-width: 810px) {
