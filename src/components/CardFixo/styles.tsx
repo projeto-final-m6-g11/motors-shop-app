@@ -3,13 +3,11 @@ import styled from "styled-components";
 export const Box = styled.section`
   display: flex;
   justify-content: center;
-  align-items: center;
   flex-direction: column;
   gap: 3rem;
   width: 100vw;
   height: 400px;
   padding: 0 2rem 0 2rem;
-  position: relative;
   background-color: var(--brand2);
 
   h1 {

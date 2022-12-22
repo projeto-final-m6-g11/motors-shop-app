@@ -70,12 +70,7 @@ export const GlobalStyle = createGlobalStyle`
 
     body{
         background: var(--whiteFixed);
-        height          : 100vh;
-        width           : 100%;
-        display         : flex;
-        flex-direction  : column;
-        align-items     : center;
-        justify-content : center;
+        overflow-x: hidden;
     }
 
 `

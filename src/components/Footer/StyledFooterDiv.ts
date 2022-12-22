@@ -42,8 +42,43 @@ export const StyledFooterDiv = styled.footer`
     height: 20vh;
     flex-direction: column;
     justify-content: space-between;
-    padding: 2rem 0;
-  }
+    
+    width: 100%;
+    height: 10vh;
+
+    padding: 50px;
+
+    background-color: var(--grey0);
+    color: #FFF;
+
+    img {
+        width: 150px;
+        height: 26px;
+    }
+
+    span {
+        font-family: 'Lexend', sans-serif;
+        font-weight: 200;
+        font-size: 14px;
+    }
+
+    div {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    @media (max-width: 395px) {
+        height: 45vh;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    @media (max-width: 600px) {
+        height: 45vh;
+        flex-direction: column;
+        justify-content: space-between;
+    }
 `;
 
 export const FooterButton = styled.button`
