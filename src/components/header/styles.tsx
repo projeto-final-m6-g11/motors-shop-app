@@ -9,7 +9,6 @@ export const Box = styled.header`
   height: 60px;
   background-color: var(--grey6);
   
-  position: absolute;
   top: 0;
 
   section {

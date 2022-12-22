@@ -3,13 +3,14 @@ import styled from "styled-components";
 export const Box = styled.section`
   display: flex;
   justify-content: center;
+  align-items:     center;
   flex-direction: column;
   gap: 3rem;
   width: 100vw;
   height: 400px;
   padding: 0 2rem 0 2rem;
   background-color: var(--brand2);
-
+  
   h1 {
     font-weight: 700;
     color: var(--grey10);
@@ -69,7 +70,9 @@ export const ContainerButtons = styled.article`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  gap: 2rem;
+  width: 300px;
+  gap: 1rem;
+
 
   button {
     color: var(--grey10);
@@ -92,5 +95,7 @@ export const ContainerButtons = styled.article`
   }
   @media (min-width: 810px) {
     flex-direction: row;
+    gap: 2rem;
+
   }
 `;

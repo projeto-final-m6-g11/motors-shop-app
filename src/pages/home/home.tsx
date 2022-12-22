@@ -7,9 +7,8 @@ import UserInfoDisplay from "../../components/UserInfoDisplay";
 const Home = () => {
   return (
     <Main>
-      <Header type="owner" />
-      <CardFixo type="default" />
-      <UserInfoDisplay profile={true} />
+      <Header type="anonymous" />
+      <CardFixo type="home" />
       <Footer />
     </Main>
   );
