@@ -14,7 +14,7 @@ const FormAnuncio = ({ handleOpen }: IProps) => {
 
                 <HeaderForm>
                 
-                    <TitleForm>Criar anuncio</TitleForm> <ButtonClosed onClick={() => {handleOpen()}}>X</ButtonClosed>
+                    <TitleForm>Criar anuncio</TitleForm> <ButtonClosed onClick={(e) => {handleOpen(e)}}>X</ButtonClosed>
                     
                 </HeaderForm>   
 

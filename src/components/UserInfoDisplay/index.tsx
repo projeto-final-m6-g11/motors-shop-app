@@ -11,8 +11,10 @@ interface UIDisplay {
 const UserInfoDisplay = ({ profile }: UIDisplay) => {
     const [open, setOpen] = useState<boolean>(false)
 
-    const handleOpen = () => {
-        setOpen(!open)
+    const handleOpen = (e: any) => {
+        if (e.target.title === "formCreateAnnouncement" || e.target.title === "buttonOpenCreateAnnouncement"){
+            setOpen(!open)
+        }
     }
 
     return (
@@ -23,10 +25,10 @@ const UserInfoDisplay = ({ profile }: UIDisplay) => {
                 <span>User</span><span className="advertiser">Anunciante</span>
             </div>
             <p>eu sou um usuário da aplicação motors shop!</p>
-            <Button onClick={() => {handleOpen()}}>Criar anúncio</Button>
+            <Button title="buttonOpenCreateAnnouncement" onClick={(e:any) => {handleOpen(e)}}>Criar anúncio</Button>
             {open ? 
-            <ModalFundo>
-                <FormAnuncio handleOpen={handleOpen}/>
+            <ModalFundo title="formCreateAnnouncement" onClick={(e) => {handleOpen(e)}}>
+                <FormAnuncio handleOpen={handleOpen} />
             </ModalFundo> : ""}
         </UserInfoDiv>
         :

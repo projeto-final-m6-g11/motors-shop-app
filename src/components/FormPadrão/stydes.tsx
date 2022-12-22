@@ -3,14 +3,13 @@ import styled from "styled-components"
 export const FormPattern = styled.form`
    display              : flex;
    align-items          : flex-start;
-   justify-content      : center;
    flex-direction       : column;
    max-width            : 350px;
    border-radius        : 8px;
    padding              : 20px;
    margin-top           : 50px;
-   max-height           : 100vh;
-   overflow-x           : scroll;
+   height               : 90vh;
+   overflow-y           : scroll;
    background-color: var(--whiteFixed);
 
    
