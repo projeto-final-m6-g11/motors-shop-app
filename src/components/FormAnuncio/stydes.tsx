@@ -5,6 +5,7 @@ export const TitleForm = styled.span`
     font-style         :      normal;
     font-weight        :         500;
     font-size          :        16px;
+   
 `
 
 export const HeaderForm = styled.div`
@@ -128,7 +129,7 @@ export const ButtonFooter = styled.button`
 
 export const ButtonAddImg = styled.button`
     width               : 315px;
-    height              : 40px;
+    min-height          : 40px;
     color               : var(--brand1);
     background-color    : var(--brand4);
     font-family         : 'Inter';
@@ -138,5 +139,6 @@ export const ButtonAddImg = styled.button`
     line-height         : 0px;
     margin-top          : 40px;
     border              : solid 1.5px var(--brand4);
-    border-radius       : 4px
+    border-radius       : 4px;
+   
 `
