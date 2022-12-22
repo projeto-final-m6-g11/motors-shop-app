@@ -63,7 +63,7 @@ export const CardsList = () => {
         ))}
       </Ulstyled>
 
-      <Carrousel>
+      {/*<Carrousel>
         <button onClick={(e) => handleLeftCarrousel()}>
           {" "}
           <SlArrowLeft />{" "}
@@ -72,7 +72,7 @@ export const CardsList = () => {
           {" "}
           <SlArrowRight />{" "}
         </button>
-      </Carrousel>
+        </Carrousel>*/}
 
       <h1>Motos</h1>
       <Ulstyled ref={carousel2}>
@@ -84,7 +84,7 @@ export const CardsList = () => {
         ))}
       </Ulstyled>
 
-      <Carrousel>
+      {/*<Carrousel>
         <button onClick={(e) => handleLeftCarrousel2()}>
           {" "}
           <SlArrowLeft />{" "}
@@ -93,7 +93,7 @@ export const CardsList = () => {
           {" "}
           <SlArrowRight />{" "}
         </button>
-      </Carrousel>
+      </Carrousel>*/}
     </Vitrine>
   );
 };

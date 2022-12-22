@@ -1,12 +1,16 @@
 import styled from "styled-components";
 
 export const CardStyled = styled.li`
-  width: 312px;
+  min-width: 325px;
   height: 350px;
   display: flex;
   flex-direction: column;
   position: relative;
   gap: 0.625rem;
+
+  :hover {
+    cursor: pointer;
+  }
   figure {
     width: 100%;
     height: 50%;
@@ -15,10 +19,15 @@ export const CardStyled = styled.li`
     justify-content: center;
     align-items: center;
     margin-bottom: 0.625rem;
+    border: 1px solid transparent;
+
+    :hover {
+      border: 1px solid var(--brand2);
+    }
   }
   figure img {
-    /* height: 100%; */
-    width: 100%;
+    height: 100%;
+    max-width: 100%;
     background: none;
     object-fit: cover;
   }

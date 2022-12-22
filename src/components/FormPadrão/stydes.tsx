@@ -11,6 +11,7 @@ export const FormPattern = styled.form`
    margin-top           : 50px;
    max-height           : 100vh;
    overflow-x           : scroll;
+   background-color: var(--whiteFixed);
 
    
    

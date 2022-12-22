@@ -29,11 +29,11 @@ export const AnnouncementsProvider = ({ children }: any) => {
       .then((res) => {
         setMotocycles(
           res.data.filter(
-            (motocycle: IVehicle) => motocycle.vehicleType !== "CARRO"
+            (motocycle: IVehicle) => motocycle.vehicleType !== "CAR"
           )
         );
         setCars(
-          res.data.filter((car: IVehicle) => car.vehicleType === "CARRO")
+          res.data.filter((car: IVehicle) => car.vehicleType === "CAR")
         );
       })
       .catch((err) => console.log(err));

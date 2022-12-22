@@ -71,6 +71,9 @@ export const GlobalStyle = createGlobalStyle`
     body{
         background: var(--whiteFixed);
         overflow-x: hidden;
+        ::-webkit-scrollbar{
+        display: none;
+        }
     }
 
 `
