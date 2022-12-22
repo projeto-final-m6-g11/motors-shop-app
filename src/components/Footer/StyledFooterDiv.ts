@@ -7,7 +7,7 @@ export const StyledFooterDiv = styled.footer`
   justify-content: space-between;
   width: 100vw;
   height: 10vh;
-  height: 375px;
+  max-height: 375px;
   padding: 50px;
   background-color: var(--grey0);
   color: var(--whiteFixed);
