@@ -9,8 +9,8 @@ import FormAnuncio from "./components/FormAnuncio";
 function App() {
   return (
     <div className="App">
-    
-       <Routes /> 
+      <FormAnuncio/>
+       {/* <Routes />  */}
       <GlobalStyle/>
     </div>
   );
