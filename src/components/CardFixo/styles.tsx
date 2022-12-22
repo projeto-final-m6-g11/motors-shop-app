@@ -4,6 +4,7 @@ export const Box = styled.section`
   display: flex;
   justify-content: center;
   flex-direction: column;
+  position: fixed;
   gap: 3rem;
   width: 100vw;
   height: 400px;
