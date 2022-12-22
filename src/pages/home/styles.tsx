@@ -7,6 +7,12 @@ const Main = styled.main`
   width: 100vw;
   min-height: 100vh;
 
+  .pageContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
 `;
 
 export default Main;

@@ -13,12 +13,9 @@ const Dashboard = () => {
   return (
     <MainDashboard>
       <Header type="owner" />
-      <div className="pageContent">
         <CardFixo type="default" />
-        <div className="space"></div>
         <UserInfoDisplay profile={true} />
         <CardsList />
-      </div>
       <Footer />
     </MainDashboard>
   );
