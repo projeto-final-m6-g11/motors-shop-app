@@ -45,6 +45,7 @@ export const GlobalStyle = createGlobalStyle`
         margin          : 0;
         padding         : 0;
         box-sizing      : border-box;
+        
     }
 
     body,button,input,label{
@@ -71,6 +72,7 @@ export const GlobalStyle = createGlobalStyle`
     body{
         background: var(--whiteFixed);
         overflow-x: hidden;
+      
         ::-webkit-scrollbar{
         display: none;
         }
