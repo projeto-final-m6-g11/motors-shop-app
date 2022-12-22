@@ -16,6 +16,9 @@ export const UserInfoDiv = styled.div`
     position: absolute;
     top: 155px;
 
+    margin-left: auto;
+    margin-right: auto;
+
     border-radius: 4px;
 
     img {
