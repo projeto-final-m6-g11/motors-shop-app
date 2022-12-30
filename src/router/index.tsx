@@ -3,6 +3,7 @@ import Home from "../pages/home/home";
 import { CardsList } from "../components/renderCards";
 import Dashboard from "../pages/userAnnouncements";
 import AnnouncementsDetail from "../pages/announcementDetail";
+import Register from "../pages/Register";
 
 const Routes = () => {
   return (
@@ -11,7 +12,9 @@ const Routes = () => {
         <Home />
       </Route>
       <Route path="/login">login</Route>
-      <Route path="/register">register</Route>
+      <Route path="/createaccount">
+        <Register />
+      </Route>
       <Route path="/dashboard">
         <Dashboard />
       </Route>
