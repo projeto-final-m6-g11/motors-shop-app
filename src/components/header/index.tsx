@@ -21,7 +21,7 @@ const Header = ({ type }: IHeaderProps) => {
     historico.push("/login");
   };
   const register = () => {
-    historico.push("/registro");
+    historico.push("/createaccount");
   };
 
   useEffect(() => {
