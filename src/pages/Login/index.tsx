@@ -3,11 +3,21 @@ import API from "../../api";
 import Header from "../../components/header";
 import { FormStyled, Container } from "./styles";
 import { toast } from "react-toastify";
+import { useHistory } from "react-router-dom";
 
 const Login = () => {
   const [inputUser, setInputUser] = useState("");
   const [inputPassword, setInputPassword] = useState("");
   // const { setUser } = useContext(UserContext);
+  const historico = useHistory();
+
+  const login = () => {
+    historico.push("/login");
+  };
+  const register = () => {
+    historico.push("/registro");
+  };
+
   const sendData = () => {
     if (inputUser && inputPassword !== "") {
       const Login = new Promise((resolve, reject) =>
@@ -55,7 +65,7 @@ const Login = () => {
             Entrar
           </button>
           <span className="create__account">Ainda não possui conta?</span>
-          <button onClick={() => {}}>Cadastrar</button>
+          <button onClick={register}>Cadastrar</button>
         </FormStyled>
       </Container>
     </>
