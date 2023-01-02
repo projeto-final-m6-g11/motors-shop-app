@@ -1,6 +1,5 @@
 import { Route, Switch } from "react-router-dom";
 import Home from "../pages/home/home";
-import { CardsList } from "../components/renderCards";
 import Dashboard from "../pages/userAnnouncements";
 import AnnouncementsDetail from "../pages/announcementDetail";
 import Register from "../pages/Register";
