@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { AnnouncementsProvider } from "./contexts/announcements";
+import { UserProvider } from "./contexts/user";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 
@@ -15,7 +16,9 @@ root.render(
     <ToastContainer />
     <BrowserRouter>
       <AnnouncementsProvider>
-        <App />
+        <UserProvider>
+          <App />
+        </UserProvider>
       </AnnouncementsProvider>
     </BrowserRouter>
   </React.StrictMode>
