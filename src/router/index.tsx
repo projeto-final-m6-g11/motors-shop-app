@@ -4,6 +4,7 @@ import { CardsList } from "../components/renderCards";
 import Dashboard from "../pages/userAnnouncements";
 import AnnouncementsDetail from "../pages/announcementDetail";
 import Register from "../pages/Register";
+import Login from "../pages/Login";
 
 const Routes = () => {
   return (
@@ -11,7 +12,9 @@ const Routes = () => {
       <Route path="/" exact>
         <Home />
       </Route>
-      <Route path="/login">login</Route>
+      <Route path="/login">
+        <Login />
+      </Route>
       <Route path="/createaccount">
         <Register />
       </Route>
