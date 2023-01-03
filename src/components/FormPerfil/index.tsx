@@ -1,4 +1,4 @@
-import { FormPattern } from "../FormPadrão/stydes";
+import { FormPattern } from "../FormPadrão/styles";
 import {
   TitleForm,
   FooterForm,

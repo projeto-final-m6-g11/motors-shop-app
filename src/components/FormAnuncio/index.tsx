@@ -1,4 +1,4 @@
-import { FormPattern } from "../FormPadrão/stydes";
+import { FormPattern } from "../FormPadrão/styles";
 import {
   TitleForm,
   ButtonAddImg,
@@ -14,7 +14,7 @@ import {
   LabelButtonForm,
   CampButtons,
   TitleP,
-} from "./stydes";
+} from "./styles";
 
 interface IProps {
   handleOpen: Function;

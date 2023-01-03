@@ -1,4 +1,4 @@
-import Header from "../../components/header";
+import Header from "../../components/Header";
 import CardFixo from "../../components/CardFixo";
 import CardAnnouncement from "../../components/CardAnnouncementDetail";
 import Footer from "../../components/Footer";

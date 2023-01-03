@@ -8,7 +8,6 @@ export const FormPattern = styled.form`
   border-radius: 8px;
   padding: 20px;
   margin-top: 50px;
-  height: 90vh;
   overflow-y: scroll;
   background-color: var(--whiteFixed);
 

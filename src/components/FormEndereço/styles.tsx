@@ -6,6 +6,7 @@ export const HeaderForm = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
+  height: 8vh !important;
 `;
 
 export const TitleForm = styled.span`
@@ -54,15 +55,28 @@ export const InputPattern = styled.input`
   margin-top: 5px;
 `;
 
-export const InputDescription = styled.textarea`
-  width: 100%;
-  height: 100px;
-  border-radius: 4px;
-  border: 1.5px solid var(--grey5);
-  padding: 10px;
-  font-size: 16px;
-  color: var(--grey3);
-  margin-top: 5px;
+export const BoxAddress = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row !important;
+  height: 40px !important;
+  gap: 6px;
+
+  label {
+    width: 50%;
+  }
+
+  @media (min-width: 810px) {
+    width: 100%;
+  }
+`;
+
+export const BoxAddress2 = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row !important;
+  height: 40px !important;
+  gap: 6px;
 `;
 
 export const FooterForm = styled.div`
