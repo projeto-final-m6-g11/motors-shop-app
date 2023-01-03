@@ -4,9 +4,23 @@ import { InputButton, InputPattern, LabelForm, TitleForm, TitleP } from "../../c
 import Main, { CreateAccountButton, StyledRegisterForm, StyledRegisterSection } from "./styles"
 import { useForm } from "react-hook-form";
 import API from "../../api";
+import { useState } from "react";
+import ModalSuccessRegister from "../../components/ModalSuccessRegister";
 
 const Register = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
+
+    const [openModalSuccess, setOpenModalSuccess] = useState(false)
+
+    const handleOpen = (e: any) => {
+        if (e.target.title === "modalBackgroundDiv" || e.target.title === "closed" || e.requestSuccess === true){
+            setOpenModalSuccess(!openModalSuccess)
+        }
+    }
+
+    const requestSuccessOpen = () => {
+        setOpenModalSuccess(!openModalSuccess)
+    }
 
     const onSubmit = (data: any) => {
         if (data.complement === "") {
@@ -39,13 +53,16 @@ const Register = () => {
         data.birthdate = data.birthdate.split("/").reverse().join("-")
 
         API.post("/users", data)
-        .then((res) => {console.log(res.data)})
+        .then((res) => {
+            requestSuccessOpen()
+        })
         .catch((err) => {console.log(err)})
     };
 
     return (
         <Main>
             <Header type="anonymous" />
+            {openModalSuccess ? <ModalSuccessRegister handleOpen={handleOpen} /> : ""}
             <StyledRegisterSection>
                 <StyledRegisterForm onSubmit={handleSubmit(onSubmit)} >
                     <TitleForm>Cadastro</TitleForm>
