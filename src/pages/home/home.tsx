@@ -1,9 +1,9 @@
 import Footer from "../../components/Footer";
-import Header from "../../components/Header";
+import Header from "../../components/header";
 import CardFixo from "../../components/CardFixo";
 import Main from "./styles";
 import UserInfoDisplay from "../../components/UserInfoDisplay";
-import { CardsList } from "../../components/RenderCards";
+import { CardsList } from "../../components/renderCards";
 
 const Home = () => {
   return (
