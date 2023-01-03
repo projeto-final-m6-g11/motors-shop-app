@@ -1,4 +1,4 @@
-import { CardVehicle } from "../CardsVehicles";
+import { CardVehicle } from "../cardsVehicles";
 import { Ulstyled, Vitrine, Carrousel } from "./styles";
 import { useContext, useRef } from "react";
 import { AnnouncementsContext } from "../../contexts/announcements";

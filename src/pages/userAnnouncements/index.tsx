@@ -1,9 +1,9 @@
 import CardFixo from "../../components/CardFixo";
 import UserInfoDisplay from "../../components/UserInfoDisplay";
-import Header from "../../components/Header";
+import Header from "../../components/header";
 import Footer from "../../components/Footer";
 import MainDashboard from "./styles";
-import { CardsList } from "../../components/RenderCards";
+import { CardsList } from "../../components/renderCards";
 
 const Dashboard = () => {
   return (

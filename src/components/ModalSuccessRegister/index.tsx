@@ -1,5 +1,5 @@
 import { useHistory } from "react-router-dom";
-import { ButtonClosed, TitleForm, TitleP } from "../FormAnuncio/stydes"
+import { ButtonClosed, TitleForm, TitleP } from "../FormAnuncio/styles"
 import { ModalBackground, ModalDiv } from "./styles"
 
 interface IProps {

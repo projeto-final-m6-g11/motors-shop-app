@@ -15,14 +15,15 @@ const Login = () => {
     historico.push("/login");
   };
   const register = () => {
-    historico.push("/registro");
+    historico.push("/createaccount");
   };
 
   const sendData = () => {
     if (inputUser && inputPassword !== "") {
+      console.log(inputUser, inputPassword)
       const Login = new Promise((resolve, reject) =>
         API.post("/login", {
-          username: inputUser,
+          email: inputUser,
           password: inputPassword,
         })
           .then((res) => {
@@ -51,14 +52,14 @@ const Login = () => {
             type="text"
             placeholder="Digitar usuário"
             required
-            onChange={(e) => setInputPassword(e.target.value)}
+            onChange={(e) => setInputUser(e.target.value)}
           />
           <label htmlFor="">Senha</label>
           <input
             type="password"
             placeholder="Digitar senha"
             required
-            onChange={(e) => setInputUser(e.target.value)}
+            onChange={(e) => setInputPassword(e.target.value)}
           />
           <span className="forget__password">Esqueci minha senha</span>
           <button className="enter__login" onClick={sendData}>

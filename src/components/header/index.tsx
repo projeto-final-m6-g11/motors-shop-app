@@ -1,6 +1,6 @@
 import Logo from "../../assets/logo.png";
 import Button from "../Button";
-import ModalHeader from "../ModalHeader";
+import ModalHeader from "../modalHeader";
 import { ModalFundo } from "../ModalFundo/styles";
 import FormPerfil from "../FormPerfil";
 import FormEndereco from "../FormEndereço";
