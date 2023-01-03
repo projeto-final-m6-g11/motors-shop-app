@@ -1,21 +1,17 @@
 import CardFixo from "../../components/CardFixo";
 import UserInfoDisplay from "../../components/UserInfoDisplay";
-import Header from "../../components/header";
+import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import MainDashboard from "./styles";
-import { Vitrine } from "../../components/renderCards/styles";
-import { useContext } from "react";
-import { AnnouncementsContext } from "../../contexts/announcements";
-import { CardsList } from "../../components/renderCards";
+import { CardsList } from "../../components/RenderCards";
 
 const Dashboard = () => {
-
   return (
     <MainDashboard>
       <Header type="owner" />
-        <CardFixo type="default" />
-        <UserInfoDisplay profile={true} />
-        <CardsList />
+      <CardFixo type="default" />
+      <UserInfoDisplay profile={true} />
+      <CardsList />
       <Footer />
     </MainDashboard>
   );

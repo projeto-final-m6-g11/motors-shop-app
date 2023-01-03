@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Button from "../Button";
-import { UserInfoDiv } from "./styledUserInfoDiv";
+import { UserInfoDiv } from "./styles";
 import { ModalFundo } from "../ModalFundo/styles";
 import FormAnuncio from "../FormAnuncio";
 
