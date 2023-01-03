@@ -1,6 +1,8 @@
 import Button from "./../Button";
+import FormPerfil from "../FormPerfil";
 import { useHistory } from "react-router-dom";
-import { Modal } from "./styles";
+import { useState } from "react";
+import { Modal, ModalFundo } from "./styles";
 
 interface IModalProps {
   type: string;
@@ -8,6 +10,16 @@ interface IModalProps {
 
 const ModalHeader = ({ type }: IModalProps) => {
   const historico = useHistory();
+  const [open, setOpen] = useState<boolean>(false);
+
+  const handleOpen = (e: any) => {
+    if (
+      e.target.title === "formEditProfile" ||
+      e.target.title === "buttonOpenEditProfile"
+    ) {
+      setOpen(!open);
+    }
+  };
 
   const login = () => {
     historico.push("/login");
@@ -46,7 +58,26 @@ const ModalHeader = ({ type }: IModalProps) => {
             </div>
             <div className="divisionNavModal">
               <p>Usuário X</p>
-              <Button>Editar Perfil</Button>
+              <Button
+                title="buttonOpenEditProfile"
+                onClick={(e: any) => {
+                  handleOpen(e);
+                }}
+              >
+                Editar Perfil
+              </Button>
+              {open ? (
+                <ModalFundo
+                  title="formEditProfile"
+                  onClick={(e) => {
+                    handleOpen(e);
+                  }}
+                >
+                  <FormPerfil handleOpen={handleOpen} />
+                </ModalFundo>
+              ) : (
+                ""
+              )}
               <Button>Editar Endereço</Button>
               <Button>Meus Anúncios</Button>
               <Button>Sair</Button>

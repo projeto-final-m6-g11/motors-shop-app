@@ -8,7 +8,6 @@ export const Box = styled.header`
   padding: 0 3rem 0 3rem;
   height: 60px;
   background-color: var(--grey6);
-  
 
   top: 0;
 
@@ -109,6 +108,7 @@ export const MenuModal = styled.button`
 
 export const Modal = styled.div`
   position: absolute;
+  z-index: 100;
   display: flex;
   flex-wrap: wrap;
   background-color: var(--whiteFixed);

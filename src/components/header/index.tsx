@@ -1,6 +1,8 @@
 import Logo from "../../assets/logo.png";
 import Button from "./../Button";
 import ModalHeader from "../modalHeader";
+import { ModalFundo } from "../ModalFundo/styles";
+import FormPerfil from "../FormPerfil";
 import { FaBars } from "react-icons/fa";
 import { GrClose } from "react-icons/gr";
 import { useEffect, useState } from "react";
@@ -14,6 +16,7 @@ interface IHeaderProps {
 const Header = ({ type }: IHeaderProps) => {
   const [mobile, setMobile] = useState(true);
   const [modal, setModal] = useState(false);
+  const [open, setOpen] = useState<boolean>(false);
 
   const historico = useHistory();
 
@@ -22,6 +25,15 @@ const Header = ({ type }: IHeaderProps) => {
   };
   const register = () => {
     historico.push("/createaccount");
+  };
+
+  const handleOpen = (e: any) => {
+    if (
+      e.target.title === "formEditProfile" ||
+      e.target.title === "buttonOpenEditProfile"
+    ) {
+      setOpen(!open);
+    }
   };
 
   useEffect(() => {
@@ -96,7 +108,26 @@ const Header = ({ type }: IHeaderProps) => {
                 <Modal>
                   <nav>
                     <div className="divisionNavModal">
-                      <Button>Editar Perfil</Button>
+                      <Button
+                        title="buttonOpenEditProfile"
+                        onClick={(e: any) => {
+                          handleOpen(e);
+                        }}
+                      >
+                        Editar Perfil
+                      </Button>
+                      {open ? (
+                        <ModalFundo
+                          title="formEditProfile"
+                          onClick={(e) => {
+                            handleOpen(e);
+                          }}
+                        >
+                          <FormPerfil handleOpen={handleOpen} />
+                        </ModalFundo>
+                      ) : (
+                        ""
+                      )}
                       <Button>Editar Endereço</Button>
                       <Button>Meus Anúncios</Button>
                       <Button>Sair</Button>
