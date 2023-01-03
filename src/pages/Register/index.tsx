@@ -1,14 +1,28 @@
-import Footer from "../../components/Footer"
-import Header from "../../components/header"
-import { InputButton, InputPattern, LabelForm, TitleForm, TitleP } from "../../components/FormAnuncio/stydes"
-import Main, { CreateAccountButton, StyledRegisterForm, StyledRegisterSection } from "./styles"
+import Footer from "../../components/Footer";
+import Header from "../../components/Header";
+import {
+  InputButton,
+  InputPattern,
+  LabelForm,
+  TitleForm,
+  TitleP,
+} from "../../components/FormAnuncio/styles";
+import Main, {
+  CreateAccountButton,
+  StyledRegisterForm,
+  StyledRegisterSection,
+} from "./styles";
 import { useForm } from "react-hook-form";
 import API from "../../api";
 import { useState } from "react";
 import ModalSuccessRegister from "../../components/ModalSuccessRegister";
 
 const Register = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
     const [openModalSuccess, setOpenModalSuccess] = useState(false)
 
@@ -27,36 +41,37 @@ const Register = () => {
             data.complement = "sem complemento"
         }
 
-        if (data.bio === "") {
-            data.bio = `Olá, me chamo ${data.name}`
-        }
 
-        data.address = {
-            cep: data.cep,
-            city: data.city,
-            state: data.state,
-            street: data.street,
-            district: "excluir",
-            number: data.number,
-            complement: data.complement
-        }
+    if (data.bio === "") {
+      data.bio = `Olá, me chamo ${data.name}`;
+    }
 
-        delete data.cep
-        delete data.city
-        delete data.state
-        delete data.number
-        delete data.complement
-        delete data.street
+    data.address = {
+      cep: data.cep,
+      city: data.city,
+      state: data.state,
+      street: data.street,
+      district: "excluir",
+      number: data.number,
+      complement: data.complement,
+    };
 
-        data.isAdm = false
+    delete data.cep;
+    delete data.city;
+    delete data.state;
+    delete data.number;
+    delete data.complement;
+    delete data.street;
 
-        data.birthdate = data.birthdate.split("/").reverse().join("-")
+    data.isAdm = false;
+    
+    data.birthdate = data.birthdate.split("/").reverse().join("-");
 
-        API.post("/users", data)
-        .then((res) => {
-            requestSuccessOpen()
-        })
-        .catch((err) => {console.log(err)})
+    API.post("/users", data)
+    .then((res) => {
+          requestSuccessOpen()
+    })
+    .catch((err) => {console.log(err)})
     };
 
     return (
@@ -121,5 +136,4 @@ const Register = () => {
     )
 }
 
-
-export default Register
+export default Register;

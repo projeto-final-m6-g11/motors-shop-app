@@ -67,3 +67,16 @@ export const Modal = styled.div`
     }
   }
 `;
+
+export const ModalFundo = styled.div`
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 80vh !important;
+  left: 0px;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
