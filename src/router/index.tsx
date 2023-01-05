@@ -20,7 +20,7 @@ const Routes = () => {
       <Route path="/dashboard">
         <Dashboard />
       </Route>
-      <Route exact path="/announcementDetail">
+      <Route exact path="/announcementDetail/:id">
         <AnnouncementsDetail />
       </Route>
     </Switch>
