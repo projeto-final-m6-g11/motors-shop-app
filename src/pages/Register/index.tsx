@@ -8,6 +8,7 @@ import {
   TitleP,
 } from "../../components/FormAnuncio/styles";
 import Main, {
+    BuyerBtn,
   CreateAccountButton,
   StyledRegisterForm,
   StyledRegisterSection,
@@ -25,6 +26,7 @@ const Register = () => {
   } = useForm();
 
     const [openModalSuccess, setOpenModalSuccess] = useState(false)
+    const [isAdvertiser, setIsAdvertiser] = useState(false)
 
     const handleOpen = (e: any) => {
         if (e.target.title === "modalBackgroundDiv" || e.target.title === "closed" || e.requestSuccess === true){
@@ -51,7 +53,6 @@ const Register = () => {
       city: data.city,
       state: data.state,
       street: data.street,
-      district: "excluir",
       number: data.number,
       complement: data.complement,
     };
@@ -64,6 +65,7 @@ const Register = () => {
     delete data.street;
 
     data.isAdm = false;
+    data.isAdvertiser = isAdvertiser;
     
     data.birthdate = data.birthdate.split("/").reverse().join("-");
 
@@ -121,8 +123,18 @@ const Register = () => {
                     </div>
                     <TitleP>Tipo de conta</TitleP>
                     <div className="rowDiv">
-                        <InputButton type="button" value={'Comprador'}/>
-                        <InputButton  type="button" value={'Anunciante'} color='color'/> 
+                        {
+                            isAdvertiser ? 
+                            <>
+                            <BuyerBtn type="button" value={'Comprador'} color='color' onClick={() => {setIsAdvertiser(false)}} />
+                            <BuyerBtn type="button" value={'Anunciante'}  onClick={() => {setIsAdvertiser(true)}} />
+                            </>
+                            :
+                            <>
+                            <BuyerBtn type="button" value={'Comprador'} onClick={() => {setIsAdvertiser(false)}} />
+                            <BuyerBtn type="button" value={'Anunciante'} color='color' onClick={() => {setIsAdvertiser(true)}} />
+                            </>
+                        } 
                     </div>
                     <LabelForm htmlFor="">Senha</LabelForm>
                     <InputPattern type="text" placeholder="Digitar Senha" {...register("password", {required: true})} />
