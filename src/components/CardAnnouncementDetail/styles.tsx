@@ -1,5 +1,17 @@
 import styled from "styled-components";
 
+export const Box = styled.section`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+
+  @media (min-width: 810px) {
+    align-items: flex-start;
+  }
+`;
+
 export const BoxAnuncio = styled.section`
   display: flex;
   flex-direction: column;
@@ -10,11 +22,15 @@ export const BoxAnuncio = styled.section`
     flex-direction: row;
     align-items: flex-start;
     justify-content: center;
-    margin: 0 auto;
+    margin: 0 2rem;
   }
 
   div {
     margin: 0 1rem;
+
+    @media (min-width: 810px) {
+      margin: 0;
+    }
   }
 `;
 
@@ -56,7 +72,7 @@ export const BoxInfo = styled.article`
   margin: 1rem;
   border-radius: 4px;
   width: 90vw;
-  padding: 1rem;
+  padding: 2rem;
 
   h1 {
     font-size: 20px;
@@ -72,6 +88,7 @@ export const BoxInfo = styled.article`
     flex-direction: column;
     align-items: flex-start;
     padding-top: 1rem;
+    margin-left: 0;
 
     div {
       display: flex;
@@ -102,7 +119,28 @@ export const BoxInfo = styled.article`
       margin: 1rem 0;
       color: var(--grey1);
       font-size: 16px;
+      font-weight: 500;
       line-height: 1.25rem;
+    }
+
+    @media (min-width: 810px) {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+
+      div {
+        justify-content: flex-start;
+
+        p {
+          font-size: 18px;
+        }
+      }
+
+      span {
+        width: 150px;
+        font-size: 18px;
+      }
     }
   }
 
@@ -120,11 +158,23 @@ export const BoxInfo = styled.article`
       color: var(--brand1);
       background-color: var(--brand4);
     }
+
+    @media (min-width: 810px) {
+      width: 8rem;
+    }
   }
 
   @media (min-width: 810px) {
     width: 50vw;
     height: 28vw;
+
+    h1 {
+      font-size: 22px;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    height: 22vw;
   }
 `;
 
@@ -136,7 +186,7 @@ export const BoxDescrição = styled.article`
   margin: 1rem;
   border-radius: 4px;
   width: 90vw;
-  padding: 1rem;
+  padding: 2rem;
 
   h3 {
     text-align: left;
@@ -204,7 +254,7 @@ export const BoxPerfil = styled.article`
   justify-content: space-between;
   flex-direction: column;
   align-items: center;
-  padding: 1rem;
+  padding: 2rem;
   background-color: var(--grey10);
   margin: 1rem;
   border-radius: 4px;
@@ -281,5 +331,46 @@ export const BoxPerfil = styled.article`
 
   @media (min-width: 1200px) {
     height: 28vw;
+  }
+`;
+
+export const BoxComments = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  background-color: var(--grey10);
+  margin: 1rem;
+  border-radius: 4px;
+  width: 90vw;
+  padding: 2rem;
+
+  h2 {
+    text-align: left;
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--grey1);
+    margin-bottom: 1rem;
+  }
+
+  @media (min-width: 810px) {
+    width: 50vw;
+    margin-left: 3rem;
+
+    h2 {
+      font-size: 20px;
+    }
+  }
+`;
+
+export const ListComments = styled.ul`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 2rem;
+  width: 80vw;
+
+  @media (min-width: 810px) {
+    width: 45vw;
   }
 `;

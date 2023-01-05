@@ -1,6 +1,8 @@
 import Car from "../../assets/car.png";
 import Button from "../Button";
+import { CardComments } from "../CardComments";
 import {
+  Box,
   BoxAnuncio,
   BoxCarro,
   BoxDescrição,
@@ -8,94 +10,116 @@ import {
   BoxImgUl,
   BoxFotos,
   BoxPerfil,
+  BoxComments,
+  ListComments,
 } from "./styles";
-/*import { useEffect, useState } from "react";
-import { useParams } from "react-router";*/
+import API from "../../api";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router";
 
 const CardAnnouncement = () => {
-  /*const [announcementDetail, setAnnouncementDetail] = useState({});
-  const { title, year, km, price, description, vehicle_type, img }: any =
-    announcementDetail;*/
+  const [announcementDetail, setAnnouncementDetail] = useState<any>({});
+  // const { title, year, km, price, description, vehicle_type, img }: any =
+  //   announcementDetail;
 
-  /*const { id }: any = useParams();*/
+  const { id }: any = useParams();
 
-  /*useEffect(() => {
-    api
-      .get(`/announcements/${id}`)
+  useEffect(() => {
+    API.get(`/announcements/${id}`)
       .then((resp) => {
         setAnnouncementDetail(resp.data);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []);*/
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  return (
-    <BoxAnuncio>
-      <div>
-        <BoxCarro>
+  if (announcementDetail.title) {
+    return (
+      <Box>
+        <BoxAnuncio>
           <div>
-            <img src={Car} alt="Imagem Principal do Veículo" />
+            <BoxCarro>
+              <div>
+                <img
+                  src={announcementDetail.images[0].imageUrl}
+                  alt="Imagem Principal do Veículo"
+                />
+              </div>
+            </BoxCarro>
+            <BoxInfo>
+              <h1>{announcementDetail.title}</h1>
+              <div>
+                <div>
+                  <p>{announcementDetail.year}</p>
+                  <p>{announcementDetail.km}km</p>
+                </div>
+                <span>R$ {announcementDetail.price}</span>
+              </div>
+              <Button>Comprar</Button>
+            </BoxInfo>
+            <BoxDescrição>
+              <h3>Descrição</h3>
+              <p>{announcementDetail.description}</p>
+            </BoxDescrição>
           </div>
-        </BoxCarro>
-        <BoxInfo>
-          <h1>Mercedes Benz A 200 CGI ADVANCE SEDAN Mercedes Benz A 200</h1>
           <div>
-            <div>
-              <p>2013</p>
-              <p>0km</p>
-            </div>
-            <span>R$ 00.000,00</span>
+            <BoxFotos>
+              <h3>Fotos</h3>
+              <BoxImgUl>
+                <li>
+                  <img
+                    src={announcementDetail.images[1].imageUrl}
+                    alt="Imagem Galeria do Veículo"
+                  />
+                </li>
+                <li>
+                  <img src={Car} alt="Imagem Galeria do Veículo" />
+                </li>
+                <li>
+                  <img src={Car} alt="Imagem Galeria do Veículo" />
+                </li>
+                <li>
+                  <img src={Car} alt="Imagem Galeria do Veículo" />
+                </li>
+                <li>
+                  <img src={Car} alt="Imagem Galeria do Veículo" />
+                </li>
+                <li>
+                  <img src={Car} alt="Imagem Galeria do Veículo" />
+                </li>
+              </BoxImgUl>
+            </BoxFotos>
+            <BoxPerfil>
+              <div>
+                <p>{announcementDetail.user.name}</p>
+              </div>
+              <h3>{announcementDetail.user.name}</h3>
+              <p>{announcementDetail.user.bio}</p>
+              <Button>Ver todos anúncios</Button>
+            </BoxPerfil>
           </div>
-          <Button>Comprar</Button>
-        </BoxInfo>
-        <BoxDescrição>
-          <h3>Descrição</h3>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat
-            dolorum aliquid pariatur hic nostrum alias porro dolore ducimus
-            corporis cumque.
-          </p>
-        </BoxDescrição>
-      </div>
-      <div>
-        <BoxFotos>
-          <h3>Fotos</h3>
-          <BoxImgUl>
-            <li>
-              <img src={Car} alt="Imagem Galeria do Veículo" />
-            </li>
-            <li>
-              <img src={Car} alt="Imagem Galeria do Veículo" />
-            </li>
-            <li>
-              <img src={Car} alt="Imagem Galeria do Veículo" />
-            </li>
-            <li>
-              <img src={Car} alt="Imagem Galeria do Veículo" />
-            </li>
-            <li>
-              <img src={Car} alt="Imagem Galeria do Veículo" />
-            </li>
-            <li>
-              <img src={Car} alt="Imagem Galeria do Veículo" />
-            </li>
-          </BoxImgUl>
-        </BoxFotos>
-        <BoxPerfil>
-          <div>
-            <p>UA</p>
-          </div>
-          <h3>Usuário Anunciante</h3>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo rem
-            nostrum, eius commodi voluptates...
-          </p>
-          <Button>Ver todos anúncios</Button>
-        </BoxPerfil>
-      </div>
-    </BoxAnuncio>
-  );
+        </BoxAnuncio>
+        <BoxComments>
+          <h2>Comentários</h2>
+          <ListComments>
+            {announcementDetail.review.map((comment: any) => (
+              <CardComments
+                // iniciais={comment.user.name}
+                // nome={comment.user.name}
+                key={comment.id}
+                publicado={comment.createDate}
+                comentario={comment.text}
+              />
+            ))}
+          </ListComments>
+        </BoxComments>
+      </Box>
+    );
+  } else {
+    return <></>;
+  }
 };
 
 export default CardAnnouncement;
