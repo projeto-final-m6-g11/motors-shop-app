@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css }from "styled-components";
 
 const Main = styled.main`
   display: flex;
@@ -61,3 +61,24 @@ export const CreateAccountButton = styled.button`
     background          : var(--brand1);
     color               : var(--whiteFixed);
 `
+
+export const BuyerBtn = styled.input`
+  width: 49%;
+  height: 45px;
+  color: var(--whiteFixed);
+  background-color: var(--brand1);
+  border-radius: 4px;
+  border: 1.5px solid var(--brand1);
+
+  :hover {
+    cursor: pointer;
+  }
+
+  ${(props) =>
+    props.color === "color" &&
+    css`
+      background: var(--whiteFixed);
+      color: #000;
+      border: 1.5px solid var(--grey4);
+    `}
+`;
