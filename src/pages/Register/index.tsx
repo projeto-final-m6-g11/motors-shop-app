@@ -53,7 +53,6 @@ const Register = () => {
       city: data.city,
       state: data.state,
       street: data.street,
-      district: "excluir",
       number: data.number,
       complement: data.complement,
     };
