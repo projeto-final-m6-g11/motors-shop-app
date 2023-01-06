@@ -12,8 +12,8 @@ export const CardComments = ({
 }: any) => {
   const timeago = new TimeAgo("pt");
 
-  const primeira = iniciais.split(" ")[0][0].toUpperCase();
-  const segunda = iniciais.split(" ")[1][0].toUpperCase();
+  const primeira = iniciais?.split(" ")[0][0].toUpperCase();
+  const segunda = iniciais?.split(" ")[1] && iniciais?.split(" ")[1][0].toUpperCase();
   return (
     <Box>
       <div>
