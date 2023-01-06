@@ -17,6 +17,9 @@ const Login = () => {
   const register = () => {
     historico.push("/createaccount");
   };
+  const forgotPassword = () => {
+    historico.push("/recoveraccount");
+  };
 
   const sendData = () => {
     if (inputUser && inputPassword !== "") {
@@ -61,7 +64,7 @@ const Login = () => {
             required
             onChange={(e) => setInputPassword(e.target.value)}
           />
-          <span className="forget__password">Esqueci minha senha</span>
+          <span className="forget__password" onClick={forgotPassword}>Esqueci minha senha</span>
           <button className="enter__login" onClick={sendData}>
             Entrar
           </button>

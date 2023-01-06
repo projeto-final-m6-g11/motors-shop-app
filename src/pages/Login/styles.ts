@@ -68,6 +68,12 @@ export const FormStyled = styled.form`
     background-color: var(--brand1);
     color: var(--whiteFixed);
   }
+
+  .forget__password {
+    :hover {
+      cursor: pointer;
+    }
+  }
 `;
 
 export const Container = styled.div`
