@@ -59,7 +59,9 @@ const Header = ({ type }: IHeaderProps) => {
     case "anonymous":
       return (
         <Box>
-          <section>
+          <section onClick={() => {
+            historico.push("/")
+          }}>
             <img src={Logo} alt="Logo Motors-Shop" />
           </section>
           {mobile ? (
