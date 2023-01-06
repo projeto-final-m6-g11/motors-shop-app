@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { LogicFilterContext } from "../../contexts/logicfilter";
 import Button from "../Button";
 import { Box, ContainerButtons, Title } from "./styles";
 
@@ -6,6 +8,26 @@ interface ICardProps {
 }
 
 const CardFixo = ({ type }: ICardProps) => {
+  const { setCar,motocyclesFilter,car,setmotocyclesFilter } = useContext(LogicFilterContext)
+
+
+  const filterCar = ()=>{
+
+    setCar(true);
+    if(motocyclesFilter){
+      setmotocyclesFilter(false)
+    }
+
+  }
+  const filterMoto = ()=>{
+
+    setmotocyclesFilter(true)
+    if(car){
+      setCar(false)
+    }
+
+  }
+
   switch (type) {
     case "home":
       return (
@@ -15,8 +37,8 @@ const CardFixo = ({ type }: ICardProps) => {
             <p>Um ambiente feito para você explorar o seu melhor</p>
           </Title>
           <ContainerButtons>
-            <Button>Carros</Button>
-            <Button>Motos</Button>
+            <Button onClick={() => filterCar()}>Carros</Button>
+            <Button onClick={()=> filterMoto()}>Motos</Button>
           </ContainerButtons>
         </Box>
       );

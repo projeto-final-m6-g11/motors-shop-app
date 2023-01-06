@@ -7,6 +7,7 @@ import { AnnouncementsProvider } from "./contexts/announcements";
 import { UserProvider } from "./contexts/user";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
+import { LogicFilterProvider } from "./contexts/logicfilter";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -16,9 +17,11 @@ root.render(
     <ToastContainer />
     <BrowserRouter>
       <AnnouncementsProvider>
-        <UserProvider>
-          <App />
-        </UserProvider>
+       <LogicFilterProvider>
+          <UserProvider>
+            <App />
+          </UserProvider>
+        </LogicFilterProvider>
       </AnnouncementsProvider>
     </BrowserRouter>
   </React.StrictMode>

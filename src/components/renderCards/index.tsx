@@ -4,11 +4,14 @@ import { useContext, useRef } from "react";
 import { AnnouncementsContext } from "../../contexts/announcements";
 import { IVehicle } from "../../contexts/announcements";
 import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
+import { LogicFilterContext } from "../../contexts/logicfilter";
 
 export const CardsList = () => {
   const { cars, motocycles } = useContext<any>(AnnouncementsContext);
   const carousel1 = useRef<any>(null);
   const carousel2 = useRef<any>(null);
+
+  const { motocyclesFilter, car } = useContext(LogicFilterContext);
 
   const handleLeftCarrousel = () => {
     if (window.innerWidth >= 320) {
@@ -56,12 +59,47 @@ export const CardsList = () => {
 
   return (
     <Vitrine>
-      <h1>Carros</h1>
-      <Ulstyled ref={carousel1}>
-        {cars?.map((car: IVehicle, index: number) => (
-          <CardVehicle key={index} vehicle={car} />
-        ))}
-      </Ulstyled>
+      {!car && !motocyclesFilter ? (
+        <>
+          <h1>Carros</h1>
+          <Ulstyled ref={carousel1}>
+            {cars?.map((car: IVehicle, index: number) => (
+              <CardVehicle key={index} vehicle={car} />
+            ))}
+          </Ulstyled>
+
+          <h1>Motos</h1>
+          <Ulstyled ref={carousel2}>
+            {motocycles?.map((motocycle: IVehicle, index: number) => (
+              <CardVehicle key={index} vehicle={motocycle} />
+            ))}
+            {motocycles?.map((motocycle: IVehicle, index: number) => (
+              <CardVehicle key={index} vehicle={motocycle} />
+            ))}
+          </Ulstyled>
+        </>
+      ) : car ? (
+        <>
+          <h1>Carros</h1>
+          <Ulstyled ref={carousel1}>
+            {cars?.map((car: IVehicle, index: number) => (
+              <CardVehicle key={index} vehicle={car} />
+            ))}
+          </Ulstyled>
+        </>
+      ) : (
+        <>
+          <h1>Motos</h1>
+          <Ulstyled ref={carousel2}>
+            {motocycles?.map((motocycle: IVehicle, index: number) => (
+              <CardVehicle key={index} vehicle={motocycle} />
+            ))}
+            {motocycles?.map((motocycle: IVehicle, index: number) => (
+              <CardVehicle key={index} vehicle={motocycle} />
+            ))}
+          </Ulstyled>
+        </>
+      )}
 
       {/*<Carrousel>
         <button onClick={(e) => handleLeftCarrousel()}>
@@ -73,16 +111,6 @@ export const CardsList = () => {
           <SlArrowRight />{" "}
         </button>
         </Carrousel>*/}
-
-      <h1>Motos</h1>
-      <Ulstyled ref={carousel2}>
-        {motocycles?.map((motocycle: IVehicle, index: number) => (
-          <CardVehicle key={index} vehicle={motocycle} />
-        ))}
-        {motocycles?.map((motocycle: IVehicle, index: number) => (
-          <CardVehicle key={index} vehicle={motocycle} />
-        ))}
-      </Ulstyled>
 
       {/*<Carrousel>
         <button onClick={(e) => handleLeftCarrousel2()}>

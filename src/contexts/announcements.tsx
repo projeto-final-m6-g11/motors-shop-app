@@ -38,6 +38,8 @@ export const AnnouncementsProvider = ({ children }: any) => {
       })
       .catch((err) => console.log(err));
   }, []);
+
+  
   return (
     <AnnouncementsContext.Provider value={{ cars, motocycles }}>
       {children}
