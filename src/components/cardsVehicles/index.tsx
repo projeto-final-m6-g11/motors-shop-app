@@ -1,6 +1,9 @@
 import { CardStyled } from "./styles";
+import { useHistory } from "react-router-dom";
+import { Review, User } from "../../contexts/announcements";
 export interface IVehicleProps {
   vehicle: {
+    id: string;
     announcementType: string;
     title: string;
     year: number;
@@ -10,6 +13,8 @@ export interface IVehicleProps {
     vehicleType: string;
     published: boolean;
     images: IMGS[];
+    user: User;
+    review: Review[];
   };
 }
 interface IMGS {
@@ -20,8 +25,14 @@ interface IMGS {
 
 export const CardVehicle = ({ vehicle }: IVehicleProps) => {
   const activeImage = vehicle.images?.filter((image) => image.type === "COVER");
+  const historico = useHistory();
+
   return (
-    <CardStyled>
+    <CardStyled
+      onClick={() => {
+        historico.push(`/announcementDetail/${vehicle.id}`);
+      }}
+    >
       <div
         className={
           vehicle.published ? "flutuante__active" : "flutuante__inactive"
@@ -38,7 +49,13 @@ export const CardVehicle = ({ vehicle }: IVehicleProps) => {
       <article>
         <h1>{vehicle.title}</h1>
         <p>{vehicle.description}</p>
-        <span>usuario</span>
+        <span className="user__data">
+          <figure>
+            {vehicle.user.name.split(" ")[0][0].toUpperCase()}
+            {vehicle.user.name.split(" ")[1][0].toUpperCase()}
+          </figure>
+          <p>{vehicle.user.name}</p>
+        </span>
         <div>
           <div className="km__year__car">
             <span>{vehicle.km} KM</span>

@@ -79,9 +79,6 @@ export const CardsList = () => {
         {motocycles?.map((motocycle: IVehicle, index: number) => (
           <CardVehicle key={index} vehicle={motocycle} />
         ))}
-        {motocycles?.map((motocycle: IVehicle, index: number) => (
-          <CardVehicle key={index} vehicle={motocycle} />
-        ))}
       </Ulstyled>
 
       {/*<Carrousel>

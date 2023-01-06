@@ -99,4 +99,31 @@ export const CardStyled = styled.li`
     font-size: 0.875rem;
     /* inset: 10, 10, 10, 10; */
   }
+  .user__data {
+    display: flex;
+    align-items: baseline;
+  }
+  .user__data figure {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--whiteFixed);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    background-color: var(--brand1);
+    margin-bottom: 0px;
+  }
+  .user__data p {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    margin-left: 10px;
+  }
 `;

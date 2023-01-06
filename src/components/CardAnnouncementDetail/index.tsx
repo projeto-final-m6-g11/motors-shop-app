@@ -100,8 +100,8 @@ const CardAnnouncement = () => {
             <BoxPerfil>
               <div>
                 <p>
-                  {primeira}
-                  {segunda}
+                  {announcementDetail.user.name.split(" ")[0][0].toUpperCase()}
+                  {announcementDetail.user.name.split(" ")[1][0].toUpperCase()}
                 </p>
               </div>
               <h3>{announcementDetail.user.name}</h3>

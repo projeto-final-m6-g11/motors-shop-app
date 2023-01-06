@@ -14,6 +14,7 @@ export const Box = styled.header`
   section {
     display: flex;
     justify-content: center;
+    cursor: pointer;
   }
   div {
     cursor: pointer;
