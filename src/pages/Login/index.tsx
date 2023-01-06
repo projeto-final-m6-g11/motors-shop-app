@@ -9,13 +9,13 @@ const Login = () => {
   const [inputUser, setInputUser] = useState("");
   const [inputPassword, setInputPassword] = useState("");
   // const { setUser } = useContext(UserContext);
-  const historico = useHistory();
+  const history = useHistory();
 
   const login = () => {
-    historico.push("/login");
+    history.push("/login");
   };
   const register = () => {
-    historico.push("/createaccount");
+    history.push("/createaccount");
   };
   const forgotPassword = () => {
     historico.push("/recoveraccount");
@@ -23,7 +23,7 @@ const Login = () => {
 
   const sendData = () => {
     if (inputUser && inputPassword !== "") {
-      console.log(inputUser, inputPassword)
+      // console.log(inputUser, inputPassword)
       const Login = new Promise((resolve, reject) =>
         API.post("/login", {
           email: inputUser,
@@ -31,6 +31,7 @@ const Login = () => {
         })
           .then((res) => {
             resolve(res);
+            return history.push("/dashboard");
             // setUser(res.data)
           })
           .catch((err) => reject(err))

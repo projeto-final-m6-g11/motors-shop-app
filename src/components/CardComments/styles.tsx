@@ -6,17 +6,26 @@ export const Box = styled.li`
 
   div {
     display: flex;
-    justify-content: space-between;
-    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    padding: 0.3rem;
     gap: 0.5rem;
 
-    h3 {
-      font-weight: 500;
-      font-size: 14px;
+    .iniciais {
+      border-radius: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       color: var(--whiteFixed);
+      background-color: var(--brand2);
+      height: 1.5rem;
+      width: 1.5rem;
+      font-size: 10px;
     }
+
     p {
-      font-weight: 500;
+      font-weight: 600;
       font-size: 14px;
       color: var(--grey1);
     }
@@ -26,7 +35,7 @@ export const Box = styled.li`
     }
   }
 
-  p {
+  .comentario {
     font-size: 12px;
     color: var(--grey2);
   }
