@@ -52,7 +52,7 @@ export const CardVehicle = ({ vehicle }: IVehicleProps) => {
         <span className="user__data">
           <figure>
             {vehicle.user.name.split(" ")[0][0].toUpperCase()}
-            {vehicle.user.name.split(" ")[1][0].toUpperCase()}
+            {vehicle.user.name?.split(" ")[1] && vehicle.user.name?.split(" ")[1][0].toUpperCase()}
           </figure>
           <p>{vehicle.user.name}</p>
         </span>

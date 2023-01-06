@@ -14,10 +14,14 @@ interface Props {
   id: string;
 }
 const CommentAnnouncement = ({ id }: Props) => {
-  const { user } = useContext<any>(UserContext);
+  //const { user } = useContext<any>(UserContext);
   const [comment, setComment] = useState("");
   const [color, setColor] = useState(0);
   const [heightCommentBar, setHeightCommentBar] = useState(0);
+
+  const user = {
+    name: 'mateus'
+  }
 
   const arrayOfRandomColors = [
     "brand1",
@@ -81,7 +85,7 @@ const CommentAnnouncement = ({ id }: Props) => {
       <div className="User__data">
         <figure>
           {user.name.split(" ")[0][0].toUpperCase()}
-          {user.name.split(" ")[1][0].toUpperCase()}
+          {user.name.split(" ")[1] && user.name.split(" ")[1][0].toUpperCase()}
         </figure>
         <p>{user.name}</p>
       </div>

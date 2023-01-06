@@ -18,7 +18,7 @@ const Login = () => {
     history.push("/createaccount");
   };
   const forgotPassword = () => {
-    historico.push("/recoveraccount");
+    history.push("/recoveraccount");
   };
 
   const sendData = () => {

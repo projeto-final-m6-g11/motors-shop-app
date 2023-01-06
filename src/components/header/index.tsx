@@ -29,6 +29,10 @@ const Header = ({ type }: IHeaderProps) => {
     historico.push("/createaccount");
   };
 
+  const home = () => {
+    historico.push("")
+  }
+
   const handleOpen = (e: any) => {
     if (
       e.target.title === "formEditProfile" ||
@@ -62,7 +66,7 @@ const Header = ({ type }: IHeaderProps) => {
           <section onClick={() => {
             historico.push("/")
           }}>
-            <img src={Logo} alt="Logo Motors-Shop" />
+            <img src={Logo} alt="Logo Motors-Shop" onClick={home} />
           </section>
           {mobile ? (
             <div>
@@ -94,7 +98,7 @@ const Header = ({ type }: IHeaderProps) => {
       return (
         <Box>
           <section>
-            <img src={Logo} alt="Logo Motors-Shop" />
+            <img src={Logo} alt="Logo Motors-Shop" onClick={home} />
           </section>
           {mobile ? (
             <div>
@@ -175,7 +179,7 @@ const Header = ({ type }: IHeaderProps) => {
       return (
         <Box>
           <section>
-            <img src={Logo} alt="Logo Motors-Shop" />
+            <img src={Logo} alt="Logo Motors-Shop" onClick={home}/>
           </section>
           {mobile ? (
             <div>

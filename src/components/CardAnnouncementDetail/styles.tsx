@@ -314,7 +314,7 @@ export const BoxPerfil = styled.article`
     width: 15rem;
     color: var(--whiteFixed);
     background-color: var(--grey0);
-    border: none;
+    border: 2px solid var(--grey0);
     border-radius: 4px;
     font-weight: 600;
 

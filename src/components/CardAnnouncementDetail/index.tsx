@@ -16,6 +16,7 @@ import {
 import API from "../../api";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import CommentAnnouncement from "../ComentAnnouncement";
 
 const CardAnnouncement = () => {
   const [announcementDetail, setAnnouncementDetail] = useState<any>({});
@@ -40,7 +41,7 @@ const CardAnnouncement = () => {
     const primeira = announcementDetail.user.name
       .split(" ")[0][0]
       .toUpperCase();
-    const segunda = announcementDetail.user.name.split(" ")[1][0].toUpperCase();
+    const segunda = announcementDetail.user.name.split(" ")[1] && announcementDetail.user.name.split(" ")[1][0].toUpperCase()
 
     return (
       <Box>
@@ -101,7 +102,7 @@ const CardAnnouncement = () => {
               <div>
                 <p>
                   {announcementDetail.user.name.split(" ")[0][0].toUpperCase()}
-                  {announcementDetail.user.name.split(" ")[1][0].toUpperCase()}
+                  {announcementDetail.user.name.split(" ")[1] && announcementDetail.user.name.split(" ")[1][0].toUpperCase()}
                 </p>
               </div>
               <h3>{announcementDetail.user.name}</h3>
@@ -124,6 +125,7 @@ const CardAnnouncement = () => {
             ))}
           </ListComments>
         </BoxComments>
+        <CommentAnnouncement id={id} />
       </Box>
     );
   } else {
