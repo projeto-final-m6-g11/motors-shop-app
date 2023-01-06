@@ -4,6 +4,8 @@ import Dashboard from "../pages/userAnnouncements";
 import AnnouncementsDetail from "../pages/announcementDetail";
 import Register from "../pages/Register";
 import Login from "../pages/Login";
+import RecoverAccount from "../pages/recoverAccount";
+import UpdatePasswordRecover from "../pages/UpdatePasswordRecover";
 
 const Routes = () => {
   return (
@@ -22,6 +24,12 @@ const Routes = () => {
       </Route>
       <Route exact path="/announcementDetail/:id">
         <AnnouncementsDetail />
+      </Route>
+      <Route exact path='/recoveraccount'>
+        <RecoverAccount />
+      </Route>
+      <Route exact path='/recoveraccount/:token'>
+        <UpdatePasswordRecover />
       </Route>
     </Switch>
   );
