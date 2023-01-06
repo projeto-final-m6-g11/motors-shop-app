@@ -7,7 +7,7 @@ import { Main } from "./styles";
 const AnnouncementsDetail = () => {
   return (
     <Main>
-      <Header type="anonymous" />
+      <Header type="owner" />
       <section>
         <CardFixo type="default" />
         <CardAnnouncement />

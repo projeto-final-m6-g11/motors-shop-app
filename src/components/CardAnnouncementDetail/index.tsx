@@ -28,6 +28,7 @@ const CardAnnouncement = () => {
     API.get(`/announcements/${id}`)
       .then((resp) => {
         setAnnouncementDetail(resp.data);
+        console.log(resp.data);
       })
       .catch((err) => {
         console.log(err);
@@ -36,6 +37,11 @@ const CardAnnouncement = () => {
   }, []);
 
   if (announcementDetail.title) {
+    const primeira = announcementDetail.user.name
+      .split(" ")[0][0]
+      .toUpperCase();
+    const segunda = announcementDetail.user.name.split(" ")[1][0].toUpperCase();
+
     return (
       <Box>
         <BoxAnuncio>
@@ -93,7 +99,10 @@ const CardAnnouncement = () => {
             </BoxFotos>
             <BoxPerfil>
               <div>
-                <p>{announcementDetail.user.name}</p>
+                <p>
+                  {primeira}
+                  {segunda}
+                </p>
               </div>
               <h3>{announcementDetail.user.name}</h3>
               <p>{announcementDetail.user.bio}</p>
@@ -106,8 +115,8 @@ const CardAnnouncement = () => {
           <ListComments>
             {announcementDetail.review.map((comment: any) => (
               <CardComments
-                // iniciais={comment.user.name}
-                // nome={comment.user.name}
+                iniciais={comment.user.name}
+                nome={comment.user.name}
                 key={comment.id}
                 publicado={comment.createDate}
                 comentario={comment.text}
