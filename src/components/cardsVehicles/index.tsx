@@ -14,7 +14,7 @@ export interface IVehicleProps {
     published: boolean;
     images: IMGS[];
     user: User;
-    review: Review;
+    review: Review[];
   };
 }
 interface IMGS {
