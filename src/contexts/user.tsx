@@ -5,9 +5,10 @@ export const UserContext = createContext({});
 
 export const UserProvider = ({ children }: any) => {
   const [user, setUser] = useState<User>({});
+  const [token, setToken] = useState<string>("")
 
   return (
-    <UserContext.Provider value={{ setUser, user }}>
+    <UserContext.Provider value={{ setUser, user, setToken, token }}>
       {children}
     </UserContext.Provider>
   );

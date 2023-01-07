@@ -4,11 +4,14 @@ import Header from "../../components/header";
 import { FormStyled, Container } from "./styles";
 import { toast } from "react-toastify";
 import { useHistory } from "react-router-dom";
+import jwtDecode from "jwt-decode";
+import { UserContext } from "../../contexts/user";
+import { User } from "../../contexts/announcements";
 
 const Login = () => {
   const [inputUser, setInputUser] = useState("");
   const [inputPassword, setInputPassword] = useState("");
-  // const { setUser } = useContext(UserContext);
+  const { setUser, setToken, token, user } = useContext<any>(UserContext);
   const history = useHistory();
 
   const login = () => {
@@ -31,8 +34,19 @@ const Login = () => {
         })
           .then((res) => {
             resolve(res);
-            return history.push("/dashboard");
-            // setUser(res.data)
+            const decoded: any = jwtDecode(res.data.token)
+            const userId = decoded.id
+            setToken(res.data.token)
+
+            API.get(`/users/${userId}`, {
+              headers: {
+                'Authorization': `Bearer ${res.data.token}`
+              }
+            })
+            .then(res => {
+              setUser(res.data)
+            })
+            return history.push("/")
           })
           .catch((err) => reject(err))
       );
