@@ -16,6 +16,7 @@ export interface IVehicleProps {
     user: User;
     review: Review[];
   };
+  onOwnProfile: boolean
 }
 interface IMGS {
   id: string;
@@ -23,11 +24,49 @@ interface IMGS {
   type: string;
 }
 
-export const CardVehicle = ({ vehicle }: IVehicleProps) => {
+export const CardVehicle = ({ vehicle, onOwnProfile }: IVehicleProps) => {
   const activeImage = vehicle.images?.filter((image) => image.type === "COVER");
   const historico = useHistory();
 
   return (
+    <>
+    {onOwnProfile ?
+    <CardStyled
+    onClick={() => {
+      historico.push(`/announcementDetail/${vehicle.id}`);
+    }}
+    >
+      <div
+        className={
+          vehicle.published ? "flutuante__active" : "flutuante__inactive"
+        }
+      >
+        {vehicle.published ? "Ativo" : "Inativo"}
+      </div>
+      <figure>
+        <img
+          src={activeImage[0].imageUrl}
+          alt={"Foto do veiculo " + vehicle.title}
+        />
+      </figure>
+      <article>
+        <h1>{vehicle.title}</h1>
+        <p>{vehicle.description}</p>
+        <div>
+          <div className="km__year__car">
+            <span>{vehicle.km} KM</span>
+            <span>{vehicle.year}</span>
+          </div>
+          <p>
+            {Number(vehicle.price).toLocaleString("pt-BR", {
+              style: "currency",
+              currency: "BRL",
+            })}
+          </p>
+        </div>
+      </article>
+    </CardStyled>
+    :
     <CardStyled
       onClick={() => {
         historico.push(`/announcementDetail/${vehicle.id}`);
@@ -69,6 +108,7 @@ export const CardVehicle = ({ vehicle }: IVehicleProps) => {
           </p>
         </div>
       </article>
-    </CardStyled>
+    </CardStyled>}
+    </>
   );
 };

@@ -27,7 +27,7 @@ const Dashboard = () => {
     <MainDashboard>
     <Header type="owner" />
     <CardFixo type="default" />
-    <UserInfoDisplay profile user />
+    <UserInfoDisplay profile user={user} />
     <CardsList />
     <Footer />
     </MainDashboard> 
