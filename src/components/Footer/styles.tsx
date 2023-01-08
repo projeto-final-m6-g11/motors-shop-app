@@ -6,7 +6,8 @@ export const StyledFooterDiv = styled.footer`
   align-items: center;
   justify-content: space-between;
   width: 100vw;
-  height: 10vh;
+  max-height: 15vh;
+  height: auto;
   padding: 50px;
   background-color: var(--grey0);
   color: var(--whiteFixed);

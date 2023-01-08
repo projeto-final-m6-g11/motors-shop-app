@@ -98,4 +98,23 @@ export const ContainerButtons = styled.article`
     gap: 2rem;
 
   }
+  a {
+    background-color: transparent;
+
+    @media (max-width: 810px) {
+      width: 100%;
+    }
+    @media (min-width: 810px) {
+      width: 10rem;
+    }
+  }
+
+  @media (max-width: 810px) {
+    width: 100%;
+  }
+  @media (min-width: 810px) {
+    flex-direction: row;
+    gap: 2rem;
+
+  }
 `;
