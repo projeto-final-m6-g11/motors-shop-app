@@ -19,7 +19,7 @@ const Routes = () => {
       <Route path="/createaccount">
         <Register />
       </Route>
-      <Route path="/dashboard">
+      <Route path="/profile/:id">
         <Dashboard />
       </Route>
       <Route exact path="/announcementDetail/:id">

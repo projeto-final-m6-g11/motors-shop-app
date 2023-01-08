@@ -6,9 +6,10 @@ import FormPerfil from "../FormPerfil";
 import FormEndereco from "../FormEndereço";
 import { FaBars } from "react-icons/fa";
 import { GrClose } from "react-icons/gr";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Box, MenuButton, MenuModal, Modal } from "./styles";
+import { UserContext } from "../../contexts/user";
 
 interface IHeaderProps {
   type: string;
@@ -19,6 +20,8 @@ const Header = ({ type }: IHeaderProps) => {
   const [modal, setModal] = useState(false);
   const [open, setOpen] = useState<boolean>(false);
   const [open2, setOpen2] = useState<boolean>(false);
+
+  const { setUser, setToken, token, user } = useContext<any>(UserContext);
 
   const historico = useHistory();
 
@@ -51,6 +54,12 @@ const Header = ({ type }: IHeaderProps) => {
     }
   };
 
+  const handleLogout = () => {
+    setUser({})
+    setToken('')
+    historico.push('/')
+  }
+
   useEffect(() => {
     window.innerWidth > 810 ? setMobile(false) : setMobile(true);
   }, []);
@@ -59,13 +68,15 @@ const Header = ({ type }: IHeaderProps) => {
     window.innerWidth > 810 ? setMobile(false) : setMobile(true);
   });
 
-  switch (type) {
-    case "anonymous":
+  const goToDashboard = () => {
+    token && user ? historico.push(`/profile/${user.id}`) : historico.push('/login')
+  }
+
       return (
+        <>
+        {!token ?
         <Box>
-          <section onClick={() => {
-            historico.push("/")
-          }}>
+          <section>
             <img src={Logo} alt="Logo Motors-Shop" onClick={home} />
           </section>
           {mobile ? (
@@ -92,131 +103,88 @@ const Header = ({ type }: IHeaderProps) => {
               </div>
             </section>
           )}
-        </Box>
-      );
-    case "owner":
-      return (
+        </Box> :
         <Box>
-          <section>
-            <img src={Logo} alt="Logo Motors-Shop" onClick={home} />
-          </section>
-          {mobile ? (
-            <div>
-              <MenuButton onClick={() => setModal(!modal)}>
-                {modal === false ? <FaBars /> : <GrClose />}
-              </MenuButton>
-              {modal === false ? <></> : <ModalHeader type="owner" />}
+        <section>
+          <img src={Logo} alt="Logo Motors-Shop" onClick={home} />
+        </section>
+        {mobile ? (
+          <div>
+            <MenuButton onClick={() => setModal(!modal)}>
+              {modal === false ? <FaBars /> : <GrClose />}
+            </MenuButton>
+            {modal === false ? <></> : <ModalHeader type="owner" />}
+          </div>
+        ) : (
+          <section className="container">
+            <div className="vehicles">
+              <Button>Carros</Button>
+              <Button>Motos</Button>
+              <Button>Leilão</Button>
             </div>
-          ) : (
-            <section className="container">
-              <div className="vehicles">
-                <Button>Carros</Button>
-                <Button>Motos</Button>
-                <Button>Leilão</Button>
-              </div>
 
-              <div className="profile">UD</div>
-              <MenuModal onClick={() => setModal(!modal)}>
-                {modal === false ? <p>Usuário Dono</p> : <p>Usuário Dono</p>}
-              </MenuModal>
-              {modal === false ? (
-                <></>
-              ) : (
-                <Modal>
-                  <nav>
-                    <div className="divisionNavModal">
-                      <Button
-                        title="buttonOpenEditProfile"
-                        onClick={(e: any) => {
+            <div className="profile">UD</div>
+            <MenuModal onClick={() => setModal(!modal)}>
+              {modal === false ? <p>Usuário Dono</p> : <p>Usuário Dono</p>}
+            </MenuModal>
+            {modal === false ? (
+              <></>
+            ) : (
+              <Modal>
+                <nav>
+                  <div className="divisionNavModal">
+                    <Button
+                      title="buttonOpenEditProfile"
+                      onClick={(e: any) => {
+                        handleOpen(e);
+                      }}
+                    >
+                      Editar Perfil
+                    </Button>
+                    {open ? (
+                      <ModalFundo
+                        title="formEditProfile"
+                        onClick={(e) => {
                           handleOpen(e);
                         }}
                       >
-                        Editar Perfil
-                      </Button>
-                      {open ? (
-                        <ModalFundo
-                          title="formEditProfile"
-                          onClick={(e) => {
-                            handleOpen(e);
-                          }}
-                        >
-                          <FormPerfil handleOpen={handleOpen} />
-                        </ModalFundo>
-                      ) : (
-                        ""
-                      )}
-                      <Button
-                        title="buttonOpenEditAdress"
-                        onClick={(e: any) => {
+                        <FormPerfil handleOpen={handleOpen} />
+                      </ModalFundo>
+                    ) : (
+                      ""
+                    )}
+                    <Button
+                      title="buttonOpenEditAdress"
+                      onClick={(e: any) => {
+                        handleOpen2(e);
+                      }}
+                    >
+                      Editar Endereço
+                    </Button>
+                    {open2 ? (
+                      <ModalFundo
+                        title="formEditAdress"
+                        onClick={(e) => {
                           handleOpen2(e);
                         }}
                       >
-                        Editar Endereço
-                      </Button>
-                      {open2 ? (
-                        <ModalFundo
-                          title="formEditAdress"
-                          onClick={(e) => {
-                            handleOpen2(e);
-                          }}
-                        >
-                          <FormEndereco handleOpen={handleOpen2} />
-                        </ModalFundo>
-                      ) : (
-                        ""
-                      )}
-                      <Button>Meus Anúncios</Button>
-                      <Button>Sair</Button>
-                    </div>
-                  </nav>
-                </Modal>
-              )}
-            </section>
-          )}
-        </Box>
-      );
-    default:
-      return (
-        <Box>
-          <section>
-            <img src={Logo} alt="Logo Motors-Shop" onClick={home}/>
+                        <FormEndereco handleOpen={handleOpen2} />
+                      </ModalFundo>
+                    ) : (
+                      ""
+                    )}
+                    <Button onClick={goToDashboard}>Meus Anúncios</Button>
+                    <Button onClick={handleLogout}>Sair</Button>
+                  </div>
+                </nav>
+              </Modal>
+            )}
           </section>
-          {mobile ? (
-            <div>
-              <MenuButton onClick={() => setModal(!modal)}>
-                {modal === false ? <FaBars /> : <GrClose />}
-              </MenuButton>
-              {modal === false ? <></> : <ModalHeader type="owner" />}
-            </div>
-          ) : (
-            <section className="container">
-              <div className="vehicles">
-                <Button>Carros</Button>
-                <Button>Motos</Button>
-                <Button>Leilão</Button>
-              </div>
-              <div className="profile">UC</div>
-              <MenuModal onClick={() => setModal(!modal)}>
-                {modal === false ? <p>Usuário</p> : <p>Usuário</p>}
-              </MenuModal>
-              {modal === false ? (
-                <></>
-              ) : (
-                <Modal>
-                  <nav>
-                    <div className="divisionNavModal">
-                      <Button>Editar Perfil</Button>
-                      <Button>Editar Endereço</Button>
-                      <Button>Sair</Button>
-                    </div>
-                  </nav>
-                </Modal>
-              )}
-            </section>
-          )}
-        </Box>
+        )}
+      </Box>
+        }
+        </>
       );
   }
-};
 
 export default Header;

@@ -66,6 +66,37 @@ export const UserInfoDiv = styled.div`
         height: 32px;
     }
 
+    .iniciais {
+      border-radius: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--whiteFixed);
+      background-color: var(--brand2);
+      height: 104px;
+      width: 104px;
+      font-size: 36px;
+    }
+
+    .createAnnouncementBtn {
+        border: 1.5px solid #4529E6;
+        border-radius: 4px;
+        color: #4529E6;
+        background-color: var(--whiteFixed);
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 152px;
+        height: 48px;
+        transition: 0.4ms;
+
+        :hover {
+            background-color: var(--brand4);
+            transition: 0.4ms;
+        }
+    }
+
     @media (max-width: 395px) {
         top: 145px;
         padding: 20px;

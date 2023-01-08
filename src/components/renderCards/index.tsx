@@ -1,96 +1,53 @@
 import { CardVehicle } from "../cardsVehicles";
 import { Ulstyled, Vitrine, Carrousel } from "./styles";
-import { useContext, useRef } from "react";
+import { useContext, useRef, useState } from "react";
 import { AnnouncementsContext } from "../../contexts/announcements";
 import { IVehicle } from "../../contexts/announcements";
 import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
+import { UserContext } from "../../contexts/user";
+import { useParams } from "react-router-dom";
+import userEvent from "@testing-library/user-event";
 
 export const CardsList = () => {
   const { cars, motocycles } = useContext<any>(AnnouncementsContext);
+  const { setUser, setToken, token, user } = useContext<any>(UserContext);
   const carousel1 = useRef<any>(null);
   const carousel2 = useRef<any>(null);
 
-  const handleLeftCarrousel = () => {
-    if (window.innerWidth >= 320) {
-      return (carousel1.current.scrollLeft -= 250);
-    }
-
-    if (window.innerWidth >= 820) {
-      return (carousel1.current.scrollLeft -= 300);
-    }
-    return (carousel1.current.scrollLeft -= 400);
-  };
-
-  const handleRightCarrousel = () => {
-    if (window.innerWidth >= 320) {
-      return (carousel1.current.scrollLeft += 250);
-    }
-
-    if (window.innerWidth >= 820) {
-      return (carousel1.current.scrollLeft += 300);
-    }
-    return (carousel1.current.scrollLeft += 400);
-  };
-
-  const handleLeftCarrousel2 = () => {
-    if (window.innerWidth >= 320) {
-      return (carousel2.current.scrollLeft -= 250);
-    }
-
-    if (window.innerWidth >= 820) {
-      return (carousel2.current.scrollLeft -= 300);
-    }
-    return (carousel2.current.scrollLeft -= 400);
-  };
-
-  const handleRightCarrousel2 = () => {
-    if (window.innerWidth >= 320) {
-      return (carousel2.current.scrollLeft += 250);
-    }
-
-    if (window.innerWidth >= 820) {
-      return (carousel2.current.scrollLeft += 300);
-    }
-    return (carousel2.current.scrollLeft += 400);
-  };
+  const {id} = useParams<any>()
 
   return (
+    <>
+    {id !== undefined && id === user.id ?
     <Vitrine>
       <h1 id="Carros">Carros</h1>
       <Ulstyled ref={carousel1}>
-        {cars?.map((car: IVehicle, index: number) => (
-          <CardVehicle key={index} vehicle={car} />
+        {user.announcements?.map((car: IVehicle, index: number) => (
+          car.vehicleType === 'CAR' && <CardVehicle onOwnProfile key={index} vehicle={car} />
         ))}
       </Ulstyled>
-
-      {/*<Carrousel>
-        <button onClick={(e) => handleLeftCarrousel()}>
-          {" "}
-          <SlArrowLeft />{" "}
-        </button>
-        <button onClick={(e) => handleRightCarrousel()}>
-          {" "}
-          <SlArrowRight />{" "}
-        </button>
-        </Carrousel>*/}
-
       <h1  id="Motos">Motos</h1>
       <Ulstyled ref={carousel2}>
-        {motocycles?.map((motocycle: IVehicle, index: number) => (
-          <CardVehicle key={index} vehicle={motocycle} />
+        {user.announcements?.map((motocycle: IVehicle, index: number) => (
+          motocycle.vehicleType === 'MOTORCYCLE' && <CardVehicle onOwnProfile key={index} vehicle={motocycle} />
         ))}
       </Ulstyled>
-
-      {/*<Carrousel>
-        <button onClick={(e) => handleLeftCarrousel2()}>
-          {" "}
-          <SlArrowLeft />{" "}
-        </button>
-        <button onClick={(e) => handleRightCarrousel2()}>
-          {" "}
-          <SlArrowRight />{" "}
-        </button>
-      </Carrousel>*/}
-    </Vitrine>
+    </Vitrine> 
+    :
+    <Vitrine>
+      <h1>Carros</h1>
+      <Ulstyled ref={carousel1}>
+        {motocycles?.map((car: IVehicle, index: number) => (
+          <CardVehicle onOwnProfile={false} key={index} vehicle={car} />
+        ))}
+      </Ulstyled>
+      <h1>Motos</h1>
+      <Ulstyled ref={carousel2}>
+        {cars?.map((motocycle: IVehicle, index: number) => (
+          <CardVehicle onOwnProfile={false} key={index} vehicle={motocycle} />
+        ))}
+      </Ulstyled>
+    </Vitrine>}
+    </>
   );
 };
