@@ -15,8 +15,8 @@ const CardFixo = ({ type }: ICardProps) => {
             <p>Um ambiente feito para você explorar o seu melhor</p>
           </Title>
           <ContainerButtons>
-            <Button>Carros</Button>
-            <Button>Motos</Button>
+          <a href="#Carros"><Button >Carros</Button></a>
+          <a href="#Motos"><Button >Motos</Button></a>
           </ContainerButtons>
         </Box>
       );
