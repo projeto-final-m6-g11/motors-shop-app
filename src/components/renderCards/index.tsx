@@ -56,7 +56,7 @@ export const CardsList = () => {
 
   return (
     <Vitrine>
-      <h1>Carros</h1>
+      <h1 id="Carros">Carros</h1>
       <Ulstyled ref={carousel1}>
         {cars?.map((car: IVehicle, index: number) => (
           <CardVehicle key={index} vehicle={car} />
@@ -74,7 +74,7 @@ export const CardsList = () => {
         </button>
         </Carrousel>*/}
 
-      <h1>Motos</h1>
+      <h1  id="Motos">Motos</h1>
       <Ulstyled ref={carousel2}>
         {motocycles?.map((motocycle: IVehicle, index: number) => (
           <CardVehicle key={index} vehicle={motocycle} />
