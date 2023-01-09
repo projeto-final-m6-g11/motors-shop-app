@@ -19,7 +19,7 @@ const Dashboard = () => {
     <MainDashboard>
     <Header type="owner" />
     <CardFixo type="default" />
-    <UserInfoDisplay profile user={user} />
+    <UserInfoDisplay profile user={user} userId={user.id} />
     <CardsList />
     <Footer />
     </MainDashboard> 
@@ -27,7 +27,7 @@ const Dashboard = () => {
     <MainDashboard>
     <Header type="owner" />
     <CardFixo type="default" />
-    <UserInfoDisplay profile user={userProfileView} />
+    <UserInfoDisplay profile user={userProfileView} userId={user.id} />
     <CardsList />
     <Footer />
     </MainDashboard> 
