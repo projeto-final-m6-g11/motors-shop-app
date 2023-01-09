@@ -47,7 +47,7 @@ export const CardsList = () => {
         </Vitrine>
       )}
 
-      {id !== undefined && user.id === id ? (
+      {id !== undefined && user.id === id && (
         <Vitrine>
           <h1 id="Carros">Carros</h1>
 
@@ -79,7 +79,9 @@ export const CardsList = () => {
             )}
           </Ulstyled>
         </Vitrine>
-      ) : (
+      )}
+      {id !== undefined && id !== user.id &&
+      (
         <Vitrine>
           <h1 id="Carros">Carros</h1>
           <Ulstyled ref={carousel1}>
