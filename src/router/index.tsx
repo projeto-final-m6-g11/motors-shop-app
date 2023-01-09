@@ -3,7 +3,7 @@ import Home from "../pages/home/home";
 import Dashboard from "../pages/userAnnouncements";
 import AnnouncementsDetail from "../pages/announcementDetail";
 import Register from "../pages/Register";
-import Login from "../pages/Login";
+import Login from "../pages/Login/index";
 import RecoverAccount from "../pages/recoverAccount";
 import UpdatePasswordRecover from "../pages/UpdatePasswordRecover";
 
@@ -25,10 +25,10 @@ const Routes = () => {
       <Route exact path="/announcementDetail/:id">
         <AnnouncementsDetail />
       </Route>
-      <Route exact path='/recoveraccount'>
+      <Route exact path="/recoveraccount">
         <RecoverAccount />
       </Route>
-      <Route exact path='/recoveraccount/:token'>
+      <Route exact path="/recoveraccount/:token">
         <UpdatePasswordRecover />
       </Route>
     </Switch>

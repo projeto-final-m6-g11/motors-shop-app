@@ -40,7 +40,7 @@ const CommentAnnouncement = ({ id }: Props) => {
   ];
 
   useEffect(() => {
-    setColor(Math.floor(Math.random() * (arrayOfRandomColors.length + 1)) + 1);
+    setColor(Math.floor(Math.random() * arrayOfRandomColors.length) + 1);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

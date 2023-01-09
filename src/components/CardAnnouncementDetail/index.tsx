@@ -14,17 +14,19 @@ import {
   ListComments,
 } from "./styles";
 import API from "../../api";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useEffect, useState,useContext } from "react";
+import { useHistory, useParams } from "react-router";
 import CommentAnnouncement from "../ComentAnnouncement";
+import { UserContext } from "../../contexts/user";
 
 const CardAnnouncement = () => {
   const [announcementDetail, setAnnouncementDetail] = useState<any>({});
+  const { setUser, setToken, token, user, userProfileView, setUserProfileView } = useContext<any>(UserContext);
   // const { title, year, km, price, description, vehicle_type, img }: any =
   //   announcementDetail;
 
   const { id }: any = useParams();
-
+  const history = useHistory();
   useEffect(() => {
     API.get(`/announcements/${id}`)
       .then((resp) => {
@@ -37,11 +39,23 @@ const CardAnnouncement = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const goToUserAnnouncement = () => {
+    API.get(`/users/${announcementDetail.user.id}`, { headers: {
+      Authorization: `Bearer ${token}`,
+    }})
+    .then(res => {
+      setUserProfileView(res.data)
+      history.push(`/profile/${announcementDetail.user.id}`);
+    }).catch(err => console.log(err))
+  };
+
   if (announcementDetail.title) {
     const primeira = announcementDetail.user.name
       .split(" ")[0][0]
       .toUpperCase();
-    const segunda = announcementDetail.user.name.split(" ")[1] && announcementDetail.user.name.split(" ")[1][0].toUpperCase()
+    const segunda =
+      announcementDetail.user.name.split(" ")[1] &&
+      announcementDetail.user.name.split(" ")[1][0].toUpperCase();
 
     return (
       <Box>
@@ -102,12 +116,13 @@ const CardAnnouncement = () => {
               <div>
                 <p>
                   {announcementDetail.user.name.split(" ")[0][0].toUpperCase()}
-                  {announcementDetail.user.name.split(" ")[1] && announcementDetail.user.name.split(" ")[1][0].toUpperCase()}
+                  {announcementDetail.user.name.split(" ")[1] &&
+                    announcementDetail.user.name.split(" ")[1][0].toUpperCase()}
                 </p>
               </div>
               <h3>{announcementDetail.user.name}</h3>
               <p>{announcementDetail.user.bio}</p>
-              <Button>Ver todos anúncios</Button>
+              <Button onClick={goToUserAnnouncement}>Ver todos anúncios</Button>
             </BoxPerfil>
           </div>
         </BoxAnuncio>

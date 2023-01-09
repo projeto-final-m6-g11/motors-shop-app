@@ -11,6 +11,8 @@ interface UIDisplay {
 
 const UserInfoDisplay = ({ profile, user }: UIDisplay) => {
   const [open, setOpen] = useState<boolean>(false);
+  console.log(user);
+  
 
   const handleOpen = (e: any) => {
     if (
@@ -49,7 +51,7 @@ const UserInfoDisplay = ({ profile, user }: UIDisplay) => {
             handleOpen(e);
           }}
         >
-          <FormAnuncio handleOpen={handleOpen} />
+          <FormAnuncio open={open} setOpen={setOpen} />
         </ModalFundo>
       ) : (
         ""
