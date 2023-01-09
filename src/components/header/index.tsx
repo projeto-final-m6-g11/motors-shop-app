@@ -125,7 +125,7 @@ const Header = ({ type }: IHeaderProps) => {
               <StyledHeaderButton>Leilão</StyledHeaderButton>
             </div>
 
-            <div className="profile">UD</div>
+            <div onClick={goToDashboard} className="profile">UL</div>
             <MenuModal onClick={() => setModal(!modal)}>
               {modal === false ? <p>{user.name}</p> : <p>{user.name}</p>}
             </MenuModal>
