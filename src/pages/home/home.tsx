@@ -4,6 +4,8 @@ import CardFixo from "../../components/CardFixo";
 import Main from "./styles";
 import UserInfoDisplay from "../../components/UserInfoDisplay";
 import { CardsList } from "../../components/renderCards";
+import FormEdit from "../../components/FormEdit";
+import { ModalFundo } from "../../components/ModalFundo/styles";
 
 const Home = () => {
   return (
@@ -13,6 +15,7 @@ const Home = () => {
         <CardFixo type="home" />
         <CardsList />
       </div>
+      
       <Footer />
     </Main>
   );
