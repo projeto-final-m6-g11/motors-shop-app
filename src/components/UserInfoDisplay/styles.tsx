@@ -90,11 +90,6 @@ export const UserInfoDiv = styled.div`
         width: 152px;
         height: 48px;
         transition: 0.4ms;
-
-        :hover {
-            background-color: var(--brand4);
-            transition: 0.4ms;
-        }
     }
 
     @media (max-width: 395px) {

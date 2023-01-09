@@ -49,7 +49,7 @@ const UserInfoDisplay = ({ profile, user }: UIDisplay) => {
             handleOpen(e);
           }}
         >
-          <FormAnuncio handleOpen={handleOpen} />
+          <FormAnuncio open={open} setOpen={setOpen} />
         </ModalFundo>
       ) : (
         ""
