@@ -64,10 +64,15 @@ export const AnnouncementsProvider = ({ children }: any) => {
       .then((res) => {
         setMotocycles(
           res.data.filter(
-            (motocycle: IVehicle) => motocycle.vehicleType !== "car"
+            (motocycle: IVehicle) =>
+              motocycle.vehicleType.toLocaleLowerCase() !== "car"
           )
         );
-        setCars(res.data.filter((car: IVehicle) => car.vehicleType === "car"));
+        setCars(
+          res.data.filter(
+            (car: IVehicle) => car.vehicleType.toLocaleLowerCase() === "car"
+          )
+        );
       })
       .catch((err) => console.log(err));
   }, []);
