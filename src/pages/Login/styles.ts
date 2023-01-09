@@ -4,6 +4,8 @@ export const FormStyled = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background-color: var(--whiteFixed);
+  border-radius: 4px;
   width: 25.75rem;
   padding: 2.75rem 3rem;
   gap: 0.625rem;
@@ -27,7 +29,8 @@ export const FormStyled = styled.form`
 
   }
   input {
-    border: 0;
+    border: 1.5px solid var(--grey4);
+    border-radius: 4px;
     width: 100%;
     height: 2.5rem;
     padding-left: 0.9375rem;
@@ -69,6 +72,10 @@ export const FormStyled = styled.form`
     color: var(--whiteFixed);
   }
 
+  .goToRegister {
+    background-color: var(--whiteFixed);
+  }
+
   .forget__password {
     :hover {
       cursor: pointer;
@@ -81,4 +88,5 @@ export const Container = styled.div`
   /* height: 100%; */
   display: flex;
   justify-content: center;
+  background-color: var(--grey8)
 `;

@@ -7,6 +7,7 @@ import { useHistory } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 import { UserContext } from "../../contexts/user";
 import { User } from "../../contexts/announcements";
+import Footer from "../../components/Footer";
 
 const Login = () => {
   const [inputUser, setInputUser] = useState("");
@@ -84,9 +85,10 @@ const Login = () => {
             Entrar
           </button>
           <span className="create__account">Ainda não possui conta?</span>
-          <button onClick={register}>Cadastrar</button>
+          <button className="goToRegister" onClick={register}>Cadastrar</button>
         </FormStyled>
       </Container>
+      <Footer />
     </>
   );
 };
