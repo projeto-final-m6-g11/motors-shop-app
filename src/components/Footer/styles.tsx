@@ -6,7 +6,7 @@ export const StyledFooterDiv = styled.footer`
   align-items: center;
   justify-content: space-between;
   width: 100vw;
-  max-height: 15vh;
+  height: 15vh;
   height: auto;
   padding: 50px;
   background-color: var(--grey0);
@@ -45,7 +45,6 @@ export const StyledFooterDiv = styled.footer`
     justify-content: space-between;
     
     width: 100%;
-    height: 10vh;
 
     padding: 50px;
 
@@ -75,7 +74,7 @@ export const StyledFooterDiv = styled.footer`
         justify-content: space-between;
     }
 
-    @media (max-width: 600px) {
+    @media (min-width: 395px) and (max-width: 600px) {
         height: 45vh;
         flex-direction: column;
         justify-content: space-between;

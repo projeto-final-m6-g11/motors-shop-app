@@ -2,26 +2,41 @@ import styled from "styled-components";
 
 export const Box = styled.header`
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   width: 100vw;
   padding: 0 3rem 0 3rem;
-  height: 60px;
-  background-color: var(--grey6);
+  height: 80px;
+  background-color: var(--grey10);
+  color: var(--grey2);
+
+  img {
+    cursor: pointer;
+  }
 
   top: 0;
 
   section {
     display: flex;
     justify-content: center;
-    cursor: pointer;
   }
+
+  .container {
+    display: flex;
+    margin-left: auto;
+    margin-right: 82px;
+  }
+
+  .vehicles {
+
+  }
+
   div {
     cursor: pointer;
   }
   p {
     color: var(--grey2);
-    font-size: 16px;
+    font-weight: 400;
     width: 90%;
     margin: 5px auto;
     cursor: pointer;
@@ -31,28 +46,35 @@ export const Box = styled.header`
     .container {
       display: flex;
       align-items: center;
-      justify-content: space-between;
       gap: 0.5rem;
       height: 100%;
 
       .vehicles {
-        border-right: 2px solid var(--grey4);
+        border-right: 2px solid var(--grey6);
         height: 100%;
+
         display: flex;
-        gap: 1rem;
-        padding-right: 1rem;
-        cursor: pointer;
+        align-items: center;
+        flex-direction: row;
+        
+        margin-right: 44px;
+        gap: 44px;
+        padding-right: 44px;
 
         button {
           color: var(--grey2);
           border: none;
           background-color: transparent;
+
+          :hover {
+            cursor: pointer;
+          }
         }
       }
       .options {
         display: flex;
         align-items: center;
-        gap: 1rem;
+        gap: 44px;
 
         .options-button1 {
           color: var(--brand1);
@@ -63,13 +85,16 @@ export const Box = styled.header`
         }
 
         .options-button2 {
+          width: 122px;
+          height: 45px;
           color: var(--grey0);
-          border: solid 2px var(--grey4);
-          border-radius: 5px;
-          padding: 8px;
-          font-weight: 600;
-          background-color: transparent;
-          cursor: pointer;
+          background-color: var(--whiteFixed);
+          border-radius: 4px;
+          border: 1.5px solid var(--grey4);
+
+          :hover {
+            cursor: pointer;
+          }
         }
       }
       .profile {
@@ -81,7 +106,7 @@ export const Box = styled.header`
         justify-content: center;
         align-items: center;
         color: var(--whiteFixed);
-        background-color: var(--brand2);
+        background-color: var(--brand1);
       }
     }
   }

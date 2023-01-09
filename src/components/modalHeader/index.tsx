@@ -2,8 +2,9 @@ import Button from "../Button";
 import FormPerfil from "../FormPerfil";
 import FormEndereco from "../FormEndereço";
 import { useHistory } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Modal, ModalFundo } from "./styles";
+import { UserContext } from "../../contexts/user";
 
 interface IModalProps {
   type: string;
@@ -13,6 +14,8 @@ const ModalHeader = ({ type }: IModalProps) => {
   const historico = useHistory();
   const [open, setOpen] = useState<boolean>(false);
   const [open2, setOpen2] = useState<boolean>(false);
+
+  const { setUser, setToken, token, user } = useContext<any>(UserContext);
 
   const handleOpen = (e: any) => {
     if (
@@ -36,8 +39,12 @@ const ModalHeader = ({ type }: IModalProps) => {
     historico.push("/login");
   };
   const register = () => {
-    historico.push("/registro");
+    historico.push("/createaccount");
   };
+
+  const goToDashboard = () => {
+    token && user ? historico.push(`/profile/${user.id}`) : historico.push('/login')
+  }
 
   switch (type) {
     case "anonymous":
@@ -50,7 +57,7 @@ const ModalHeader = ({ type }: IModalProps) => {
               <Button children="Leilão" />
             </div>
             <div className="divisionNavModal">
-              <Button onClick={login}>Login</Button>
+              <Button onClick={login}>Fazer Login</Button>
               <Button onClick={register} className="button2">
                 Cadastrar
               </Button>
@@ -68,7 +75,6 @@ const ModalHeader = ({ type }: IModalProps) => {
               <Button children="Leilão" />
             </div>
             <div className="divisionNavModal">
-              <p>Usuário X</p>
               <Button
                 title="buttonOpenEditProfile"
                 onClick={(e: any) => {
@@ -109,7 +115,7 @@ const ModalHeader = ({ type }: IModalProps) => {
               ) : (
                 ""
               )}
-              <Button>Meus Anúncios</Button>
+              <Button onClick={goToDashboard} >Meus Anúncios</Button>
               <Button>Sair</Button>
             </div>
           </nav>

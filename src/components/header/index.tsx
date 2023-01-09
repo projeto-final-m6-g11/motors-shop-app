@@ -10,6 +10,8 @@ import { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Box, MenuButton, MenuModal, Modal } from "./styles";
 import { UserContext } from "../../contexts/user";
+import { StyledHeaderButton } from "../Button/styles";
+import { BuyerBtn } from "../../pages/Register/styles";
 
 interface IHeaderProps {
   type: string;
@@ -89,14 +91,14 @@ const Header = ({ type }: IHeaderProps) => {
           ) : (
             <section className="container">
               <div className="vehicles">
-                <Button>Carros</Button>
-                <Button>Motos</Button>
-                <Button>Leilão</Button>
+                <StyledHeaderButton>Carros</StyledHeaderButton>
+                <StyledHeaderButton>Motos</StyledHeaderButton>
+                <StyledHeaderButton>Leilão</StyledHeaderButton>
               </div>
               <div className="options">
-                <Button onClick={login} className="options-button1">
-                  Login
-                </Button>
+                <StyledHeaderButton onClick={login} >
+                  Fazer Login
+                </StyledHeaderButton>
                 <Button onClick={register} className="options-button2">
                   Cadastrar
                 </Button>
@@ -118,14 +120,14 @@ const Header = ({ type }: IHeaderProps) => {
         ) : (
           <section className="container">
             <div className="vehicles">
-              <Button>Carros</Button>
-              <Button>Motos</Button>
-              <Button>Leilão</Button>
+              <StyledHeaderButton>Carros</StyledHeaderButton>
+              <StyledHeaderButton>Motos</StyledHeaderButton>
+              <StyledHeaderButton>Leilão</StyledHeaderButton>
             </div>
 
             <div className="profile">UD</div>
             <MenuModal onClick={() => setModal(!modal)}>
-              {modal === false ? <p>Usuário Dono</p> : <p>Usuário Dono</p>}
+              {modal === false ? <p>{user.name}</p> : <p>{user.name}</p>}
             </MenuModal>
             {modal === false ? (
               <></>
