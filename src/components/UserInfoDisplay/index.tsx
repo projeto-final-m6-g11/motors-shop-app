@@ -3,15 +3,18 @@ import Button from "../Button";
 import { UserInfoDiv } from "./styles";
 import { ModalFundo } from "../ModalFundo/styles";
 import FormAnuncio from "../FormAnuncio";
+import { useParams } from "react-router-dom";
 
 interface UIDisplay {
   profile: boolean;
-  user: any
+  user: any;
+  userId: string
 }
 
-const UserInfoDisplay = ({ profile, user }: UIDisplay) => {
+const UserInfoDisplay = ({ profile, user, userId }: UIDisplay) => {
   const [open, setOpen] = useState<boolean>(false);
-  console.log(user);
+
+  const {id} = useParams<any>()
   
 
   const handleOpen = (e: any) => {
@@ -34,7 +37,7 @@ const UserInfoDisplay = ({ profile, user }: UIDisplay) => {
         {user.isAdvertiser && <span className="advertiser">Anunciante</span>}
       </div>
       <p>{user.bio}</p>
-      {user.isAdvertiser &&
+      {user.isAdvertiser && userId === id &&
       <button
       className="createAnnouncementBtn"
       title="buttonOpenCreateAnnouncement"
