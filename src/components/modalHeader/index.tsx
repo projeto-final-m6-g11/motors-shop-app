@@ -52,9 +52,10 @@ const ModalHeader = ({ type }: IModalProps) => {
         <Modal>
           <nav>
             <div>
-              <Button children="Carros" />
-              <Button children="Motos" />
+              <a href="#Carros"><Button children="Carros" /></a>
+              <a href="#Motos"><Button children="Motos" /></a>
               <Button children="Leilão" />
+              
             </div>
             <div className="divisionNavModal">
               <Button onClick={login}>Fazer Login</Button>
