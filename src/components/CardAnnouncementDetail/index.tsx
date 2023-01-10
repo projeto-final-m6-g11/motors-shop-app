@@ -1,4 +1,3 @@
-import Car from "../../assets/car.png";
 import Button from "../Button";
 import { CardComments } from "../CardComments";
 import {
@@ -14,17 +13,29 @@ import {
   ListComments,
 } from "./styles";
 import API from "../../api";
-import { useEffect, useState,useContext } from "react";
+import { useEffect, useState, useContext, useRef } from "react";
 import { useHistory, useParams } from "react-router";
 import CommentAnnouncement from "../ComentAnnouncement";
 import { UserContext } from "../../contexts/user";
+interface IImage {
+  id: string;
+  imageUrl: string;
+  type: string;
+}
 
 const CardAnnouncement = () => {
   const [announcementDetail, setAnnouncementDetail] = useState<any>({});
-  const { setUser, setToken, token, user, userProfileView, setUserProfileView } = useContext<any>(UserContext);
+  const {
+    setUser,
+    setToken,
+    token,
+    user,
+    userProfileView,
+    setUserProfileView,
+  } = useContext<any>(UserContext);
   // const { title, year, km, price, description, vehicle_type, img }: any =
   //   announcementDetail;
-
+  const ref = useRef<any>(null);
   const { id }: any = useParams();
   const history = useHistory();
   useEffect(() => {
@@ -39,14 +50,36 @@ const CardAnnouncement = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      API.get(`/announcements/${id}`).then((resp) => {
+        setAnnouncementDetail(resp.data);
+      });
+    }, 10000);
+
+    return () => {
+      clearInterval(interval);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  /* setInterval(() => {
+    API.get(`/announcements/${id}`).then((resp) => {
+      setAnnouncementDetail(resp.data);
+    });
+  }, 2000); */
+
   const goToUserAnnouncement = () => {
-    API.get(`/users/${announcementDetail.user.id}`, { headers: {
-      Authorization: `Bearer ${token}`,
-    }})
-    .then(res => {
-      setUserProfileView(res.data)
-      history.push(`/profile/${announcementDetail.user.id}`);
-    }).catch(err => console.log(err))
+    API.get(`/users/${announcementDetail.user.id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((res) => {
+        setUserProfileView(res.data);
+        history.push(`/profile/${announcementDetail.user.id}`);
+      })
+      .catch((err) => console.log(err));
   };
 
   if (announcementDetail.title) {
@@ -58,7 +91,15 @@ const CardAnnouncement = () => {
       announcementDetail.user.name.split(" ")[1][0].toUpperCase();
 
     return (
-      <Box>
+      <Box
+        onMouseDown={(e) => {
+          ref.current.style.width = "100%";
+          ref.current.style.height = "auto";
+          ref.current.style.position = "relative";
+          ref.current.style.left = "0";
+          ref.current.style.top = "0";
+        }}
+      >
         <BoxAnuncio>
           <div>
             <BoxCarro>
@@ -89,27 +130,28 @@ const CardAnnouncement = () => {
             <BoxFotos>
               <h3>Fotos</h3>
               <BoxImgUl>
-                <li>
-                  <img
-                    src={announcementDetail.images[1].imageUrl}
-                    alt="Imagem Galeria do Veículo"
-                  />
-                </li>
-                <li>
-                  <img src={Car} alt="Imagem Galeria do Veículo" />
-                </li>
-                <li>
-                  <img src={Car} alt="Imagem Galeria do Veículo" />
-                </li>
-                <li>
-                  <img src={Car} alt="Imagem Galeria do Veículo" />
-                </li>
-                <li>
-                  <img src={Car} alt="Imagem Galeria do Veículo" />
-                </li>
-                <li>
-                  <img src={Car} alt="Imagem Galeria do Veículo" />
-                </li>
+                {announcementDetail.images
+                  .filter(
+                    (image: IImage) => image.type.toUpperCase() !== "COVER"
+                  )
+                  .map((image: IImage, index: number) => (
+                    <li
+                      key={index}
+                      onClick={(e) => {
+                        ref.current.style.width = "90vw";
+                        ref.current.style.height = "90vh";
+                        ref.current.style.position = "absolute";
+                        ref.current.style.left = "0";
+                        ref.current.style.top = "0";
+                      }}
+                    >
+                      <img
+                        ref={ref}
+                        src={image.imageUrl}
+                        alt="Imagem Galeria do Veículo"
+                      />
+                    </li>
+                  ))}
               </BoxImgUl>
             </BoxFotos>
             <BoxPerfil>
