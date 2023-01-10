@@ -11,3 +11,15 @@ export const StyledHeaderButton = styled.span`
     }
 
 `
+
+export const StyledHeaderLoginButton = styled.span`
+    color: var(--brand2);
+    font-size: 16px;
+    font-weight: 400;
+    
+    :hover {
+        text-decoration-line: underline;
+        text-decoration-color: var(--brand2);
+    }
+
+`

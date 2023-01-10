@@ -8,6 +8,7 @@ import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../contexts/user";
 import { useParams } from "react-router-dom";
 import API from "../../api";
+import { DivSpace } from "../../styles";
 
 const Dashboard = () => {
   const { setUser, setToken, token, user, userProfileView, setUserProfileView } = useContext<any>(UserContext);
@@ -20,6 +21,7 @@ const Dashboard = () => {
     <Header type="owner" />
     <CardFixo type="default" />
     <UserInfoDisplay profile user={user} userId={user.id} />
+    <DivSpace height="160px" />
     <CardsList />
     <Footer />
     </MainDashboard> 
@@ -28,6 +30,7 @@ const Dashboard = () => {
     <Header type="owner" />
     <CardFixo type="default" />
     <UserInfoDisplay profile user={userProfileView} userId={user.id} />
+    <DivSpace height="160px" />
     <CardsList />
     <Footer />
     </MainDashboard> 

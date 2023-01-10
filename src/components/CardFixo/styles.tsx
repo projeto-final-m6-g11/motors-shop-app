@@ -7,7 +7,7 @@ export const Box = styled.section`
   flex-direction: column;
   gap: 3rem;
   width: 100vw;
-  height: 400px;
+  height: 300px;
   padding: 0 2rem 0 2rem;
   background-color: var(--brand2);
   
@@ -46,7 +46,9 @@ export const Box = styled.section`
   }
 
   @media (min-width: 810px) {
-    height: 300px;
+    justify-content: center;
+    align-items: center;
+    height: 450px;
   }
 `;
 

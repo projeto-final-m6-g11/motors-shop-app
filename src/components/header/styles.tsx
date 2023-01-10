@@ -144,6 +144,8 @@ export const Modal = styled.div`
   right: 5px;
   border-radius: 5px;
   box-shadow: 1px 10px 26px -3px var(--grey0);
+  padding: 15px;
+  gap: 5px;
 
   nav {
     display: flex;
@@ -152,7 +154,6 @@ export const Modal = styled.div`
     width: 100%;
 
     .divisionNavModal {
-      border-top: 2px solid var(--grey4);
       height: 8rem;
 
       button {

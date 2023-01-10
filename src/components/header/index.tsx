@@ -10,7 +10,7 @@ import { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Box, MenuButton, MenuModal, Modal } from "./styles";
 import { UserContext } from "../../contexts/user";
-import { StyledHeaderButton } from "../Button/styles";
+import { StyledHeaderButton, StyledHeaderLoginButton } from "../Button/styles";
 import { BuyerBtn } from "../../pages/Register/styles";
 
 interface IHeaderProps {
@@ -76,7 +76,7 @@ const Header = ({ type }: IHeaderProps) => {
 
       return (
         <>
-        {!token ?
+        {token === "" ?
         <Box>
           <section>
             <img src={Logo} alt="Logo Motors-Shop" onClick={home} />
@@ -96,9 +96,9 @@ const Header = ({ type }: IHeaderProps) => {
                 <StyledHeaderButton>Leilão</StyledHeaderButton>
               </div>
               <div className="options">
-                <StyledHeaderButton onClick={login} >
+                <StyledHeaderLoginButton onClick={login} >
                   Fazer Login
-                </StyledHeaderButton>
+                </StyledHeaderLoginButton>
                 <Button onClick={register} className="options-button2">
                   Cadastrar
                 </Button>
@@ -125,7 +125,7 @@ const Header = ({ type }: IHeaderProps) => {
               <StyledHeaderButton>Leilão</StyledHeaderButton>
             </div>
 
-            <div onClick={goToDashboard} className="profile">UL</div>
+            <div onClick={goToDashboard} className="profile">{user?.name?.length > 0 && user.name[0].toUpperCase()}</div>
             <MenuModal onClick={() => setModal(!modal)}>
               {modal === false ? <p>{user.name}</p> : <p>{user.name}</p>}
             </MenuModal>
@@ -175,7 +175,7 @@ const Header = ({ type }: IHeaderProps) => {
                     ) : (
                       ""
                     )}
-                    <Button onClick={goToDashboard}>Meus Anúncios</Button>
+                    <Button onClick={goToDashboard}>{user.isAdvertiser && "Meus Anúncios"}</Button>
                     <Button onClick={handleLogout}>Sair</Button>
                   </div>
                 </nav>
@@ -184,9 +184,9 @@ const Header = ({ type }: IHeaderProps) => {
           </section>
         )}
       </Box>
-        }
-        </>
-      );
+      }
+      </>
+    );
   }
 
 export default Header;
