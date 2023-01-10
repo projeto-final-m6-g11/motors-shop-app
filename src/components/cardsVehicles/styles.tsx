@@ -31,6 +31,13 @@ export const CardStyled = styled.li`
     background: none;
     object-fit: cover;
   }
+
+  article {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+
   article h1 {
     font-size: 1rem;
     line-height: 1.25rem;

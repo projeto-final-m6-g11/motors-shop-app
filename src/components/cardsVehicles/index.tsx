@@ -147,7 +147,7 @@ export const CardVehicle = ({
               <figure>
                 {userProfileView?.name.split(" ")[0][0].toUpperCase()}
                 {userProfileView.name?.split(" ")[1] &&
-                  userProfileView.name?.split(" ")[1][0].toUpperCase()}
+                userProfileView.name?.split(" ")[1][0].toUpperCase()}
               </figure>
               <p>{userProfileView.name}</p>
             </span>

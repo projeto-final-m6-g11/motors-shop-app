@@ -46,6 +46,12 @@ const ModalHeader = ({ type }: IModalProps) => {
     token && user ? historico.push(`/profile/${user.id}`) : historico.push('/login')
   }
 
+  const handleLogout = () => {
+    setUser({})
+    setToken('')
+    historico.push('/')
+  }
+
   switch (type) {
     case "anonymous":
       return (
@@ -117,7 +123,7 @@ const ModalHeader = ({ type }: IModalProps) => {
                 ""
               )}
               <Button onClick={goToDashboard} >Meus Anúncios</Button>
-              <Button>Sair</Button>
+              <Button onClick={handleLogout} >Sair</Button>
             </div>
           </nav>
         </Modal>
@@ -132,10 +138,9 @@ const ModalHeader = ({ type }: IModalProps) => {
               <Button children="Leilão" />
             </div>
             <div className="divisionNavModal">
-              <p>Usuário X</p>
               <Button>Editar Perfil</Button>
               <Button>Editar Endereço</Button>
-              <Button>Sair</Button>
+              <Button onClick={handleLogout} >Sair</Button>
             </div>
           </nav>
         </Modal>

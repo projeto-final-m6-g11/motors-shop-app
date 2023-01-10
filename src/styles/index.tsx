@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle, css } from "styled-components";
 export const GlobalStyle = createGlobalStyle`
     :root{
     --gradient          : linear-gradient(90deg, #0B0D0D -1.61%, #4529E6 100.99%);
@@ -77,5 +77,12 @@ export const GlobalStyle = createGlobalStyle`
         display: none;
         }
     }
+`
 
+interface Props {
+    height: string
+}
+
+export const DivSpace = styled.div<Props>`
+    height: ${(props) => props.height};
 `

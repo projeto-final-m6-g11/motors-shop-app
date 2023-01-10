@@ -6,6 +6,7 @@ import UserInfoDisplay from "../../components/UserInfoDisplay";
 import { CardsList } from "../../components/renderCards";
 import FormEdit from "../../components/FormEdit";
 import { ModalFundo } from "../../components/ModalFundo/styles";
+import { DivSpace } from "../../styles";
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
       <Header type="anonymous" />
       <div className="pageContent">
         <CardFixo type="home" />
+        <DivSpace height='120px' />
         <CardsList />
       </div>
       

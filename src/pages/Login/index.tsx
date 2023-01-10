@@ -54,7 +54,6 @@ const Login = () => {
 
       return toast.promise(Login, {
         pending: "Acessando",
-        success: "Login efetuado",
         error: "Usuário ou senha inválida",
       });
     }

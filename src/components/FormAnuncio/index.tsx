@@ -49,7 +49,7 @@ const FormAnuncio = ({ open, setOpen }: IProps) => {
       }
     })
     .then((res) => {
-      console.log(res.data)
+      setOpen(!open)
     })
     .catch((err) => {
       console.log(err)

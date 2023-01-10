@@ -11,12 +11,13 @@ export const Modal = styled.div`
   max-width: 400px;
   right: 3px;
   border-radius: 5px;
-  box-shadow: 1px 10px 26px -3px var(--grey0);
+  padding: 10px !important;
   nav {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     width: 100%;
+
     div {
       width: 100%;
       height: 10rem;
