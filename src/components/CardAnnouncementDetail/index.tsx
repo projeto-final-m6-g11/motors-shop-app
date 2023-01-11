@@ -38,6 +38,7 @@ const CardAnnouncement = () => {
   const ref = useRef<any>(null);
   const { id }: any = useParams();
   const history = useHistory();
+
   useEffect(() => {
     API.get(`/announcements/${id}`)
       .then((resp) => {
@@ -58,19 +59,13 @@ const CardAnnouncement = () => {
     })
       .then((res) => {
         setUserProfileView(res.data);
+
         history.push(`/profile/${announcementDetail.user.id}`);
       })
       .catch((err) => console.log(err));
   };
 
   if (announcementDetail.title) {
-    const primeira = announcementDetail.user.name
-      .split(" ")[0][0]
-      .toUpperCase();
-    const segunda =
-      announcementDetail.user.name.split(" ")[1] &&
-      announcementDetail.user.name.split(" ")[1][0].toUpperCase();
-
     return (
       <Box>
         <BoxAnuncio>
@@ -166,8 +161,10 @@ const CardAnnouncement = () => {
                 iniciais={comment.user.name}
                 nome={comment.user.name}
                 key={comment.id}
+                id={comment.id}
                 publicado={comment.createDate}
                 comentario={comment.text}
+                commentOwner={comment.user.id}
               />
             ))}
           </ListComments>
