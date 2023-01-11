@@ -19,9 +19,7 @@ const CommentAnnouncement = ({ id }: Props) => {
   const [color, setColor] = useState(0);
   const [heightCommentBar, setHeightCommentBar] = useState(0);
 
-  const user = {
-    name: 'mateus'
-  }
+  const { setUser, setToken, token, user } = useContext<any>(UserContext);
 
   const arrayOfRandomColors = [
     "brand1",
@@ -47,15 +45,13 @@ const CommentAnnouncement = ({ id }: Props) => {
   const sendComment = () => {
     if (comment !== "") {
       const createComment = new Promise((resolve, reject) =>
-        API.post(`/announcements/${id}/comments`, { text: comment })
+        API.post(`/announcements/${id}/comments`, { text: comment }, { headers: { "Authorization": `Bearer ${token}` } })
           .then((res) => {
             resolve(res);
           })
           .catch((err) => reject(err))
       );
       return toast.promise(createComment, {
-        pending: "Criando comentário",
-        success: "Comentário criado",
         error: "Algo deu errado",
       });
     }
@@ -67,6 +63,10 @@ const CommentAnnouncement = ({ id }: Props) => {
     const createComment = new Promise((resolve, reject) =>
       API.post(`/announcements/${id}/comments`, {
         text: message,
+      }, {
+        headers: {
+          "Authorization": `Bearer ${token}`
+        }
       })
         .then((res) => {
           resolve(res);
@@ -74,8 +74,6 @@ const CommentAnnouncement = ({ id }: Props) => {
         .catch((err) => reject(err))
     );
     return toast.promise(createComment, {
-      pending: "Criando comentário",
-      success: "Comentário criado",
       error: "Algo deu errado",
     });
   };
