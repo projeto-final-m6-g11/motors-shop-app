@@ -1,4 +1,3 @@
-import Car from "../../assets/car.png";
 import Button from "../Button";
 import { CardComments } from "../CardComments";
 import {
@@ -14,17 +13,29 @@ import {
   ListComments,
 } from "./styles";
 import API from "../../api";
-import { useEffect, useState,useContext } from "react";
+import { useEffect, useState, useContext, useRef } from "react";
 import { useHistory, useParams } from "react-router";
 import CommentAnnouncement from "../ComentAnnouncement";
 import { UserContext } from "../../contexts/user";
+interface IImage {
+  id: string;
+  imageUrl: string;
+  type: string;
+}
 
 const CardAnnouncement = () => {
   const [announcementDetail, setAnnouncementDetail] = useState<any>({});
-  const { setUser, setToken, token, user, userProfileView, setUserProfileView } = useContext<any>(UserContext);
+  const {
+    setUser,
+    setToken,
+    token,
+    user,
+    userProfileView,
+    setUserProfileView,
+  } = useContext<any>(UserContext);
   // const { title, year, km, price, description, vehicle_type, img }: any =
   //   announcementDetail;
-
+  const ref = useRef<any>(null);
   const { id }: any = useParams();
   const history = useHistory();
   useEffect(() => {
@@ -39,14 +50,30 @@ const CardAnnouncement = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      API.get(`/announcements/${id}`).then((resp) => {
+        setAnnouncementDetail(resp.data);
+      });
+    }, 10000);
+
+    return () => {
+      clearInterval(interval);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const goToUserAnnouncement = () => {
-    API.get(`/users/${announcementDetail.user.id}`, { headers: {
-      Authorization: `Bearer ${token}`,
-    }})
-    .then(res => {
-      setUserProfileView(res.data)
-      history.push(`/profile/${announcementDetail.user.id}`);
-    }).catch(err => console.log(err))
+    API.get(`/users/${announcementDetail.user.id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((res) => {
+        setUserProfileView(res.data);
+        history.push(`/profile/${announcementDetail.user.id}`);
+      })
+      .catch((err) => console.log(err));
   };
 
   if (announcementDetail.title) {
@@ -89,27 +116,45 @@ const CardAnnouncement = () => {
             <BoxFotos>
               <h3>Fotos</h3>
               <BoxImgUl>
-                <li>
-                  <img
-                    src={announcementDetail.images[1].imageUrl}
-                    alt="Imagem Galeria do Veículo"
-                  />
-                </li>
-                <li>
-                  <img src={Car} alt="Imagem Galeria do Veículo" />
-                </li>
-                <li>
-                  <img src={Car} alt="Imagem Galeria do Veículo" />
-                </li>
-                <li>
-                  <img src={Car} alt="Imagem Galeria do Veículo" />
-                </li>
-                <li>
-                  <img src={Car} alt="Imagem Galeria do Veículo" />
-                </li>
-                <li>
-                  <img src={Car} alt="Imagem Galeria do Veículo" />
-                </li>
+                {announcementDetail.images
+                  .filter(
+                    (image: IImage) => image.type.toUpperCase() !== "COVER"
+                  )
+                  .map((image: IImage, index: number) => (
+                    <li key={index}>
+                      <img
+                        onClick={(e: any) => {
+                          window.scrollTo(0, 260);
+                          if (e.target.style.width === "100vw") {
+                            e.target.style.width = "100% ";
+                            e.target.style.height = "auto";
+                            e.target.style.position = "initial";
+                            e.target.style.borderRadius = "0px";
+                            e.target.style.objectFit = "cover";
+                            e.target.style.left = "0";
+                            if (window.innerWidth <= 800) {
+                              e.target.style.top = "0";
+                              return window.scrollTo(0, 900);
+                            } else {
+                              e.target.style.top = "0";
+                              return window.scrollTo(0, 260);
+                            }
+                          } else {
+                            e.target.style.width = "100vw";
+                            e.target.style.height = "100vh";
+                            e.target.style.position = "absolute";
+                            e.target.style.borderRadius = "20px";
+                            e.target.style.objectFit = "contain";
+                            e.target.style.left = "0";
+                            return (e.target.style.top = "0");
+                          }
+                        }}
+                        ref={ref}
+                        src={image.imageUrl}
+                        alt="Imagem Galeria do Veículo"
+                      />
+                    </li>
+                  ))}
               </BoxImgUl>
             </BoxFotos>
             <BoxPerfil>
