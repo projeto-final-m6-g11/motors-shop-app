@@ -80,9 +80,9 @@ export const ButtonFooter = styled.button`
   height: 45px;
   text-align: center !important;
   color: var(--whiteFixed) !important;
-  background-color: var(--brand3) !important;
+  background-color: var(--brand2) !important;
   border-radius: 4px;
-  border: 1.5px solid var(--brand3) !important;
+  border: 1.5px solid var(--brand2) !important;
 
   ${(props) =>
     props.color === "color" &&
