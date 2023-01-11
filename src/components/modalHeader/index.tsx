@@ -97,7 +97,7 @@ const ModalHeader = ({ type }: IModalProps) => {
                     handleOpen(e);
                   }}
                 >
-                  <FormPerfil handleOpen={handleOpen} />
+                  <FormPerfil open={open} setOpen={setOpen} />
                 </ModalFundo>
               ) : (
                 ""

@@ -1,3 +1,7 @@
+import { useContext } from "react";
+import { useForm } from "react-hook-form";
+import API from "../../api";
+import { UserContext } from "../../contexts/user";
 import { FormPattern } from "../FormPadrão/styles";
 import {
   TitleForm,
@@ -12,20 +16,46 @@ import {
 } from "./styles";
 
 interface IProps {
-  handleOpen: Function;
+  open: boolean
+  setOpen: Function
 }
 
-const FormPerfil = ({ handleOpen }: IProps) => {
-  //useState para profile
-  //useEffect para fazer um get no user
+const FormPerfil = ({ open, setOpen }: IProps) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const { setUser, setToken, token, user } = useContext<any>(UserContext);
+
+  const onSubmit = (data: any) => {
+    data.birthdate = data.birthdate.split("/").reverse().join("-")
+
+    API.patch(`/users/${user.id}`, data, {
+      headers: {
+        "Authorization": `Bearer ${token}`
+      }
+    })
+    .then((res) => {
+      API.get(`/users/${user.id}`)
+      .then((res) => {
+        setUser(res.data)
+        setOpen(!open)
+      })
+    })
+    .catch((err) => {
+      console.log(err.response)
+    })
+  }
 
   return (
-    <FormPattern>
+    <FormPattern onSubmit={handleSubmit(onSubmit)}>
       <HeaderForm>
         <TitleForm>Editar Perfil</TitleForm>
         <ButtonClosed
-          onClick={(e) => {
-            handleOpen(e);
+          onClick={() => {
+            setOpen(!open)
           }}
         >
           X
@@ -37,30 +67,38 @@ const FormPerfil = ({ handleOpen }: IProps) => {
       <LabelForm htmlFor="">Nome</LabelForm>
       <InputPattern
         type="text"
-        value={"User name" /* substituir pelo profile.name*/}
+        {...register("name", { required: true, value: user.name })}
       />
 
       <LabelForm htmlFor="">Email</LabelForm>
-      <InputPattern type="text" value={"usuario@email.com"} />
+      <InputPattern type="text"
+      {...register("email", { required: true, value: user.email })} 
+      />
 
       <LabelForm htmlFor="">CPF</LabelForm>
-      <InputPattern type="text" value={"01234567890"} />
+      <InputPattern type="text" 
+      {...register("cpf", { required: true, value: user.cpf })}
+      />
 
       <LabelForm htmlFor="">Celular</LabelForm>
-      <InputPattern type="text" value={"9991929394"} />
+      <InputPattern type="text"
+      {...register("phone", { required: true, value: user.phone })} 
+      />
 
       <LabelForm htmlFor="">Data de nascimento</LabelForm>
-      <InputPattern type="date" value={"01/01/1990"} />
+      <InputPattern type="date"
+      {...register("birthdate", { required: true, value: user.birthdate.split("-").reverse().join("/") })}
+      />
 
       <LabelForm htmlFor="">Descrição</LabelForm>
       <InputDescription
         cols={10}
         rows={10}
-        placeholder="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam tempora nisi natus maxime quam possimus adipisci eaque deserunt quos quod architecto modi, similique consequuntur libero. Mollitia distinctio optio veniam velit?"
+        {...register("bio", { required: true, value: user.bio})}
       />
       <FooterForm>
-        <ButtonFooter color="color">Cancelar</ButtonFooter>
-        <ButtonFooter>Salvar Alterações</ButtonFooter>
+        <ButtonFooter color="color" type="button" onClick={() => {setOpen(!open)}}>Cancelar</ButtonFooter>
+        <ButtonFooter type="submit">Salvar Alterações</ButtonFooter>
       </FooterForm>
     </FormPattern>
   );
