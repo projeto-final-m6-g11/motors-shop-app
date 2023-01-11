@@ -245,6 +245,7 @@ export const BoxImgUl = styled.ul`
 
     img {
       max-width: 100%;
+      cursor: pointer;
     }
   }
 `;

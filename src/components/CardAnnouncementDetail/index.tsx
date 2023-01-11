@@ -63,12 +63,6 @@ const CardAnnouncement = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  /* setInterval(() => {
-    API.get(`/announcements/${id}`).then((resp) => {
-      setAnnouncementDetail(resp.data);
-    });
-  }, 2000); */
-
   const goToUserAnnouncement = () => {
     API.get(`/users/${announcementDetail.user.id}`, {
       headers: {
@@ -91,15 +85,7 @@ const CardAnnouncement = () => {
       announcementDetail.user.name.split(" ")[1][0].toUpperCase();
 
     return (
-      <Box
-        onMouseDown={(e) => {
-          ref.current.style.width = "100%";
-          ref.current.style.height = "auto";
-          ref.current.style.position = "relative";
-          ref.current.style.left = "0";
-          ref.current.style.top = "0";
-        }}
-      >
+      <Box>
         <BoxAnuncio>
           <div>
             <BoxCarro>
@@ -135,17 +121,34 @@ const CardAnnouncement = () => {
                     (image: IImage) => image.type.toUpperCase() !== "COVER"
                   )
                   .map((image: IImage, index: number) => (
-                    <li
-                      key={index}
-                      onClick={(e) => {
-                        ref.current.style.width = "90vw";
-                        ref.current.style.height = "90vh";
-                        ref.current.style.position = "absolute";
-                        ref.current.style.left = "0";
-                        ref.current.style.top = "0";
-                      }}
-                    >
+                    <li key={index}>
                       <img
+                        onClick={(e: any) => {
+                          window.scrollTo(0, 260);
+                          if (e.target.style.width === "100vw") {
+                            e.target.style.width = "100% ";
+                            e.target.style.height = "auto";
+                            e.target.style.position = "initial";
+                            e.target.style.borderRadius = "0px";
+                            e.target.style.objectFit = "cover";
+                            e.target.style.left = "0";
+                            if (window.innerWidth <= 800) {
+                              e.target.style.top = "0";
+                              return window.scrollTo(0, 900);
+                            } else {
+                              e.target.style.top = "0";
+                              return window.scrollTo(0, 260);
+                            }
+                          } else {
+                            e.target.style.width = "100vw";
+                            e.target.style.height = "100vh";
+                            e.target.style.position = "absolute";
+                            e.target.style.borderRadius = "20px";
+                            e.target.style.objectFit = "contain";
+                            e.target.style.left = "0";
+                            return (e.target.style.top = "0");
+                          }
+                        }}
                         ref={ref}
                         src={image.imageUrl}
                         alt="Imagem Galeria do Veículo"
