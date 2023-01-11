@@ -26,7 +26,6 @@ export const FormStyled = styled.form`
     font-size: 0.875rem;
     line-height: 1.0625rem;
     color: var(--grey1);
-
   }
   input {
     border: 1.5px solid var(--grey4);
@@ -88,5 +87,5 @@ export const Container = styled.div`
   /* height: 100%; */
   display: flex;
   justify-content: center;
-  background-color: var(--grey8)
+  background-color: var(--grey8);
 `;
