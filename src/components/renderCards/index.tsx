@@ -46,7 +46,7 @@ export const CardsList = () => {
           </Ulstyled>
         </Vitrine>
       )}
-
+      
       {id !== undefined && user.id === id && (
         <Vitrine>
           <h1 id="Carros">Carros</h1>
@@ -55,12 +55,14 @@ export const CardsList = () => {
             {user.announcements?.map(
               (car: IVehicle, index: number) =>
                 car.vehicleType.toUpperCase() === "CAR" && (
-                  <CardVehicle
+                  <><CardVehicle
                     onHome={false}
                     onOwnProfile
                     key={index}
                     vehicle={car}
+                    
                   />
+                  <p>oi</p></>
                 )
             )}
           </Ulstyled>

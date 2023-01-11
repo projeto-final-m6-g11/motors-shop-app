@@ -1,4 +1,4 @@
-import { CardStyled } from "./styles";
+import { CardStyled, InputButton, DivButtons } from "./styles";
 import { useHistory } from "react-router-dom";
 import { Review, User } from "../../contexts/announcements";
 import { UserContext } from "../../contexts/user";
@@ -56,6 +56,7 @@ export const CardVehicle = ({
               src={activeImage[0].imageUrl}
               alt={"Foto do veiculo " + vehicle.title}
             />
+            
           </figure>
           <article>
             <h1>{vehicle.title}</h1>
@@ -95,6 +96,7 @@ export const CardVehicle = ({
               vehicle.published ? "flutuante__active" : "flutuante__inactive"
             }
           >
+            
             {vehicle.published ? "Ativo" : "Inativo"}
           </div>
           <figure>
@@ -111,14 +113,22 @@ export const CardVehicle = ({
                 <span>{vehicle.km} KM</span>
                 <span>{vehicle.year}</span>
               </div>
+
               <p>
                 {Number(vehicle.price).toLocaleString("pt-BR", {
                   style: "currency",
                   currency: "BRL",
                 })}
               </p>
+            
             </div>
+            
           </article>
+          <DivButtons>
+            <InputButton>Editar</InputButton>
+            
+            <InputButton>Ver como</InputButton>
+          </DivButtons>
         </CardStyled>
       )}
       {!onHome && !onOwnProfile && (
