@@ -50,7 +50,7 @@ const CardAnnouncement = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
+  /*useEffect(() => {
     const interval = setInterval(() => {
       API.get(`/announcements/${id}`).then((resp) => {
         setAnnouncementDetail(resp.data);
@@ -61,7 +61,7 @@ const CardAnnouncement = () => {
       clearInterval(interval);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, []);*/
 
   const goToUserAnnouncement = () => {
     API.get(`/users/${announcementDetail.user.id}`, {
@@ -185,7 +185,7 @@ const CardAnnouncement = () => {
             ))}
           </ListComments>
         </BoxComments>
-        <CommentAnnouncement id={id} />
+        { token && user && <CommentAnnouncement id={id} /> }
       </Box>
     );
   } else {
