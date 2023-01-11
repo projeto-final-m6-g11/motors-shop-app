@@ -62,7 +62,7 @@ export const CardsList = () => {
                     vehicle={car}
                     
                   />
-                  <p>oi</p></>
+               </>
                 )
             )}
           </Ulstyled>

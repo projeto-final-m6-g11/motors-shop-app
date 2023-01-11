@@ -16,21 +16,14 @@ import {
   TitleP,
 } from "./styles";
 
-interface IProps {
-  handleOpen: Function;
-}
 
-const FormEdit = ({ handleOpen }: IProps) => {
+
+const FormEdit = () => {
   return (
     <FormPattern>
       <HeaderForm>
         <TitleForm>Editar anúncio</TitleForm>{" "}
-        <ButtonClosed
-          onClick={(e) => {
-            handleOpen(e);
-          }}
-        >
-          X
+        <ButtonClosed>X
         </ButtonClosed>
       </HeaderForm>
 
