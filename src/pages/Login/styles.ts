@@ -84,8 +84,9 @@ export const FormStyled = styled.form`
 
 export const Container = styled.div`
   width: 100vw;
-  /* height: 100%; */
   display: flex;
   justify-content: center;
   background-color: var(--grey8);
 `;
+
+

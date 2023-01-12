@@ -56,6 +56,8 @@ const FormEdit = ({vehicle}:IVehicleEdit) => {
 
   const [ published , setPublished] = useState<boolean>(true);
 
+  const activeImage : any = vehicle.images?.filter((image) => image.type === "COVER");
+
 
 
   const onSubmit = (data: any) => {
@@ -75,7 +77,11 @@ const FormEdit = ({vehicle}:IVehicleEdit) => {
         }
       })
       .then((res) => {
+
         setEdit(false)
+        setTimeout(() => {
+          window.location.reload()          
+        }, 500);
       })
       .catch((err) => {
         console.log(err)
@@ -184,7 +190,7 @@ const FormEdit = ({vehicle}:IVehicleEdit) => {
 
 
       <LabelForm htmlFor="">Imagem da capa</LabelForm>
-      <InputPattern type="text" placeholder="Inserir URL da imagem" defaultValue={''}{...register("coverImage")} />
+      <InputPattern type="text" placeholder="Inserir URL da imagem" defaultValue={activeImage[0].imageUrl}{...register("coverImage")} />
 
       <LabelForm htmlFor="">1° Imagem da galeria</LabelForm>
       <InputPattern type="text" placeholder="Inserir URL da imagem" defaultValue={''}{...register("imageOne")} />
