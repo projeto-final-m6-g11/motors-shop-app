@@ -55,7 +55,7 @@ export const CardsList = () => {
           </Ulstyled>
         </Vitrine>
       )}
-
+      
       {id !== undefined && user.id === id && (
         <Vitrine>
           <h1 id="Carros">Carros</h1>

@@ -134,3 +134,26 @@ export const CardStyled = styled.li`
     margin-left: 10px;
   }
 `;
+export const InputButton = styled.button`
+  padding: 0px 20px;
+  height: 45px;
+  color: var(--grey0);
+  background-color: var(--whiteFixed);
+  border-radius: 4px;
+  border: 1.5px solid var(--grey0);
+  :hover{
+    color: var(--whiteFixed);
+    background-color: var(--grey0);
+
+  }
+
+`;
+export const DivButtons = styled.div`
+  width: 100%;
+  height: 45px;
+  color: var(--grey0);
+  display: flex;
+  gap: 15px;
+
+
+`;

@@ -39,6 +39,7 @@ const CardAnnouncement = () => {
   const ref = useRef<any>(null);
   const { id }: any = useParams();
   const history = useHistory();
+
   useEffect(() => {
     API.get(`/announcements/${id}`)
       .then((resp) => {
@@ -51,19 +52,6 @@ const CardAnnouncement = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      API.get(`/announcements/${id}`).then((resp) => {
-        setAnnouncementDetail(resp.data);
-      });
-    }, 10000);
-
-    return () => {
-      clearInterval(interval);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   const goToUserAnnouncement = () => {
     API.get(`/users/${announcementDetail.user.id}`, {
       headers: {
@@ -72,19 +60,13 @@ const CardAnnouncement = () => {
     })
       .then((res) => {
         setUserProfileView(res.data);
+
         history.push(`/profile/${announcementDetail.user.id}`);
       })
       .catch((err) => console.log(err));
   };
 
   if (announcementDetail.title) {
-    const primeira = announcementDetail.user.name
-      .split(" ")[0][0]
-      .toUpperCase();
-    const segunda =
-      announcementDetail.user.name.split(" ")[1] &&
-      announcementDetail.user.name.split(" ")[1][0].toUpperCase();
-
     return (
       <Box>
         <BoxAnuncio>
@@ -194,7 +176,7 @@ const CardAnnouncement = () => {
             )}
           </ListComments>
         </BoxComments>
-        <CommentAnnouncement id={id} />
+        { token && user && <CommentAnnouncement id={id} /> }
       </Box>
     );
   } else {

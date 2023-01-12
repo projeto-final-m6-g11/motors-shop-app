@@ -41,10 +41,12 @@ export const StyledTextArea = styled.textarea`
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
+  min-height: 100px;
   border: 1.5px solid var(--whiteFixed);
   border-radius: 5px;
 
   ::-webkit-scrollbar {
+    display: none;
     width: 0px;
   }
   :focus {

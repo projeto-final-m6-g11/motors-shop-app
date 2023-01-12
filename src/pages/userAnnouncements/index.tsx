@@ -19,7 +19,9 @@ const Dashboard = () => {
     {token && user.id === id ? 
     <MainDashboard>
     <Header type="owner" />
+      
     <CardFixo type="default" />
+
     <UserInfoDisplay profile user={user} userId={user.id} />
     <DivSpace height="160px" />
     <CardsList />
