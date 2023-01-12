@@ -111,13 +111,18 @@ export const ButtonFooter = styled.button`
   background-color: var(--brand3);
   border-radius: 4px;
   border: 1.5px solid var(--brand3);
-
+  :hover{
+      background-color: var(--brand1);
+    }
   ${(props) =>
     props.color === "color" &&
     css`
       background: var(--grey6);
       color: var(--grey2);
       border: 1.5px solid var(--grey6);
+      :hover{
+      background-color: var(--grey6);
+    }
     
     `}
 `;

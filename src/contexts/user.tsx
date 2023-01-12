@@ -7,6 +7,8 @@ export const UserProvider = ({ children }: any) => {
   const [user, setUser] = useState<User>({});
   const [userProfileView, setUserProfileView] = useState<User>({});
   const [token, setToken] = useState<string>("");
+  const [stateEdit, setEdit]= useState<boolean>(false)
+
 
   return (
     <UserContext.Provider
@@ -16,7 +18,8 @@ export const UserProvider = ({ children }: any) => {
         setToken,
         token,
         userProfileView,
-        setUserProfileView,
+        setUserProfileView,stateEdit,
+        setEdit
       }}
     >
       {children}
