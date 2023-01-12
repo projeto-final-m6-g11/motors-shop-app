@@ -120,8 +120,8 @@ const Header = ({ type }: IHeaderProps) => {
         ) : (
           <section className="container">
             <div className="vehicles">
-              <StyledHeaderButton>Carros</StyledHeaderButton>
-              <StyledHeaderButton>Motos</StyledHeaderButton>
+                <a href="#Carros"><StyledHeaderButton >Carros</StyledHeaderButton></a>
+                <a href="#Motos"><StyledHeaderButton>Motos</StyledHeaderButton></a>
               <StyledHeaderButton>Leilão</StyledHeaderButton>
             </div>
 
