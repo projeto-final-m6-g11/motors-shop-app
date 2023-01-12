@@ -1,5 +1,22 @@
 import styled from "styled-components";
 
+export const Box = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 1rem;
+  border-radius: 4px;
+  width: 90vw;
+  padding: 2rem;
+  background-color: var(--grey10);
+
+  @media (min-width: 810px) {
+    width: 50vw;
+    margin-left: 3rem;
+  }
+`;
+
 interface props {
   color: string;
 }
@@ -8,11 +25,12 @@ export const Container = styled.div`
   width: 100%;
   flex-direction: column;
   gap: 15px;
-  padding: 36px 44px;
+
   .User__data {
     display: flex;
     align-items: center;
   }
+
   .User__data figure {
     display: flex;
     justify-content: center;
@@ -27,37 +45,21 @@ export const Container = styled.div`
     font-size: 14px;
     background-color: var(--${(p: props) => p.color});
   }
+
   .User__data p {
     margin-left: 10px;
   }
 `;
-export const StyledTextArea = styled.textarea`
-  resize: none;
-  outline: none;
-  padding: 10px;
-  border: 0;
-  width: 70%;
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  min-height: 100px;
-  border: 1.5px solid var(--whiteFixed);
-  border-radius: 5px;
 
-  ::-webkit-scrollbar {
-    display: none;
-    width: 0px;
-  }
-  :focus {
-    border: 1.5px solid var(--brand1);
-  }
-`;
 export const ContainerTextArea = styled.div`
   display: flex;
   max-height: 400px;
   align-items: flex-end;
+  justify-content: space-between;
   gap: 10px;
+  border: 1px solid var(--grey7);
+  border-radius: 5px;
+
   button {
     background-color: var(--brand1);
     border: 0px;
@@ -71,6 +73,27 @@ export const ContainerTextArea = styled.div`
     height: 38px;
     border: 1.5px solid var(--brand1);
     border-radius: 4px;
+    margin: 0 8px 8px 0;
+  }
+`;
+
+export const StyledTextArea = styled.textarea`
+  resize: none;
+  outline: none;
+  padding: 10px;
+  border: 0;
+  width: 70%;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  min-height: 100px;
+  background-color: transparent;
+  margin: 5px 0 0 5px;
+
+  ::-webkit-scrollbar {
+    display: none;
+    width: 0px;
   }
 `;
 
