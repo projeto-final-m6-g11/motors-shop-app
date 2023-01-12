@@ -52,7 +52,7 @@ const CommentAnnouncement = ({ id }: Props) => {
           { headers: { Authorization: `Bearer ${token}` } }
         )
           .then((res) => {
-            setComment("")
+            window.location.reload()
             resolve(res);
           })
           .catch((err) => reject(err))
@@ -110,9 +110,7 @@ const CommentAnnouncement = ({ id }: Props) => {
                 name=""
                 id=""
                 placeholder="Carro muito confortável, foi uma ótima experiência de compra..."
-                style={{ height: comment === "" ? "auto" : heightCommentBar }}
                 onChange={(e) => {
-                  setHeightCommentBar(e.target.scrollHeight);
                   setComment(e.target.value);
                 }}
               ></StyledTextArea>
