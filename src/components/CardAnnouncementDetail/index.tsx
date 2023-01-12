@@ -25,6 +25,7 @@ interface IImage {
 }
 
 const CardAnnouncement = () => {
+  const [reloadPage, setReloadPage]= useState(false)
   const [announcementDetail, setAnnouncementDetail] = useState<any>({});
   const {
     setUser,
@@ -51,7 +52,7 @@ const CardAnnouncement = () => {
         console.log(err);
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [reloadPage]);
 
   const goToUserAnnouncement = () => {
     API.get(`/users/${announcementDetail.user.id}`, {
@@ -169,6 +170,8 @@ const CardAnnouncement = () => {
                   publicado={comment.createDate}
                   comentario={comment.text}
                   commentOwner={comment.user.id}
+                  setReloadPage={setReloadPage}
+                  reloadPage={reloadPage}
                 />
               ))
             ) : (
@@ -180,7 +183,8 @@ const CardAnnouncement = () => {
             )}
           </ListComments>
         </BoxComments>
-        { token && user && <CommentAnnouncement id={id} /> }
+        { token && user && <CommentAnnouncement id={id} setReloadPage={setReloadPage}
+                  reloadPage={reloadPage} /> }
       </Box>
     );
   } else {

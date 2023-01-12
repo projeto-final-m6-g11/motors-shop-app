@@ -18,6 +18,8 @@ export const CardComments = ({
   comentario,
   id,
   commentOwner,
+  setReloadPage,
+  reloadPage,
 }: any) => {
   const [disabled, setDisabled] = useState(true);
   const timeago = new TimeAgo("pt");
@@ -43,7 +45,9 @@ export const CardComments = ({
     })
       .then((resp) => {
         toast.success("Atualizado com Sucesso!");
-        window.location.reload();
+        //window.location.reload();
+        setReloadPage(!reloadPage)
+
       })
       .catch((err) => {
         console.log(err);
@@ -58,7 +62,8 @@ export const CardComments = ({
     })
       .then((resp) => {
         toast.success("Excluído com Sucesso!");
-        window.location.reload();
+        //window.location.reload();
+        setReloadPage(!reloadPage)
       })
       .catch((err) => {
         console.log(err);
