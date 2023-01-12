@@ -35,20 +35,19 @@ const Login = () => {
         })
           .then((res) => {
             resolve(res);
-            const decoded: any = jwtDecode(res.data.token)
-            localStorage.setItem("TOKEN_MOTORS_SHOP", res.data.token)
-            const userId = decoded.id
-            setToken(res.data.token)
+            const decoded: any = jwtDecode(res.data.token);
+            localStorage.setItem("TOKEN_MOTORS_SHOP", res.data.token);
+            const userId = decoded.id;
+            setToken(res.data.token);
 
             API.get(`/users/${userId}`, {
               headers: {
-                'Authorization': `Bearer ${res.data.token}`
-              }
-            })
-            .then(res => {
-              setUser(res.data)
-            })
-            return history.push("/")
+                Authorization: `Bearer ${res.data.token}`,
+              },
+            }).then((res) => {
+              setUser(res.data);
+            });
+            return history.push("/");
           })
           .catch((err) => reject(err))
       );
@@ -64,6 +63,7 @@ const Login = () => {
   return (
     <>
       <Header type="anonymous" />
+
       <Container>
         <FormStyled onSubmit={(e) => e.preventDefault()}>
           <h1>Login</h1>
@@ -81,12 +81,16 @@ const Login = () => {
             required
             onChange={(e) => setInputPassword(e.target.value)}
           />
-          <span className="forget__password" onClick={forgotPassword}>Esqueci minha senha</span>
+          <span className="forget__password" onClick={forgotPassword}>
+            Esqueci minha senha
+          </span>
           <button className="enter__login" onClick={sendData}>
             Entrar
           </button>
           <span className="create__account">Ainda não possui conta?</span>
-          <button className="goToRegister" onClick={register}>Cadastrar</button>
+          <button className="goToRegister" onClick={register}>
+            Cadastrar
+          </button>
         </FormStyled>
       </Container>
       <Footer />
