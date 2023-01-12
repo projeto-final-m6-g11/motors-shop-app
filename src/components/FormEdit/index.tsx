@@ -68,8 +68,7 @@ const FormEdit = ({vehicle}:IVehicleEdit) => {
     isSale ? data.announcementType = "SALE" : data.announcementType = "AUCTION"
     isCar ? data.vehicleType = "CAR" : data.vehicleType = "MOTORCYCLE"
 
-    //falta mexer no link 
-    console.log(data)
+     
       API.patch('/announcements/'+vehicle.id, data, {
         headers: {
           "Authorization" : `Bearer ${token}` 
@@ -82,6 +81,19 @@ const FormEdit = ({vehicle}:IVehicleEdit) => {
         console.log(err)
       })
 
+  }
+  const excluidAnnouncement = ()=>{
+    API.delete('/announcements/'+vehicle.id,{
+      headers: {
+        "Authorization" : `Bearer ${token}` 
+      }
+    })
+    .then((res) => {
+      setEdit(false)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
   }
 
   return (
@@ -179,7 +191,7 @@ const FormEdit = ({vehicle}:IVehicleEdit) => {
 
       <ButtonAddImg>Adicionar campo para imagem da galeria</ButtonAddImg>
       <FooterForm>
-        <ButtonFooter type="button" color="color">Excluir anúncio </ButtonFooter>
+        <ButtonFooter type="button" color="color" onClick={()=>excluidAnnouncement()}>Excluir anúncio </ButtonFooter>
         <ButtonFooter type="submit">Salvar alteração</ButtonFooter>
       </FooterForm>
     </FormPattern>
