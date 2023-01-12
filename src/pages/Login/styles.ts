@@ -85,10 +85,14 @@ export const FormStyled = styled.form`
 
 export const Container = styled.main`
   width: 100vw;
+
   min-height: 85vh;
+
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   background-color: var(--grey8);
 `;
+
+
