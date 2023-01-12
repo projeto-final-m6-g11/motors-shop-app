@@ -91,3 +91,17 @@ export const ContainerFastButtons = styled.div`
   padding: 0px;
   gap: 8px;
 `;
+
+export const ContainerButtonLogin = styled.div`
+  display: flex;
+  margin-left: 66px;
+  button {
+    padding: 0px 20px;
+    height: 50px;
+    color: var(--whiteFixed);
+    background-color: var(--brand1);
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+`;

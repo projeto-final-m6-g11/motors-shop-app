@@ -17,6 +17,7 @@ import { useEffect, useState, useContext, useRef } from "react";
 import { useHistory, useParams } from "react-router";
 import CommentAnnouncement from "../ComentAnnouncement";
 import { UserContext } from "../../contexts/user";
+import { NoAnnouncement } from "../NoContent";
 interface IImage {
   id: string;
   imageUrl: string;
@@ -174,15 +175,23 @@ const CardAnnouncement = () => {
         <BoxComments>
           <h2>Comentários</h2>
           <ListComments>
-            {announcementDetail.review.map((comment: any) => (
-              <CardComments
-                iniciais={comment.user.name}
-                nome={comment.user.name}
-                key={comment.id}
-                publicado={comment.createDate}
-                comentario={comment.text}
+            {announcementDetail.review.length > 0 ? (
+              announcementDetail.review.map((comment: any) => (
+                <CardComments
+                  iniciais={comment.user.name}
+                  nome={comment.user.name}
+                  key={comment.id}
+                  publicado={comment.createDate}
+                  comentario={comment.text}
+                />
+              ))
+            ) : (
+              <NoAnnouncement
+                phrase={
+                  "Nenhum comentario no anuncio de(a)" + announcementDetail.user.name
+                }
               />
-            ))}
+            )}
           </ListComments>
         </BoxComments>
         <CommentAnnouncement id={id} />

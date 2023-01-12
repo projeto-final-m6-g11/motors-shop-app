@@ -7,6 +7,7 @@ import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
 import { UserContext } from "../../contexts/user";
 import { useParams } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
+import { NoAnnouncement } from "../NoContent";
 
 export const CardsList = () => {
   const { cars, motocycles } = useContext<any>(AnnouncementsContext);
@@ -24,25 +25,33 @@ export const CardsList = () => {
           <h1>Carros</h1>
 
           <Ulstyled ref={carousel1}>
-            {cars?.map((car: IVehicle, index: number) => (
-              <CardVehicle
-                onHome={true}
-                onOwnProfile={false}
-                key={index}
-                vehicle={car}
-              />
-            ))}
+            {cars.length > 0 ? (
+              cars?.map((car: IVehicle, index: number) => (
+                <CardVehicle
+                  onHome={true}
+                  onOwnProfile={false}
+                  key={index}
+                  vehicle={car}
+                />
+              ))
+            ) : (
+              <NoAnnouncement phrase="Nenhum anúncio de carros" />
+            )}
           </Ulstyled>
           <h1>Motos</h1>
           <Ulstyled ref={carousel2}>
-            {motocycles?.map((motocycle: IVehicle, index: number) => (
-              <CardVehicle
-                onHome={true}
-                onOwnProfile={false}
-                key={index}
-                vehicle={motocycle}
-              />
-            ))}
+            {motocycles.length > 0 ? (
+              motocycles?.map((motocycle: IVehicle, index: number) => (
+                <CardVehicle
+                  onHome={true}
+                  onOwnProfile={false}
+                  key={index}
+                  vehicle={motocycle}
+                />
+              ))
+            ) : (
+              <NoAnnouncement phrase="Nenhum anúncio de motos" />
+            )}
           </Ulstyled>
         </Vitrine>
       )}
@@ -52,63 +61,78 @@ export const CardsList = () => {
           <h1 id="Carros">Carros</h1>
 
           <Ulstyled ref={carousel1}>
-            {user.announcements?.map(
-              (car: IVehicle, index: number) =>
-                car.vehicleType.toUpperCase() === "CAR" && (
-                  <CardVehicle
-                    onHome={false}
-                    onOwnProfile
-                    key={index}
-                    vehicle={car}
-                  />
-                )
+            {user.announcements > 0 ? (
+              user.announcements?.map(
+                (car: IVehicle, index: number) =>
+                  car.vehicleType.toUpperCase() === "CAR" && (
+                    <CardVehicle
+                      onHome={false}
+                      onOwnProfile
+                      key={index}
+                      vehicle={car}
+                    />
+                  )
+              )
+            ) : (
+              <NoAnnouncement phrase="Nenhum anúncio de carros" />
             )}
           </Ulstyled>
           <h1 id="Motos">Motos</h1>
           <Ulstyled ref={carousel2}>
-            {user.announcements?.map(
-              (motocycle: IVehicle, index: number) =>
-                motocycle.vehicleType.toUpperCase() === "MOTORCYCLE" && (
-                  <CardVehicle
-                    onHome={false}
-                    onOwnProfile
-                    key={index}
-                    vehicle={motocycle}
-                  />
-                )
+            {user.announcements > 0 ? (
+              user.announcements?.map(
+                (motocycle: IVehicle, index: number) =>
+                  motocycle.vehicleType.toUpperCase() === "MOTORCYCLE" && (
+                    <CardVehicle
+                      onHome={false}
+                      onOwnProfile
+                      key={index}
+                      vehicle={motocycle}
+                    />
+                  )
+              )
+            ) : (
+              <NoAnnouncement phrase="Nenhum anúncio de motos" />
             )}
           </Ulstyled>
         </Vitrine>
       )}
-      {id !== undefined && id !== user.id &&
-      (
+      {id !== undefined && id !== user.id && (
         <Vitrine>
           <h1 id="Carros">Carros</h1>
           <Ulstyled ref={carousel1}>
-            {userProfileView.announcements?.map(
-              (car: IVehicle, index: number) =>
-                car.vehicleType.toUpperCase() === "CAR" && (
-                  <CardVehicle
-                    onHome={false}
-                    onOwnProfile={false}
-                    key={index}
-                    vehicle={car}
-                  />
-                )
+            {userProfileView.announcements.length > 0 ? (
+              userProfileView.announcements?.map(
+                (car: IVehicle, index: number) =>
+                  car.vehicleType.toUpperCase() === "CAR" && (
+                    <CardVehicle
+                      onHome={false}
+                      onOwnProfile={false}
+                      key={index}
+                      vehicle={car}
+                    />
+                  )
+              )
+            ) : (
+              <NoAnnouncement phrase="Nenhum anúncio de carros" />
             )}
           </Ulstyled>
           <h1 id="Motos">Motos</h1>
           <Ulstyled ref={carousel2}>
-            {userProfileView.announcements?.map(
-              (motocycle: IVehicle, index: number) =>
-                motocycle.vehicleType.toUpperCase() === "MOTORCYCLE" && (
-                  <CardVehicle
-                    onHome={false}
-                    onOwnProfile={false}
-                    key={index}
-                    vehicle={motocycle}
-                  />
-                )
+            {userProfileView.announcements > 0 ? (
+              userProfileView.announcements?.map(
+                (motocycle: IVehicle, index: number) =>
+                  motocycle.vehicleType.toUpperCase() === "MOTORCYCLE" && (
+                    <CardVehicle
+                      onHome={false}
+                      onOwnProfile={false}
+                      key={index}
+                      vehicle={motocycle}
+                    />
+                  )
+              )
+            ) : (
+              <NoAnnouncement phrase="Nenhum anúncio de motos" />
             )}
           </Ulstyled>
         </Vitrine>
