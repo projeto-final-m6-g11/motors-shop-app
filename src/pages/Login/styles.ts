@@ -11,6 +11,7 @@ export const FormStyled = styled.form`
   gap: 0.625rem;
   position: relative;
   margin: 3.125rem 0rem;
+
   h1 {
     font-family: "Lexend";
     font-style: normal;
@@ -82,10 +83,15 @@ export const FormStyled = styled.form`
   }
 `;
 
-export const Container = styled.div`
+export const Container = styled.main`
   width: 100vw;
+
+  min-height: 85vh;
+
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
   background-color: var(--grey8);
 `;
 

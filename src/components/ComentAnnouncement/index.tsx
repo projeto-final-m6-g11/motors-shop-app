@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import API from "../../api";
 import { UserContext } from "../../contexts/user";
 import {
+  Box,
   ContainerTextArea,
   StyledTextArea,
   ContainerFastButtons,
@@ -45,7 +46,11 @@ const CommentAnnouncement = ({ id }: Props) => {
   const sendComment = () => {
     if (comment !== "") {
       const createComment = new Promise((resolve, reject) =>
-        API.post(`/announcements/${id}/comments`, { text: comment }, { headers: { "Authorization": `Bearer ${token}` } })
+        API.post(
+          `/announcements/${id}/comments`,
+          { text: comment },
+          { headers: { Authorization: `Bearer ${token}` } }
+        )
           .then((res) => {
             setComment("")
             resolve(res);
@@ -62,13 +67,17 @@ const CommentAnnouncement = ({ id }: Props) => {
   const sendCommentFastButton = (e: any) => {
     const message = e.target.innerText;
     const createComment = new Promise((resolve, reject) =>
-      API.post(`/announcements/${id}/comments`, {
-        text: message,
-      }, {
-        headers: {
-          "Authorization": `Bearer ${token}`
+      API.post(
+        `/announcements/${id}/comments`,
+        {
+          text: message,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
-      })
+      )
         .then((res) => {
           resolve(res);
         })
@@ -86,38 +95,42 @@ const CommentAnnouncement = ({ id }: Props) => {
   return (
     <>
       {user.name ? (
-        <Container color={arrayOfRandomColors[color]}>
-          <div className="User__data">
-            <figure>
-              {user.name.split(" ")[0][0].toUpperCase()}
-              {user.name.split(" ")[1] &&
-                user.name.split(" ")[1][0].toUpperCase()}
-            </figure>
-            <p>{user.name}</p>
-          </div>
-          <ContainerTextArea>
-            <StyledTextArea
-              name=""
-              id=""
-              placeholder="Carro muito confortável, foi uma ótima experiência de compra..."
-              onChange={(e) => {
-                setComment(e.target.value);
-              }}
-            >{comment}</StyledTextArea>
-            <button onClick={sendComment}>Comentar</button>
-          </ContainerTextArea>
-          <ContainerFastButtons>
-            <FastButton onClick={(e) => sendCommentFastButton(e)}>
-              Gostei muito!
-            </FastButton>
-            <FastButton onClick={(e) => sendCommentFastButton(e)}>
-              Incrível
-            </FastButton>
-            <FastButton onClick={(e) => sendCommentFastButton(e)}>
-              Recomendarei para meus amigos!
-            </FastButton>
-          </ContainerFastButtons>
-        </Container>
+        <Box>
+          <Container color={arrayOfRandomColors[color]}>
+            <div className="User__data">
+              <figure>
+                {user.name.split(" ")[0][0].toUpperCase()}
+                {user.name.split(" ")[1] &&
+                  user.name.split(" ")[1][0].toUpperCase()}
+              </figure>
+              <p>{user.name}</p>
+            </div>
+            <ContainerTextArea>
+              <StyledTextArea
+                name=""
+                id=""
+                placeholder="Carro muito confortável, foi uma ótima experiência de compra..."
+                style={{ height: comment === "" ? "auto" : heightCommentBar }}
+                onChange={(e) => {
+                  setHeightCommentBar(e.target.scrollHeight);
+                  setComment(e.target.value);
+                }}
+              ></StyledTextArea>
+              <button onClick={sendComment}>Comentar</button>
+            </ContainerTextArea>
+            <ContainerFastButtons>
+              <FastButton onClick={(e) => sendCommentFastButton(e)}>
+                Gostei muito!
+              </FastButton>
+              <FastButton onClick={(e) => sendCommentFastButton(e)}>
+                Incrível
+              </FastButton>
+              <FastButton onClick={(e) => sendCommentFastButton(e)}>
+                Recomendarei para meus amigos!
+              </FastButton>
+            </ContainerFastButtons>
+          </Container>
+        </Box>
       ) : (
         <ContainerButtonLogin>
           <button
