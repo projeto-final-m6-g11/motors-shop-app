@@ -171,7 +171,7 @@ const Header = ({ type }: IHeaderProps) => {
                           handleOpen2(e);
                         }}
                       >
-                        <FormEndereco handleOpen={handleOpen2} />
+                        <FormEndereco open={open2} setOpen={setOpen2} />
                       </ModalFundo>
                     ) : (
                       ""
