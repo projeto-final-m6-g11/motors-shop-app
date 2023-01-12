@@ -21,7 +21,7 @@ export const CardsList = () => {
     <>
       {id === undefined && (
         <Vitrine>
-          <h1>Carros</h1>
+          <h1 id="Carros">Carros</h1>
 
           <Ulstyled ref={carousel1}>
             {cars?.map((car: IVehicle, index: number) => (
@@ -33,7 +33,7 @@ export const CardsList = () => {
               />
             ))}
           </Ulstyled>
-          <h1>Motos</h1>
+          <h1 id="Motos">Motos</h1>
           <Ulstyled ref={carousel2}>
             {motocycles?.map((motocycle: IVehicle, index: number) => (
               <CardVehicle
