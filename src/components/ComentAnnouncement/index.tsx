@@ -15,8 +15,10 @@ import {
 
 interface Props {
   id: string;
+  reloadPage: boolean
+  setReloadPage: Function
 }
-const CommentAnnouncement = ({ id }: Props) => {
+const CommentAnnouncement = ({ id, reloadPage, setReloadPage }: Props) => {
   const [comment, setComment] = useState("");
   const [color, setColor] = useState(0);
 
@@ -52,7 +54,8 @@ const CommentAnnouncement = ({ id }: Props) => {
           { headers: { Authorization: `Bearer ${token}` } }
         )
           .then((res) => {
-            window.location.reload()
+            //window.location.reload()
+            setReloadPage(!reloadPage)
             resolve(res);
           })
           .catch((err) => reject(err))
