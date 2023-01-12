@@ -49,6 +49,10 @@ export const CardStyled = styled.li`
     font-size: 0.875rem;
     line-height: 1.5rem;
     line-height: 142%;
+    max-width: 300px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   article div {
     display: flex;
@@ -141,12 +145,10 @@ export const InputButton = styled.button`
   background-color: var(--whiteFixed);
   border-radius: 4px;
   border: 1.5px solid var(--grey0);
-  :hover{
+  :hover {
     color: var(--whiteFixed);
     background-color: var(--grey0);
-
   }
-
 `;
 export const DivButtons = styled.div`
   width: 100%;
@@ -154,6 +156,4 @@ export const DivButtons = styled.div`
   color: var(--grey0);
   display: flex;
   gap: 15px;
-
-
 `;
