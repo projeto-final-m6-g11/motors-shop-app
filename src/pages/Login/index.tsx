@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import API from "../../api";
 import Header from "../../components/header";
 import { FormStyled, Container } from "./styles";
@@ -36,6 +36,7 @@ const Login = () => {
           .then((res) => {
             resolve(res);
             const decoded: any = jwtDecode(res.data.token)
+            localStorage.setItem("TOKEN_MOTORS_SHOP", res.data.token)
             const userId = decoded.id
             setToken(res.data.token)
 
@@ -59,6 +60,7 @@ const Login = () => {
     }
     return toast.warning("Preencha todos os campos corretamente");
   };
+
   return (
     <>
       <Header type="anonymous" />

@@ -6,7 +6,8 @@ export const UserContext = createContext({});
 export const UserProvider = ({ children }: any) => {
   const [user, setUser] = useState<User>({});
   const [userProfileView, setUserProfileView] = useState<User>({});
-  const [token, setToken] = useState<string>("");
+  const [userProfileViewId, setUserProfileViewId] = useState<User>(localStorage.getItem("USER_CONTEXT_PROFILE") || "");
+  const [token, setToken] = useState<string>((localStorage.getItem("TOKEN_MOTORS_SHOP")) || "");
   const [stateEdit, setEdit]= useState<boolean>(false)
 
 
@@ -19,7 +20,9 @@ export const UserProvider = ({ children }: any) => {
         token,
         userProfileView,
         setUserProfileView,stateEdit,
-        setEdit
+        setEdit,
+        userProfileViewId,
+        setUserProfileViewId
       }}
     >
       {children}
