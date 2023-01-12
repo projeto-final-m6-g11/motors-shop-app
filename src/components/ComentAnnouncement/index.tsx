@@ -18,7 +18,6 @@ interface Props {
 const CommentAnnouncement = ({ id }: Props) => {
   const [comment, setComment] = useState("");
   const [color, setColor] = useState(0);
-  const [heightCommentBar, setHeightCommentBar] = useState(0);
 
   const { setUser, setToken, token, user } = useContext<any>(UserContext);
 
@@ -48,6 +47,7 @@ const CommentAnnouncement = ({ id }: Props) => {
       const createComment = new Promise((resolve, reject) =>
         API.post(`/announcements/${id}/comments`, { text: comment }, { headers: { "Authorization": `Bearer ${token}` } })
           .then((res) => {
+            setComment("")
             resolve(res);
           })
           .catch((err) => reject(err))
@@ -100,12 +100,10 @@ const CommentAnnouncement = ({ id }: Props) => {
               name=""
               id=""
               placeholder="Carro muito confortável, foi uma ótima experiência de compra..."
-              style={{ height: comment === "" ? "auto" : heightCommentBar }}
               onChange={(e) => {
-                setHeightCommentBar(e.target.scrollHeight);
                 setComment(e.target.value);
               }}
-            ></StyledTextArea>
+            >{comment}</StyledTextArea>
             <button onClick={sendComment}>Comentar</button>
           </ContainerTextArea>
           <ContainerFastButtons>

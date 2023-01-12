@@ -26,7 +26,11 @@ const Dashboard = () => {
     })
     .catch((err) => {console.log(err)})
 
-    const decoded: any = jwtDecode(token)
+    let tokenExists = false
+
+    token !== "" && (tokenExists = true)
+
+    const decoded:any = tokenExists && (jwtDecode(token))
     
     token !== "" && API.get(`/users/${decoded.id}`).then((res) => {setUser(res.data)}).catch((err) => {console.log(err)})
 
@@ -51,6 +55,16 @@ const Dashboard = () => {
     </MainDashboard>
     }
     {isLoaded && token && user.id !== id &&
+    <MainDashboard>
+    <Header type="owner" />
+    <CardFixo type="default" />
+    <UserInfoDisplay profile user={userProfileView} userId={user.id} />
+    <DivSpace height="160px" />
+    <CardsList />
+    <Footer />
+    </MainDashboard> 
+    }
+    {isLoaded && token === "" &&
     <MainDashboard>
     <Header type="owner" />
     <CardFixo type="default" />
