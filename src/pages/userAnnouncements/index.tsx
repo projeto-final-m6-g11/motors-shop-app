@@ -9,25 +9,48 @@ import { UserContext } from "../../contexts/user";
 import { useParams } from "react-router-dom";
 import API from "../../api";
 import { DivSpace } from "../../styles";
+import jwtDecode from "jwt-decode";
 
 const Dashboard = () => {
-  const { setUser, setToken, token, user, userProfileView, setUserProfileView } = useContext<any>(UserContext);
+  const [isLoaded, setIsLoaded] = useState(false)
+
+  const { setUser, setToken, token, user, userProfileView, setUserProfileView, userProfileViewId, } = useContext<any>(UserContext);
+
+  useEffect(() => {
+
+    localStorage.setItem("USER_CONTEXT_PROFILE", userProfileViewId)
+
+    API.get(`/users/${userProfileViewId}`)
+    .then((res) => {
+      setUserProfileView(res.data)
+    })
+    .catch((err) => {console.log(err)})
+
+    const decoded: any = jwtDecode(token)
+    
+    token !== "" && API.get(`/users/${decoded.id}`).then((res) => {setUser(res.data)}).catch((err) => {console.log(err)})
+
+  }, [])
 
   const { id } = useParams<any>()
+
+  setTimeout(() => {
+    setIsLoaded(true)
+  }, 200)
+
   return (
     <>
-    {token && user.id === id ? 
+    {isLoaded && token && user.id === id &&
     <MainDashboard>
     <Header type="owner" />
-      
     <CardFixo type="default" />
-
     <UserInfoDisplay profile user={user} userId={user.id} />
     <DivSpace height="160px" />
     <CardsList />
     <Footer />
-    </MainDashboard> 
-    :
+    </MainDashboard>
+    }
+    {isLoaded && token && user.id !== id &&
     <MainDashboard>
     <Header type="owner" />
     <CardFixo type="default" />

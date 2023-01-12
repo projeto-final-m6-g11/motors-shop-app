@@ -61,8 +61,8 @@ export const CardsList = () => {
           <h1 id="Carros">Carros</h1>
 
           <Ulstyled ref={carousel1}>
-            {user.announcements > 0 ? (
-              user.announcements?.map(
+            {user?.announcements?.length > 0 ? (
+              user.announcements.map(
                 (car: IVehicle, index: number) =>
                   car.vehicleType.toUpperCase() === "CAR" && (
                     <CardVehicle
@@ -79,7 +79,7 @@ export const CardsList = () => {
           </Ulstyled>
           <h1 id="Motos">Motos</h1>
           <Ulstyled ref={carousel2}>
-            {user.announcements > 0 ? (
+            {user.announcements?.length > 0 ? (
               user.announcements?.map(
                 (motocycle: IVehicle, index: number) =>
                   motocycle.vehicleType.toUpperCase() === "MOTORCYCLE" && (
@@ -119,7 +119,7 @@ export const CardsList = () => {
           </Ulstyled>
           <h1 id="Motos">Motos</h1>
           <Ulstyled ref={carousel2}>
-            {userProfileView.announcements > 0 ? (
+            {userProfileView.announcements?.length > 0 ? (
               userProfileView.announcements?.map(
                 (motocycle: IVehicle, index: number) =>
                   motocycle.vehicleType.toUpperCase() === "MOTORCYCLE" && (

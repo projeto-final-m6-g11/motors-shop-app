@@ -117,7 +117,7 @@ const Register = () => {
           />
           <LabelForm htmlFor="">Data de Nascimento</LabelForm>
           <InputPattern
-            type="text"
+            type="date"
             placeholder="00/00/0000"
             {...register("birthdate", { required: true })}
           />
@@ -218,12 +218,12 @@ const Register = () => {
           </div>
           <LabelForm htmlFor="">Senha</LabelForm>
           <InputPattern
-            type="text"
+            type="password"
             placeholder="Digitar Senha"
             {...register("password", { required: true })}
           />
           <LabelForm htmlFor="">Confirmar Senha</LabelForm>
-          <InputPattern type="text" placeholder="Digitar Senha" />
+          <InputPattern type="password" placeholder="Digitar Senha" />
           <CreateAccountButton type="submit">
             Finalizar cadastro
           </CreateAccountButton>

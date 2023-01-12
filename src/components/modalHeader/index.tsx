@@ -49,6 +49,7 @@ const ModalHeader = ({ type }: IModalProps) => {
   const handleLogout = () => {
     setUser({})
     setToken('')
+    localStorage.clear()
     historico.push('/')
   }
 

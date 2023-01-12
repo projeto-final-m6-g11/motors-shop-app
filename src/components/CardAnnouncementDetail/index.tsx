@@ -33,6 +33,7 @@ const CardAnnouncement = () => {
     user,
     userProfileView,
     setUserProfileView,
+    setUserProfileViewId
   } = useContext<any>(UserContext);
   // const { title, year, km, price, description, vehicle_type, img }: any =
   //   announcementDetail;
@@ -59,7 +60,8 @@ const CardAnnouncement = () => {
       },
     })
       .then((res) => {
-        setUserProfileView(res.data);
+        setUserProfileViewId(res.data.id);
+        setUserProfileView(res.data)
 
         history.push(`/profile/${announcementDetail.user.id}`);
       })

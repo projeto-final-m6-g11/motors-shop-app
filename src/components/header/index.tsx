@@ -59,6 +59,7 @@ const Header = ({ type }: IHeaderProps) => {
   const handleLogout = () => {
     setUser({})
     setToken('')
+    localStorage.clear()
     historico.push('/')
   }
 
