@@ -19,13 +19,14 @@ import {
 } from "./styles";
 
 interface IProps {
-  handleOpen: Function;
+  open: boolean
+  setOpen: Function
 }
 interface contextUser {
   user: User;
   token: string;
 }
-const FormEndereco = ({ handleOpen }: IProps) => {
+const FormEndereco = ({ open, setOpen }: IProps) => {
   const { user, token }: contextUser = useContext<any>(UserContext);
 
   const [cep, setCep] = useState(user.address.cep);
@@ -78,7 +79,7 @@ const FormEndereco = ({ handleOpen }: IProps) => {
         <TitleForm>Editar Endereço</TitleForm>
         <ButtonClosed
           onClick={(e) => {
-            handleOpen(e);
+            setOpen(!open)
           }}
         >
           X
@@ -136,7 +137,7 @@ const FormEndereco = ({ handleOpen }: IProps) => {
       </BoxAddress2>
 
       <FooterForm>
-        <ButtonFooter color="color">Cancelar</ButtonFooter>
+        <ButtonFooter color="color" onClick={() => {setOpen(!open)}}>Cancelar</ButtonFooter>
         <ButtonFooter onClick={sendDataPatchAddress}>
           Salvar Alterações
         </ButtonFooter>

@@ -19,7 +19,6 @@ interface Props {
 const CommentAnnouncement = ({ id }: Props) => {
   const [comment, setComment] = useState("");
   const [color, setColor] = useState(0);
-  const [heightCommentBar, setHeightCommentBar] = useState(0);
 
   const { setUser, setToken, token, user } = useContext<any>(UserContext);
 
@@ -53,6 +52,7 @@ const CommentAnnouncement = ({ id }: Props) => {
           { headers: { Authorization: `Bearer ${token}` } }
         )
           .then((res) => {
+            setComment("")
             resolve(res);
           })
           .catch((err) => reject(err))

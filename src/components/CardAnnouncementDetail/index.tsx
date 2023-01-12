@@ -164,9 +164,11 @@ const CardAnnouncement = () => {
                 <CardComments
                   iniciais={comment.user.name}
                   nome={comment.user.name}
+                  id={comment.id}
                   key={comment.id}
                   publicado={comment.createDate}
                   comentario={comment.text}
+                  commentOwner={comment.user.id}
                 />
               ))
             ) : (

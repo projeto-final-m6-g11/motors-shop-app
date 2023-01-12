@@ -13,8 +13,11 @@ const AnnouncementsDetail = () => {
   const { setUser, setToken, token, user } = useContext<any>(UserContext);
 
   useEffect(() => {
+    let tokenExists = false
 
-    const decoded: any = jwtDecode(token)
+    token !== "" && (tokenExists = true)
+
+    const decoded:any = tokenExists && (jwtDecode(token))
     
     token !== "" && API.get(`/users/${decoded.id}`).then((res) => {setUser(res.data)}).catch((err) => {console.log(err)})
 
