@@ -142,7 +142,7 @@ export const CardVehicle = ({
            stateEdit ?
            (
             <ModalFundo>
-              <FormEdit/>
+              <FormEdit vehicle={vehicle}/>
             </ModalFundo>
             ) 
             :

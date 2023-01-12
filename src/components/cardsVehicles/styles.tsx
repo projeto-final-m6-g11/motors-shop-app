@@ -141,6 +141,11 @@ export const InputButton = styled.button`
   background-color: var(--whiteFixed);
   border-radius: 4px;
   border: 1.5px solid var(--grey0);
+  :hover{
+    color: var(--whiteFixed);
+    background-color: var(--grey0);
+
+  }
 
 `;
 export const DivButtons = styled.div`
@@ -149,5 +154,6 @@ export const DivButtons = styled.div`
   color: var(--grey0);
   display: flex;
   gap: 15px;
+
 
 `;
