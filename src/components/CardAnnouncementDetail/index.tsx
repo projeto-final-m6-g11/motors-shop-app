@@ -89,7 +89,10 @@ const CardAnnouncement = () => {
                   <p>{announcementDetail.year}</p>
                   <p>{announcementDetail.km}km</p>
                 </div>
-                <span>R$ {announcementDetail.price}</span>
+                <span>R$ {announcementDetail.price.toLocaleString("pt-BR", {
+                    style: "currency",
+                    currency: "BRL",
+                })}</span>
               </div>
               <Button>Comprar</Button>
             </BoxInfo>

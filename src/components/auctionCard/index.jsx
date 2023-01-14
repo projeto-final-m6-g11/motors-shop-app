@@ -4,7 +4,7 @@ const AuctionCard = () => {
         <>
         <span>Serei um card de leilão.</span>
         </>
-    )    
+    )
 }
 
 export default AuctionCard
