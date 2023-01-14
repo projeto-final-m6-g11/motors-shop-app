@@ -2,7 +2,7 @@
 const AuctionCard = () => {
     return (
         <>
-        <span>Serei um card de leilão.</span>
+        <span>Serei um card de leilão!</span>
         </>
     )
 }
