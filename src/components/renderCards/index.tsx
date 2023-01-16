@@ -10,7 +10,7 @@ import userEvent from "@testing-library/user-event";
 import { NoAnnouncement } from "../NoContent";
 
 export const CardsList = () => {
-  const { cars, motocycles } = useContext<any>(AnnouncementsContext);
+  const { cars, motocycles, auctions } = useContext<any>(AnnouncementsContext);
   const { setUser, setToken, token, user, userProfileView } =
     useContext<any>(UserContext);
   const carousel1 = useRef<any>(null);
@@ -22,6 +22,22 @@ export const CardsList = () => {
     <>
       {id === undefined && (
         <Vitrine>
+          <h1 id='auctions'>Leilão</h1>
+          <Ulstyled ref={carousel1}>
+            {auctions.length > 0 ? (
+                auctions?.map((car: IVehicle, index: number) => (
+                  <CardVehicle
+                    onHome={true}
+                    onOwnProfile={false}
+                    key={index}
+                    vehicle={car}
+                  />
+                ))
+              ) : (
+                <NoAnnouncement phrase="Nenhum leilão ocorrendo no momento" />
+            )}
+          </Ulstyled>
+
           <h1 id="Carros">Carros</h1>
 
           <Ulstyled ref={carousel1}>
@@ -58,13 +74,29 @@ export const CardsList = () => {
       
       {id !== undefined && user.id === id && (
         <Vitrine>
-          <h1 id="Carros">Carros</h1>
+          <h1 id='auctions'>Leilão</h1>
+          <Ulstyled ref={carousel1}>
+            {user.announcements.length > 0 ? (
+                user.announcements?.map((car: IVehicle, index: number) => 
+                  car.announcementType === 'AUCTION' &&
+                  <CardVehicle
+                    onHome={false}
+                    onOwnProfile={true}
+                    key={index}
+                    vehicle={car}
+                  />
+                )
+              ) : (
+                <NoAnnouncement phrase="Nenhum leilão ocorrendo no momento" />
+            )}
+          </Ulstyled>
 
+          <h1 id="Carros">Carros</h1>
           <Ulstyled ref={carousel1}>
             {user?.announcements?.length > 0 ? (
               user.announcements.map(
                 (car: IVehicle, index: number) =>
-                  car.vehicleType.toUpperCase() === "CAR" && (
+                  car.vehicleType.toUpperCase() === "CAR" && car.announcementType === "SALE" && (
                     <CardVehicle
                       onHome={false}
                       onOwnProfile
@@ -82,7 +114,7 @@ export const CardsList = () => {
             {user.announcements?.length > 0 ? (
               user.announcements?.map(
                 (motocycle: IVehicle, index: number) =>
-                  motocycle.vehicleType.toUpperCase() === "MOTORCYCLE" && (
+                  motocycle.vehicleType.toUpperCase() === "MOTORCYCLE" && motocycle.announcementType === "SALE" && (
                     <CardVehicle
                       onHome={false}
                       onOwnProfile
@@ -99,12 +131,29 @@ export const CardsList = () => {
       )}
       {id !== undefined && id !== user.id && (
         <Vitrine>
+          <h1 id='auctions'>Leilão</h1>
+          <Ulstyled ref={carousel1}>
+            {user.announcements.length > 0 ? (
+                user.announcements?.map((car: IVehicle, index: number) => 
+                  car.announcementType === 'AUCTION' &&
+                  <CardVehicle
+                    onHome={false}
+                    onOwnProfile={false}
+                    key={index}
+                    vehicle={car}
+                  />
+                )
+              ) : (
+                <NoAnnouncement phrase="Nenhum leilão ocorrendo no momento" />
+            )}
+          </Ulstyled>
+
           <h1 id="Carros">Carros</h1>
           <Ulstyled ref={carousel1}>
             {userProfileView.announcements.length > 0 ? (
               userProfileView.announcements?.map(
                 (car: IVehicle, index: number) =>
-                  car.vehicleType.toUpperCase() === "CAR" && (
+                  car.vehicleType.toUpperCase() === "CAR" && car.announcementType === "SALE" && (
                     <CardVehicle
                       onHome={false}
                       onOwnProfile={false}
@@ -122,7 +171,7 @@ export const CardsList = () => {
             {userProfileView.announcements?.length > 0 ? (
               userProfileView.announcements?.map(
                 (motocycle: IVehicle, index: number) =>
-                  motocycle.vehicleType.toUpperCase() === "MOTORCYCLE" && (
+                  motocycle.vehicleType.toUpperCase() === "MOTORCYCLE" && motocycle.announcementType === "SALE" && (
                     <CardVehicle
                       onHome={false}
                       onOwnProfile={false}
