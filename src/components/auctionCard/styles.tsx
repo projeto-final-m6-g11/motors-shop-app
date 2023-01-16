@@ -76,6 +76,16 @@ color: var(--whiteFixed);
     font-weight: 600;
   }
 
+  @media (max-width: 700px) {
+    min-width: 328px;
+    height: 485px;
+
+    .vehicle__important_info {
+        flex-direction: column;
+        gap: 5px;
+    }
+}
+
 `
 
 interface Props {
@@ -139,6 +149,11 @@ color: var(--whiteFixed);
 
 border-bottom-left-radius: 4px;
 border-bottom-right-radius: 4px;
+
+span {
+    font-weight: 600;
+    font-size: 16px;
+}
 
 :hover {
     cursor: pointer;

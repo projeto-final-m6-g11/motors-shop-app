@@ -1,6 +1,7 @@
 import { IVehicle } from "../../contexts/announcements"
 import { AuctionCardButton, AuctionCardDiv, AuctionTimer, BackgroundDivImage } from "./styles"
 import { AiOutlineClockCircle } from 'react-icons/ai'
+import { BsArrowRight } from 'react-icons/bs'
 
 interface AuctionCardProps {
     vehicle: IVehicle,
@@ -56,7 +57,7 @@ const AuctionCard = ({ vehicle, onHome, onOwnProfile }: AuctionCardProps) => {
                 </BackgroundDivImage>
             <AuctionCardButton>
                 <span>Acessar página do leilão</span>
-                <span>Ícone de flecha</span>
+                <BsArrowRight size={25}></BsArrowRight>
             </AuctionCardButton>
         </AuctionCardDiv>
         </>
