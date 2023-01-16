@@ -59,17 +59,19 @@ export const AnnouncementsProvider = ({ children }: any) => {
         setMotorcycles(
           res.data.filter(
             (motocycle: IVehicle) =>
-              motocycle.vehicleType.toLocaleLowerCase() !== "car" && motocycle.announcementType === "SALE"
+              motocycle.vehicleType.toLocaleLowerCase() !== "car" 
+              && motocycle.announcementType === "SALE" && motocycle.published === true
           )
         );
         setCars(
           res.data.filter(
-            (car: IVehicle) => car.vehicleType.toLocaleLowerCase() === "car" && car.announcementType === "SALE"
+            (car: IVehicle) => car.vehicleType.toLocaleLowerCase() === "car"
+            && car.announcementType === "SALE" && car.published === true
           )
         );
         setAuctions(
           res.data.filter(
-            (car: IVehicle) => car.announcementType === 'AUCTION' 
+            (car: IVehicle) => car.announcementType === 'AUCTION' && car.published === true
           )
         )
       })
