@@ -76,7 +76,7 @@ export const CardsList = () => {
         <Vitrine>
           <h1 id='auctions'>Leilão</h1>
           <Ulstyled ref={carousel1}>
-            {user.announcements.length > 0 ? (
+            {user?.announcements?.length > 0 ? (
                 user.announcements?.map((car: IVehicle, index: number) => 
                   car.announcementType === 'AUCTION' &&
                   <CardVehicle
@@ -111,7 +111,7 @@ export const CardsList = () => {
           </Ulstyled>
           <h1 id="Motos">Motos</h1>
           <Ulstyled ref={carousel2}>
-            {user.announcements?.length > 0 ? (
+            {user?.announcements?.length > 0 ? (
               user.announcements?.map(
                 (motocycle: IVehicle, index: number) =>
                   motocycle.vehicleType.toUpperCase() === "MOTORCYCLE" && motocycle.announcementType === "SALE" && (
@@ -133,9 +133,10 @@ export const CardsList = () => {
         <Vitrine>
           <h1 id='auctions'>Leilão</h1>
           <Ulstyled ref={carousel1}>
-            {user.announcements.length > 0 ? (
-                user.announcements?.map((car: IVehicle, index: number) => 
+            {userProfileView?.announcements?.length > 0 ? (
+                userProfileView.announcements?.map((car: IVehicle, index: number) => 
                   car.announcementType === 'AUCTION' &&
+                  car.published &&
                   <CardVehicle
                     onHome={false}
                     onOwnProfile={false}
@@ -150,10 +151,11 @@ export const CardsList = () => {
 
           <h1 id="Carros">Carros</h1>
           <Ulstyled ref={carousel1}>
-            {userProfileView.announcements.length > 0 ? (
+            {userProfileView?.announcements?.length > 0 ? (
               userProfileView.announcements?.map(
                 (car: IVehicle, index: number) =>
-                  car.vehicleType.toUpperCase() === "CAR" && car.announcementType === "SALE" && (
+                  car.vehicleType.toUpperCase() === "CAR" && car.announcementType === "SALE" &&
+                  car.published && (
                     <CardVehicle
                       onHome={false}
                       onOwnProfile={false}
@@ -168,10 +170,11 @@ export const CardsList = () => {
           </Ulstyled>
           <h1 id="Motos">Motos</h1>
           <Ulstyled ref={carousel2}>
-            {userProfileView.announcements?.length > 0 ? (
+            {userProfileView?.announcements?.length > 0 ? (
               userProfileView.announcements?.map(
                 (motocycle: IVehicle, index: number) =>
-                  motocycle.vehicleType.toUpperCase() === "MOTORCYCLE" && motocycle.announcementType === "SALE" && (
+                  motocycle.vehicleType.toUpperCase() === "MOTORCYCLE" && motocycle.announcementType === "SALE" &&
+                  motocycle.published && (
                     <CardVehicle
                       onHome={false}
                       onOwnProfile={false}
