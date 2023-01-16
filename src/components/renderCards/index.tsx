@@ -8,6 +8,7 @@ import { UserContext } from "../../contexts/user";
 import { useParams } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
 import { NoAnnouncement } from "../NoContent";
+import AuctionCard from "../auctionCard";
 
 export const CardsList = () => {
   const { cars, motocycles, auctions } = useContext<any>(AnnouncementsContext);
@@ -26,7 +27,7 @@ export const CardsList = () => {
           <Ulstyled ref={carousel1}>
             {auctions.length > 0 ? (
                 auctions?.map((car: IVehicle, index: number) => (
-                  <CardVehicle
+                  <AuctionCard
                     onHome={true}
                     onOwnProfile={false}
                     key={index}
