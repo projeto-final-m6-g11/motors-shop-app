@@ -45,39 +45,40 @@ export interface Review {
   text: string;
   createDate: string;
 }
-// interface Reviews {
-//   text: string;
-//   user: User;
-//   announcement: IVehicle;
-//   id: string;
-//   createDate: string;
-// }
 
 export const AnnouncementsContext = createContext({});
 
 export const AnnouncementsProvider = ({ children }: any) => {
   const [cars, setCars] = useState<IVehicle[]>([]);
-  const [motocycles, setMotocycles] = useState<IVehicle[]>([]);
+  const [motocycles, setMotorcycles] = useState<IVehicle[]>([]);
+  const [auctions, setAuctions] = useState<IVehicle[]>([])
 
   useEffect(() => {
     API.get("/announcements")
       .then((res) => {
-        setMotocycles(
+        setMotorcycles(
           res.data.filter(
             (motocycle: IVehicle) =>
-              motocycle.vehicleType.toLocaleLowerCase() !== "car"
+              motocycle.vehicleType.toLocaleLowerCase() !== "car" 
+              && motocycle.announcementType === "SALE" && motocycle.published === true
           )
         );
         setCars(
           res.data.filter(
             (car: IVehicle) => car.vehicleType.toLocaleLowerCase() === "car"
+            && car.announcementType === "SALE" && car.published === true
           )
         );
+        setAuctions(
+          res.data.filter(
+            (car: IVehicle) => car.announcementType === 'AUCTION' && car.published === true
+          )
+        )
       })
       .catch((err) => console.log(err));
   }, []);
   return (
-    <AnnouncementsContext.Provider value={{ cars, motocycles }}>
+    <AnnouncementsContext.Provider value={{ cars, motocycles, auctions }}>
       {children}
     </AnnouncementsContext.Provider>
   );
