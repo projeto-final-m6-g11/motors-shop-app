@@ -45,7 +45,7 @@ export const LabelForm = styled.label`
 
 export const InputPattern = styled.input`
   width: 100%;
-  height: 40px;
+  height: 48px !important;
   border-radius: 4px;
   border: 1.5px solid var(--grey5);
   padding: 10px;
@@ -54,19 +54,29 @@ export const InputPattern = styled.input`
   margin-top: 5px;
 `;
 
-export const InputDescription = styled.textarea`
-  width: 100%;
-  height: 100px;
+export const InputDate = styled.input`
+  display: flex;
   border-radius: 4px;
   border: 1.5px solid var(--grey5);
   padding: 10px;
-  font-size: 16px;
+  font-size: 14px;
+  color: var(--grey3);
+  text-align: center;
+  height: 42px !important;
+  margin-top: 5px;
+
+`
+
+export const InputDescription = styled.textarea`
+  border-radius: 4px;
+  border: 1.5px solid var(--grey5);
+  padding: 10px;
   color: var(--grey3);
   margin-top: 5px;
+  margin-bottom: 10px;
 `;
 
 export const FooterForm = styled.div`
-  margin-top: 55px;
   display: flex;
   display: flex;
   justify-content: right;
