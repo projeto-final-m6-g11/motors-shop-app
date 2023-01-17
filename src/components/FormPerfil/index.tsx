@@ -95,8 +95,6 @@ const FormPerfil = ({ open, setOpen }: IProps) => {
 
       <LabelForm htmlFor="">Descrição</LabelForm>
       <InputDescription
-        rows={5}
-        cols={5}
         {...register("bio", { required: true, value: user.bio})}
       />
       
