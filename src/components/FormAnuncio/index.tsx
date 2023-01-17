@@ -4,6 +4,9 @@ import API from "../../api";
 import { UserContext } from "../../contexts/user";
 import { BuyerBtn } from "../../pages/Register/styles";
 import { FormPattern } from "../FormPadrão/styles";
+import GlobalModalSuccess from "../GlobalModalSuccess";
+import { ModalFundo } from "../ModalFundo/styles";
+import ModalSuccessRegister from "../ModalSuccessRegister";
 import {
   TitleForm,
   ButtonAddImg,
@@ -32,6 +35,7 @@ const FormAnuncio = ({ open, setOpen }: IProps) => {
 
   const [isSale, setIsSale] = useState(true)
   const [isCar, setIsCar] = useState(true)
+  const [openSuccess, setOpenSuccess] = useState(false)
 
   const onSubmit = (data: any) => {
     data.published = true
@@ -49,6 +53,7 @@ const FormAnuncio = ({ open, setOpen }: IProps) => {
       }
     })
     .then((res) => {
+      setOpenSuccess(true)
       setOpen(!open)
     })
     .catch((err) => {
@@ -174,6 +179,8 @@ const FormAnuncio = ({ open, setOpen }: IProps) => {
         <ButtonFooter type='button' onClick={() => {setOpen(!open)}} color="color">Cancelar </ButtonFooter>
         <ButtonFooter type="submit">Criar anúncio</ButtonFooter>
       </div>
+      {openSuccess &&
+      <GlobalModalSuccess context="CREATE_ANNOUNCEMENT" setOpenSuccess={setOpenSuccess} openSuccess={openSuccess} />}
     </FormPattern>
   );
 };

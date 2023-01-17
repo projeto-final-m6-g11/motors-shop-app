@@ -89,7 +89,12 @@ export const UserInfoDiv = styled.div`
         align-items: center;
         width: 152px;
         height: 48px;
-        transition: 0.4ms;
+        transition: 0.6ms;
+
+        :hover {
+            color: var(--whiteFixed);
+            background-color: #4529E6;
+        }
     }
 
     @media (max-width: 395px) {

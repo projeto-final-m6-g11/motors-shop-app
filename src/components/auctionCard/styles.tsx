@@ -24,7 +24,6 @@ color: var(--whiteFixed);
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 10px;
 }
 
 .km__year__car span {

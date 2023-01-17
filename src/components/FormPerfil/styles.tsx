@@ -67,8 +67,9 @@ export const InputDate = styled.input`
 
 `
 
-export const InputDescription = styled.textarea`
+export const InputDescription = styled.input`
   border-radius: 4px;
+  height: 142px;
   border: 1.5px solid var(--grey5);
   padding: 10px;
   color: var(--grey3);
