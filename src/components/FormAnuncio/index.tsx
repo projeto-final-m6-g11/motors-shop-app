@@ -22,9 +22,11 @@ import {
 interface IProps {
   open: boolean
   setOpen: Function
+  openSuccess: boolean
+  setOpenSuccess: Function
 }
 
-const FormAnuncio = ({ open, setOpen }: IProps) => {
+const FormAnuncio = ({ open, setOpen, setOpenSuccess, openSuccess }: IProps) => {
   const {
     register,
     handleSubmit,
@@ -35,7 +37,6 @@ const FormAnuncio = ({ open, setOpen }: IProps) => {
 
   const [isSale, setIsSale] = useState(true)
   const [isCar, setIsCar] = useState(true)
-  const [openSuccess, setOpenSuccess] = useState(false)
 
   const onSubmit = (data: any) => {
     data.published = true
@@ -53,7 +54,7 @@ const FormAnuncio = ({ open, setOpen }: IProps) => {
       }
     })
     .then((res) => {
-      setOpenSuccess(true)
+      setOpenSuccess(!openSuccess)
       setOpen(!open)
     })
     .catch((err) => {
@@ -179,8 +180,6 @@ const FormAnuncio = ({ open, setOpen }: IProps) => {
         <ButtonFooter type='button' onClick={() => {setOpen(!open)}} color="color">Cancelar </ButtonFooter>
         <ButtonFooter type="submit">Criar anúncio</ButtonFooter>
       </div>
-      {openSuccess &&
-      <GlobalModalSuccess context="CREATE_ANNOUNCEMENT" setOpenSuccess={setOpenSuccess} openSuccess={openSuccess} />}
     </FormPattern>
   );
 };

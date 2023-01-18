@@ -89,7 +89,7 @@ export const UserInfoDiv = styled.div`
         align-items: center;
         width: 152px;
         height: 48px;
-        transition: 0.6ms;
+        transition: 0.4s;
 
         :hover {
             color: var(--whiteFixed);

@@ -97,6 +97,12 @@ export const ButtonFooter = styled.button`
   background-color: var(--brand2) !important;
   border-radius: 4px;
   border: 1.5px solid var(--brand2) !important;
+  transition: 0.4s !important;
+
+  :hover {
+    background-color: var(--whiteFixed) !important;
+    color: var(--brand2) !important;
+  }
 
   ${(props) =>
     props.color === "color" &&
@@ -105,5 +111,11 @@ export const ButtonFooter = styled.button`
       color: var(--grey2) !important;
       border: 1.5px solid var(--grey6) !important;
       width: 125px;
+
+      :hover {
+        background-color: var(--grey0) !important;
+        border: 1.5px solid var(--grey0) !important;
+        color: var(--whiteFixed) !important;
+      }
     `}
 `;

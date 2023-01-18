@@ -46,6 +46,13 @@ export const FormStyled = styled.form`
     font-size: 1rem;
     height: 3rem;
     border: 0.0938rem solid var(--grey4);
+    transition: 0.4s;
+
+    :hover {
+      border: 0.0938rem solid var(--grey0);
+      color: var(--whiteFixed);
+      background-color: var(--grey0);
+    }
   }
   .forget__password {
     /* margin-top: 5px; */
@@ -57,6 +64,11 @@ export const FormStyled = styled.form`
     font-size: 0.875rem;
     line-height: 1.5rem;
     color: var(--grey2);
+    transition: 0.4s;
+
+    :hover {
+      color: var(--grey0);
+    }
   }
   .create__account {
     display: flex;
@@ -70,6 +82,12 @@ export const FormStyled = styled.form`
   .enter__login {
     background-color: var(--brand1);
     color: var(--whiteFixed);
+
+    :hover {
+      border: 0.0938rem solid var(--brand1);
+      color: var(--brand1);
+      background-color: var(--whiteFixed);
+    }
   }
 
   .goToRegister {

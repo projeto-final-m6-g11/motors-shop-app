@@ -75,14 +75,20 @@ export const ContainerButtons = styled.article`
   width: 300px;
   gap: 1rem;
 
-
   button {
     color: var(--grey10);
     border: solid 1px var(--grey10);
     border-radius: 5px;
     padding: 8px;
     font-weight: 600;
-    background-color: transparent;
+    background-color: var(--brand2);
+    transition: 0.4s;
+
+    :hover {
+      background-color: var(--whiteFixed);
+      color: var(--brand2);
+      transition: 0.4s;
+    }
 
     @media (max-width: 810px) {
       width: 100%;
