@@ -144,7 +144,8 @@ export const InputButton = styled.button`
   color: var(--grey0);
   background-color: var(--whiteFixed);
   border-radius: 4px;
-  border: 1.5px solid var(--grey0);
+  border: 1.5px solid var(--grey2);
+  transition: 0.4s;
   :hover {
     color: var(--whiteFixed);
     background-color: var(--grey0);

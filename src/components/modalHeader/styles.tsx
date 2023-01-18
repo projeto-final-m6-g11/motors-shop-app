@@ -30,10 +30,10 @@ export const Modal = styled.div`
       width: 90%;
       text-align: left;
       margin: 5px auto;
-      border: none;
       font-size: large;
       background-color: var(--whiteFixed);
     }
+
     a{
       width: 90%;
       text-align: left;
@@ -42,6 +42,7 @@ export const Modal = styled.div`
       font-size: large;
       background-color: var(--whiteFixed);
     }
+
     .divisionNavModal {
       border-top: 2px solid var(--grey4);
       height: 13rem;

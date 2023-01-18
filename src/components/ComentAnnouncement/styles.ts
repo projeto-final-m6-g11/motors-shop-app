@@ -74,6 +74,12 @@ export const ContainerTextArea = styled.div`
     border: 1.5px solid var(--brand1);
     border-radius: 4px;
     margin: 0 8px 8px 0;
+    transition: 0.4s;
+
+    :hover {
+      background-color: var(--whiteFixed);
+      color: var(--brand1);
+    }
   }
 `;
 

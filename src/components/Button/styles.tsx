@@ -6,20 +6,18 @@ export const StyledHeaderButton = styled.span`
     font-weight: 400;
     
     :hover {
-        text-decoration-line: underline;
-        text-decoration-color: var(--grey2);
+        color: var(--grey0);
     }
 
 `
 
 export const StyledHeaderLoginButton = styled.span`
-    color: var(--brand2);
+    color: var(--grey2);
     font-size: 16px;
     font-weight: 400;
     
     :hover {
-        text-decoration-line: underline;
-        text-decoration-color: var(--brand2);
+        color: var(--brand2);
     }
 
 `
