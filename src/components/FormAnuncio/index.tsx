@@ -24,9 +24,11 @@ interface IProps {
   setOpen: Function
   openSuccess: boolean
   setOpenSuccess: Function
+  setOpenError: Function
+  openError: boolean
 }
 
-const FormAnuncio = ({ open, setOpen, setOpenSuccess, openSuccess }: IProps) => {
+const FormAnuncio = ({ open, setOpen, setOpenSuccess, openSuccess, setOpenError, openError }: IProps) => {
   const {
     register,
     handleSubmit,
@@ -59,6 +61,7 @@ const FormAnuncio = ({ open, setOpen, setOpenSuccess, openSuccess }: IProps) => 
     })
     .catch((err) => {
       console.log(err)
+      setOpenError(!openError)
     })
 
   }

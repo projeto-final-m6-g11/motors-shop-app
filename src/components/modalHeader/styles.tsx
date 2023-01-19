@@ -32,6 +32,7 @@ export const Modal = styled.div`
       margin: 5px auto;
       font-size: large;
       background-color: var(--whiteFixed);
+      border: none;
     }
 
     a{
@@ -68,7 +69,6 @@ export const Modal = styled.div`
       .button2 {
         text-align: center;
         color: var(--grey0);
-        border: solid 2px var(--grey4);
         border-radius: 5px;
         padding: 8px;
         font-weight: 600;
