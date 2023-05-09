@@ -45,7 +45,7 @@ export const LabelForm = styled.label`
 
 export const InputPattern = styled.input`
   width: 100%;
-  height: 40px;
+  height: 48px !important;
   border-radius: 4px;
   border: 1.5px solid var(--grey5);
   padding: 10px;
@@ -54,19 +54,30 @@ export const InputPattern = styled.input`
   margin-top: 5px;
 `;
 
-export const InputDescription = styled.textarea`
-  width: 100%;
-  height: 100px;
+export const InputDate = styled.input`
+  display: flex;
   border-radius: 4px;
   border: 1.5px solid var(--grey5);
   padding: 10px;
-  font-size: 16px;
+  font-size: 14px;
+  color: var(--grey3);
+  text-align: center;
+  height: 42px !important;
+  margin-top: 5px;
+
+`
+
+export const InputDescription = styled.input`
+  border-radius: 4px;
+  height: 142px;
+  border: 1.5px solid var(--grey5);
+  padding: 10px;
   color: var(--grey3);
   margin-top: 5px;
+  margin-bottom: 10px;
 `;
 
 export const FooterForm = styled.div`
-  margin-top: 55px;
   display: flex;
   display: flex;
   justify-content: right;
@@ -83,6 +94,13 @@ export const ButtonFooter = styled.button`
   background-color: var(--brand2) !important;
   border-radius: 4px;
   border: 1.5px solid var(--brand2) !important;
+  font-size: 13px !important;
+  transition: 0.4s !important;
+
+  :hover {
+    background-color: var(--whiteFixed) !important;
+    color: var(--brand2) !important;
+  }
 
   ${(props) =>
     props.color === "color" &&
@@ -91,5 +109,11 @@ export const ButtonFooter = styled.button`
       color: var(--grey2) !important;
       border: 1.5px solid var(--grey6) !important;
       width: 125px;
+
+      :hover {
+        background-color: var(--grey0) !important;
+        border: 1.5px solid var(--grey0) !important;
+        color: var(--whiteFixed) !important;
+      }
     `}
 `;

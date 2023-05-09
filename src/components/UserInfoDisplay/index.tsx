@@ -4,6 +4,8 @@ import { UserInfoDiv } from "./styles";
 import { ModalFundo } from "../ModalFundo/styles";
 import FormAnuncio from "../FormAnuncio";
 import { useParams } from "react-router-dom";
+import GlobalModalSuccess from "../GlobalModalSuccess";
+import GlobalModalError from "../GlobalModalError";
 
 interface UIDisplay {
   profile: boolean;
@@ -13,6 +15,8 @@ interface UIDisplay {
 
 const UserInfoDisplay = ({ profile, user, userId }: UIDisplay) => {
   const [open, setOpen] = useState<boolean>(false);
+  const [openSuccess, setOpenSuccess] = useState(false)
+  const [openError, setOpenError] = useState(false)
 
   const {id} = useParams<any>()
   
@@ -54,11 +58,18 @@ const UserInfoDisplay = ({ profile, user, userId }: UIDisplay) => {
             handleOpen(e);
           }}
         >
-          <FormAnuncio open={open} setOpen={setOpen} />
+          <FormAnuncio
+           open={open} setOpen={setOpen} 
+           setOpenSuccess={setOpenSuccess} openSuccess={openSuccess}
+           setOpenError={setOpenError} openError={openError} />
         </ModalFundo>
       ) : (
         ""
       )}
+    {openSuccess &&
+    <GlobalModalSuccess context="CREATE_ANNOUNCEMENT" setOpenSuccess={setOpenSuccess} openSuccess={openSuccess} />}
+    {openError &&
+    <GlobalModalError setOpenError={setOpenError} openError={openError} />}
     </UserInfoDiv>
   ) : (
     <UserInfoDiv>

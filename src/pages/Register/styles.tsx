@@ -52,7 +52,6 @@ export const StyledRegisterForm = styled.form`
 export const CreateAccountButton = styled.button`
     display: flex;
     border: none;
-    border-radius: 4px;
     width: 100%;
     height: 48px;
     justify-content: center;
@@ -60,6 +59,15 @@ export const CreateAccountButton = styled.button`
     margin-top: 20px;
     background          : var(--brand1);
     color               : var(--whiteFixed);
+    border: solid 1.5px var(--brand1);
+    transition: 0.4s;
+    border-radius: 4px;
+
+    :hover {
+      background          : var(--whiteFixed);
+      color               : var(--brand1);
+      border: solid 1.5px var(--brand1);
+    }
 `
 
 export const BuyerBtn = styled.input`

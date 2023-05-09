@@ -24,7 +24,6 @@ color: var(--whiteFixed);
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 10px;
 }
 
 .km__year__car span {
@@ -59,11 +58,17 @@ color: var(--whiteFixed);
     font-size: 14px;
     background-color: var(--brand1);
     margin-bottom: 0px;
+    :hover {
+        cursor: pointer;
+    }
   }
   .user__data p {
     font-weight: 500;
     font-size: 14px;
     margin-left: 10px;
+    :hover {
+        cursor: pointer;
+    }
   }
 
   .vehicle__important_info {
@@ -143,9 +148,10 @@ justify-content: space-between;
 padding: 30px;
 align-items: center;
 min-width: 100%;
-height: 42px;
+height: 38px;
 background-color: var(--brand1);
 color: var(--whiteFixed);
+transition: 0.6s;
 
 border-bottom-left-radius: 4px;
 border-bottom-right-radius: 4px;
@@ -153,6 +159,11 @@ border-bottom-right-radius: 4px;
 span {
     font-weight: 600;
     font-size: 16px;
+}
+
+:hover {
+    background-color: var(--whiteFixed);
+    color: var(--brand1);
 }
 
 :hover {

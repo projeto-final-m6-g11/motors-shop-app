@@ -13,6 +13,7 @@ import {
   ButtonClosed,
   LabelForm,
   LabelButtonForm,
+  InputDate,
 } from "./styles";
 
 interface IProps {
@@ -85,17 +86,18 @@ const FormPerfil = ({ open, setOpen }: IProps) => {
       {...register("phone", { required: true, value: user.phone })} 
       />
 
+      <div className="date__holder">
       <LabelForm htmlFor="">Data de nascimento</LabelForm>
-      <InputPattern type="date"
+      <InputDate type="date"
       {...register("birthdate", { required: true, value: user.birthdate.split("-").reverse().join("/") })}
       />
+      </div>
 
       <LabelForm htmlFor="">Descrição</LabelForm>
       <InputDescription
-        cols={10}
-        rows={10}
         {...register("bio", { required: true, value: user.bio})}
       />
+      
       <FooterForm>
         <ButtonFooter color="color" type="button" onClick={() => {setOpen(!open)}}>Cancelar</ButtonFooter>
         <ButtonFooter type="submit">Salvar Alterações</ButtonFooter>

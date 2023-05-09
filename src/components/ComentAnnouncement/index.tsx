@@ -46,6 +46,9 @@ const CommentAnnouncement = ({ id, reloadPage, setReloadPage }: Props) => {
   }, []);
 
   const sendComment = () => {
+    const textArea: any = document.getElementById('comment--textArea')
+    textArea.value = ""
+
     if (comment !== "") {
       const createComment = new Promise((resolve, reject) =>
         API.post(
@@ -53,12 +56,11 @@ const CommentAnnouncement = ({ id, reloadPage, setReloadPage }: Props) => {
           { text: comment },
           { headers: { Authorization: `Bearer ${token}` } }
         )
-          .then((res) => {
-            //window.location.reload()
-            setReloadPage(!reloadPage)
-            resolve(res);
-          })
-          .catch((err) => reject(err))
+        .then((res) => {
+          setReloadPage(!reloadPage)
+          resolve(res);
+        })
+        .catch((err) => reject(err))
       );
       return toast.promise(createComment, {
         error: "Algo deu errado",
@@ -81,10 +83,10 @@ const CommentAnnouncement = ({ id, reloadPage, setReloadPage }: Props) => {
           },
         }
       )
-        .then((res) => {
-          resolve(res);
-        })
-        .catch((err) => reject(err))
+      .then((res) => {
+        resolve(res);
+      })
+      .catch((err) => reject(err))
     );
     return toast.promise(createComment, {
       error: "Algo deu errado",
@@ -111,16 +113,16 @@ const CommentAnnouncement = ({ id, reloadPage, setReloadPage }: Props) => {
             <ContainerTextArea>
               <StyledTextArea
                 name=""
-                id=""
+                id="comment--textArea"
                 placeholder="Carro muito confortável, foi uma ótima experiência de compra..."
                 onChange={(e) => {
                   setComment(e.target.value);
                 }}
               ></StyledTextArea>
-              <button onClick={sendComment}>Comentar</button>
+              <button type="submit" onClick={sendComment}>Comentar</button>
             </ContainerTextArea>
             <ContainerFastButtons>
-              <FastButton onClick={(e) => sendCommentFastButton(e)}>
+              <FastButton onClick={(e) => {sendCommentFastButton(e)}}>
                 Gostei muito!
               </FastButton>
               <FastButton onClick={(e) => sendCommentFastButton(e)}>

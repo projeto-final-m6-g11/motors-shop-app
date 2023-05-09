@@ -40,6 +40,11 @@ export const Box = styled.header`
     width: 90%;
     margin: 5px auto;
     cursor: pointer;
+    transition: 0.4s;
+
+    :hover {
+      color: var(--grey0);
+    }
   }
 
   @media (min-width: 810px) {
@@ -50,7 +55,6 @@ export const Box = styled.header`
       height: 100%;
 
       .vehicles {
-        border-right: 2px solid var(--grey6);
         height: 100%;
 
         display: flex;
@@ -90,10 +94,13 @@ export const Box = styled.header`
           color: var(--grey0);
           background-color: var(--whiteFixed);
           border-radius: 4px;
-          border: 1.5px solid var(--grey4);
+          transition: 0.4s;
 
           :hover {
             cursor: pointer;
+            background-color: var(--grey0);
+            color: var(--whiteFixed);
+            transition: 0.4s;
           }
         }
       }
@@ -164,6 +171,11 @@ export const Modal = styled.div`
         border: none;
         font-size: large;
         background-color: var(--whiteFixed);
+        transition: 0.4s;
+
+        :hover {
+          color: var(--grey0);
+        }
       }
     }
   }

@@ -22,6 +22,13 @@ export const FormPattern = styled.form`
     align-items: flex-start;
   }
 
+  .date__holder{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100px;
+  }
+
   .divRowEnd {
     display: flex;
     flex-direction: row;

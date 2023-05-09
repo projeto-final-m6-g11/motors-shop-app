@@ -4,6 +4,9 @@ import API from "../../api";
 import { UserContext } from "../../contexts/user";
 import { BuyerBtn } from "../../pages/Register/styles";
 import { FormPattern } from "../FormPadrão/styles";
+import GlobalModalSuccess from "../GlobalModalSuccess";
+import { ModalFundo } from "../ModalFundo/styles";
+import ModalSuccessRegister from "../ModalSuccessRegister";
 import {
   TitleForm,
   ButtonAddImg,
@@ -19,9 +22,13 @@ import {
 interface IProps {
   open: boolean
   setOpen: Function
+  openSuccess: boolean
+  setOpenSuccess: Function
+  setOpenError: Function
+  openError: boolean
 }
 
-const FormAnuncio = ({ open, setOpen }: IProps) => {
+const FormAnuncio = ({ open, setOpen, setOpenSuccess, openSuccess, setOpenError, openError }: IProps) => {
   const {
     register,
     handleSubmit,
@@ -49,10 +56,12 @@ const FormAnuncio = ({ open, setOpen }: IProps) => {
       }
     })
     .then((res) => {
+      setOpenSuccess(!openSuccess)
       setOpen(!open)
     })
     .catch((err) => {
       console.log(err)
+      setOpenError(!openError)
     })
 
   }

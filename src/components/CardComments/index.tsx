@@ -44,8 +44,6 @@ export const CardComments = ({
       },
     })
       .then((resp) => {
-        toast.success("Atualizado com Sucesso!");
-        //window.location.reload();
         setReloadPage(!reloadPage)
 
       })
@@ -61,8 +59,6 @@ export const CardComments = ({
       },
     })
       .then((resp) => {
-        toast.success("Excluído com Sucesso!");
-        //window.location.reload();
         setReloadPage(!reloadPage)
       })
       .catch((err) => {

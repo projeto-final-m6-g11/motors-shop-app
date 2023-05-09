@@ -153,6 +153,7 @@ export const BoxInfo = styled.article`
     border: none;
     border-radius: 4px;
     font-weight: 600;
+    transition: 0.4s;
 
     :hover {
       color: var(--brand1);
@@ -318,6 +319,7 @@ export const BoxPerfil = styled.article`
     border: 2px solid var(--grey0);
     border-radius: 4px;
     font-weight: 600;
+    transition: 0.4s;
 
     :hover {
       color: var(--grey0);

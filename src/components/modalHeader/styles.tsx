@@ -30,10 +30,11 @@ export const Modal = styled.div`
       width: 90%;
       text-align: left;
       margin: 5px auto;
-      border: none;
       font-size: large;
       background-color: var(--whiteFixed);
+      border: none;
     }
+
     a{
       width: 90%;
       text-align: left;
@@ -42,6 +43,7 @@ export const Modal = styled.div`
       font-size: large;
       background-color: var(--whiteFixed);
     }
+
     .divisionNavModal {
       border-top: 2px solid var(--grey4);
       height: 13rem;
@@ -67,7 +69,6 @@ export const Modal = styled.div`
       .button2 {
         text-align: center;
         color: var(--grey0);
-        border: solid 2px var(--grey4);
         border-radius: 5px;
         padding: 8px;
         font-weight: 600;

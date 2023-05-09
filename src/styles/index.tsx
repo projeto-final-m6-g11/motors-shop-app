@@ -36,6 +36,10 @@ export const GlobalStyle = createGlobalStyle`
     --random11          : #5700E3;
     --random12          : #30007D;
     }
+
+    html {
+        scroll-behavior: smooth;
+    }
     
     h1,h2,h3,h4,h5,h6{
         font-family: 'Lexend', sans-serif;
